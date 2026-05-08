@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="JavaScript cheat sheet with ES6+ syntax, data types, array methods, object methods, DOM manipulation, async/await, classes, modules, and common patterns.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/javascript.html">
+  <meta property="og:title" content="JavaScript Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Complete JavaScript reference: variables, types, arrays, objects, functions, DOM, async, classes, modules, and more.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/javascript.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "JavaScript Cheat Sheet - Quick Reference",
+    "description": "Complete JavaScript reference with ES6+ syntax and examples",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/javascript.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Filter syntax..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / JavaScript Cheat Sheet</div>
+      <h1>JavaScript Cheat Sheet</h1>
+      <p class="description">Modern JavaScript (ES6+) quick reference. Variables, data types, arrays, objects, functions, DOM, async/await, classes, and more.</p>
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#variables">Variables &amp; Types</a></li>
+        <li><a href="#strings">Strings</a></li>
+        <li><a href="#arrays">Arrays</a></li>
+        <li><a href="#objects">Objects</a></li>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#destructuring">Destructuring &amp; Spread</a></li>
+        <li><a href="#control">Control Flow</a></li>
+        <li><a href="#dom">DOM Manipulation</a></li>
+        <li><a href="#async">Async / Promises</a></li>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#modules">Modules</a></li>
+        <li><a href="#useful">Useful Patterns</a></li>
+      </ul>
+    </nav>
+
+    <!-- Variables & Types -->
+    <section class="section" id="variables">
+      <h2>Variables &amp; Types</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Syntax</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>const x = 1</code></td><td class="desc">Block-scoped constant (cannot be reassigned)</td></tr>
+          <tr><td><code>let y = 2</code></td><td class="desc">Block-scoped variable (can be reassigned)</td></tr>
+          <tr><td><code>var z = 3</code></td><td class="desc">Function-scoped variable (avoid — use <code>let</code>/<code>const</code>)</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Data Types</h3>
+      <table class="cmd-table">
+        <thead><tr><th>Type</th><th>Example</th><th>Check</th></tr></thead>
+        <tbody>
+          <tr><td><code>String</code></td><td><code>"hello"</code> <code>'hi'</code> <code>`template`</code></td><td class="desc"><code>typeof x === "string"</code></td></tr>
+          <tr><td><code>Number</code></td><td><code>42</code> <code>3.14</code> <code>NaN</code> <code>Infinity</code></td><td class="desc"><code>typeof x === "number"</code></td></tr>
+          <tr><td><code>BigInt</code></td><td><code>9007199254740991n</code></td><td class="desc"><code>typeof x === "bigint"</code></td></tr>
+          <tr><td><code>Boolean</code></td><td><code>true</code> <code>false</code></td><td class="desc"><code>typeof x === "boolean"</code></td></tr>
+          <tr><td><code>null</code></td><td><code>null</code></td><td class="desc"><code>x === null</code></td></tr>
+          <tr><td><code>undefined</code></td><td><code>undefined</code></td><td class="desc"><code>typeof x === "undefined"</code></td></tr>
+          <tr><td><code>Symbol</code></td><td><code>Symbol("id")</code></td><td class="desc"><code>typeof x === "symbol"</code></td></tr>
+          <tr><td><code>Object</code></td><td><code>{}</code> <code>[]</code> <code>new Date()</code></td><td class="desc"><code>typeof x === "object"</code></td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Type Conversion</h3>
+      <pre class="code-block"><code>String(123)          <span class="comment">// "123"</span>
+Number("42")         <span class="comment">// 42</span>
+Number("abc")        <span class="comment">// NaN</span>
+Boolean(0)           <span class="comment">// false</span>
+Boolean("")          <span class="comment">// false</span>
+Boolean(null)        <span class="comment">// false</span>
+Boolean("hello")     <span class="comment">// true</span>
+parseInt("42px")     <span class="comment">// 42</span>
+parseFloat("3.14")   <span class="comment">// 3.14</span>
++"42"                <span class="comment">// 42 (unary plus shorthand)</span></code></pre>
+    </section>
+
+    <!-- Strings -->
+    <section class="section" id="strings">
+      <h2>Strings</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Method / Syntax</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>`Hello ${name}`</code></td><td class="desc">Template literal (interpolation)</td></tr>
+          <tr><td><code>str.length</code></td><td class="desc">String length</td></tr>
+          <tr><td><code>str.includes("abc")</code></td><td class="desc">Check if string contains substring</td></tr>
+          <tr><td><code>str.startsWith("He")</code></td><td class="desc">Check if starts with</td></tr>
+          <tr><td><code>str.endsWith("lo")</code></td><td class="desc">Check if ends with</td></tr>
+          <tr><td><code>str.indexOf("l")</code></td><td class="desc">First index of substring (-1 if not found)</td></tr>
+          <tr><td><code>str.slice(0, 5)</code></td><td class="desc">Extract substring (start, end)</td></tr>
+          <tr><td><code>str.substring(0, 5)</code></td><td class="desc">Extract substring (no negative indices)</td></tr>
+          <tr><td><code>str.replace("a", "b")</code></td><td class="desc">Replace first occurrence</td></tr>
+          <tr><td><code>str.replaceAll("a", "b")</code></td><td class="desc">Replace all occurrences</td></tr>
+          <tr><td><code>str.split(",")</code></td><td class="desc">Split into array</td></tr>
+          <tr><td><code>str.trim()</code></td><td class="desc">Remove whitespace from both ends</td></tr>
+          <tr><td><code>str.trimStart()</code></td><td class="desc">Remove whitespace from start</td></tr>
+          <tr><td><code>str.toUpperCase()</code></td><td class="desc">Convert to uppercase</td></tr>
+          <tr><td><code>str.toLowerCase()</code></td><td class="desc">Convert to lowercase</td></tr>
+          <tr><td><code>str.padStart(5, "0")</code></td><td class="desc">Pad start to length 5 with "0"</td></tr>
+          <tr><td><code>str.repeat(3)</code></td><td class="desc">Repeat string 3 times</td></tr>
+          <tr><td><code>str.match(/regex/g)</code></td><td class="desc">Find all regex matches</td></tr>
+          <tr><td><code>str.at(-1)</code></td><td class="desc">Last character (ES2022)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Arrays -->
+    <section class="section" id="arrays">
+      <h2>Arrays</h2>
+      <h3 style="margin-bottom:8px;color:var(--text-secondary);">Create &amp; Access</h3>
+      <pre class="code-block"><code><span class="keyword">const</span> arr = [<span class="string">1</span>, <span class="string">2</span>, <span class="string">3</span>];
+arr[<span class="string">0</span>]           <span class="comment">// 1</span>
+arr.at(<span class="string">-1</span>)        <span class="comment">// 3 (last element)</span>
+arr.length        <span class="comment">// 3</span>
+Array.isArray(arr) <span class="comment">// true</span>
+Array.from(<span class="string">"abc"</span>) <span class="comment">// ["a", "b", "c"]</span>
+Array(<span class="string">5</span>).fill(<span class="string">0</span>)  <span class="comment">// [0, 0, 0, 0, 0]</span></code></pre>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Mutating Methods</h3>
+      <table class="cmd-table">
+        <thead><tr><th>Method</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>push(item)</code></td><td class="desc">Add to end, return new length</td></tr>
+          <tr><td><code>pop()</code></td><td class="desc">Remove from end, return removed item</td></tr>
+          <tr><td><code>unshift(item)</code></td><td class="desc">Add to beginning</td></tr>
+          <tr><td><code>shift()</code></td><td class="desc">Remove from beginning</td></tr>
+          <tr><td><code>splice(i, n, ...items)</code></td><td class="desc">Remove n items at index i, insert items</td></tr>
+          <tr><td><code>sort()</code></td><td class="desc">Sort in place (lexicographic by default)</td></tr>
+          <tr><td><code>sort((a,b) => a - b)</code></td><td class="desc">Sort numbers ascending</td></tr>
+          <tr><td><code>reverse()</code></td><td class="desc">Reverse in place</td></tr>
+          <tr><td><code>fill(value, start, end)</code></td><td class="desc">Fill with value</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Non-Mutating Methods</h3>
+      <table class="cmd-table">
+        <thead><tr><th>Method</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>map(fn)</code></td><td class="desc">Transform each element, return new array</td></tr>
+          <tr><td><code>filter(fn)</code></td><td class="desc">Keep elements where fn returns true</td></tr>
+          <tr><td><code>reduce(fn, init)</code></td><td class="desc">Accumulate into single value</td></tr>
+          <tr><td><code>find(fn)</code></td><td class="desc">First element where fn returns true</td></tr>
+          <tr><td><code>findIndex(fn)</code></td><td class="desc">Index of first match (-1 if none)</td></tr>
+          <tr><td><code>some(fn)</code></td><td class="desc">True if any element passes test</td></tr>
+          <tr><td><code>every(fn)</code></td><td class="desc">True if all elements pass test</td></tr>
+          <tr><td><code>includes(val)</code></td><td class="desc">True if array contains value</td></tr>
+          <tr><td><code>indexOf(val)</code></td><td class="desc">First index of value (-1 if not found)</td></tr>
+          <tr><td><code>forEach(fn)</code></td><td class="desc">Execute fn for each element (no return)</td></tr>
+          <tr><td><code>concat(arr2)</code></td><td class="desc">Merge arrays into new array</td></tr>
+          <tr><td><code>slice(start, end)</code></td><td class="desc">Extract portion into new array</td></tr>
+          <tr><td><code>flat(depth)</code></td><td class="desc">Flatten nested arrays</td></tr>
+          <tr><td><code>flatMap(fn)</code></td><td class="desc">Map then flatten one level</td></tr>
+          <tr><td><code>join(sep)</code></td><td class="desc">Join elements into string</td></tr>
+          <tr><td><code>toSorted(fn)</code></td><td class="desc">Sort without mutating (ES2023)</td></tr>
+          <tr><td><code>toReversed()</code></td><td class="desc">Reverse without mutating (ES2023)</td></tr>
+        </tbody>
+      </table>
+
+      <pre class="code-block"><code><span class="comment">// Common patterns</span>
+[<span class="string">1</span>,<span class="string">2</span>,<span class="string">3</span>].map(x => x * <span class="string">2</span>)              <span class="comment">// [2, 4, 6]</span>
+[<span class="string">1</span>,<span class="string">2</span>,<span class="string">3</span>,<span class="string">4</span>].filter(x => x > <span class="string">2</span>)           <span class="comment">// [3, 4]</span>
+[<span class="string">1</span>,<span class="string">2</span>,<span class="string">3</span>].reduce((sum, x) => sum + x, <span class="string">0</span>) <span class="comment">// 6</span>
+[<span class="string">1</span>,<span class="string">2</span>,<span class="string">3</span>].find(x => x > <span class="string">1</span>)               <span class="comment">// 2</span>
+[...new Set([<span class="string">1</span>,<span class="string">1</span>,<span class="string">2</span>,<span class="string">3</span>])]                 <span class="comment">// [1, 2, 3] (dedupe)</span></code></pre>
+    </section>
+
+    <!-- Objects -->
+    <section class="section" id="objects">
+      <h2>Objects</h2>
+      <pre class="code-block"><code><span class="comment">// Create</span>
+<span class="keyword">const</span> obj = { name: <span class="string">"Alice"</span>, age: <span class="string">30</span> };
+
+<span class="comment">// Access</span>
+obj.name              <span class="comment">// "Alice"</span>
+obj[<span class="string">"name"</span>]           <span class="comment">// "Alice"</span>
+obj?.address?.city    <span class="comment">// undefined (optional chaining)</span>
+
+<span class="comment">// Modify</span>
+obj.email = <span class="string">"a@b.com"</span>;  <span class="comment">// add property</span>
+<span class="keyword">delete</span> obj.age;          <span class="comment">// remove property</span></code></pre>
+
+      <table class="cmd-table">
+        <thead><tr><th>Method</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>Object.keys(obj)</code></td><td class="desc">Array of keys</td></tr>
+          <tr><td><code>Object.values(obj)</code></td><td class="desc">Array of values</td></tr>
+          <tr><td><code>Object.entries(obj)</code></td><td class="desc">Array of [key, value] pairs</td></tr>
+          <tr><td><code>Object.assign(target, src)</code></td><td class="desc">Copy properties (shallow)</td></tr>
+          <tr><td><code>Object.freeze(obj)</code></td><td class="desc">Prevent modifications</td></tr>
+          <tr><td><code>Object.fromEntries(arr)</code></td><td class="desc">Create object from [key, value] pairs</td></tr>
+          <tr><td><code>"key" in obj</code></td><td class="desc">Check if key exists</td></tr>
+          <tr><td><code>obj.hasOwnProperty("key")</code></td><td class="desc">Check own property (not inherited)</td></tr>
+          <tr><td><code>{...obj, newKey: val}</code></td><td class="desc">Spread into new object (shallow copy + add)</td></tr>
+          <tr><td><code>structuredClone(obj)</code></td><td class="desc">Deep clone (ES2022)</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Map &amp; Set</h3>
+      <pre class="code-block"><code><span class="comment">// Map — key-value pairs (any key type)</span>
+<span class="keyword">const</span> map = <span class="keyword">new</span> Map();
+map.set(<span class="string">"key"</span>, <span class="string">"value"</span>);
+map.get(<span class="string">"key"</span>);        <span class="comment">// "value"</span>
+map.has(<span class="string">"key"</span>);        <span class="comment">// true</span>
+map.delete(<span class="string">"key"</span>);
+map.size;              <span class="comment">// 0</span>
+
+<span class="comment">// Set — unique values</span>
+<span class="keyword">const</span> set = <span class="keyword">new</span> Set([<span class="string">1</span>, <span class="string">2</span>, <span class="string">2</span>, <span class="string">3</span>]);
+set.add(<span class="string">4</span>);
+set.has(<span class="string">2</span>);            <span class="comment">// true</span>
+set.delete(<span class="string">2</span>);
+set.size;              <span class="comment">// 3</span>
+[...set]               <span class="comment">// [1, 3, 4]</span></code></pre>
+    </section>
+
+    <!-- Functions -->
+    <section class="section" id="functions">
+      <h2>Functions</h2>
+      <pre class="code-block"><code><span class="comment">// Function declaration</span>
+<span class="keyword">function</span> add(a, b) { <span class="keyword">return</span> a + b; }
+
+<span class="comment">// Function expression</span>
+<span class="keyword">const</span> add = <span class="keyword">function</span>(a, b) { <span class="keyword">return</span> a + b; };
+
+<span class="comment">// Arrow function</span>
+<span class="keyword">const</span> add = (a, b) => a + b;
+<span class="keyword">const</span> greet = name => <span class="string">`Hello, ${name}!`</span>;
+<span class="keyword">const</span> getObj = () => ({ key: <span class="string">"value"</span> }); <span class="comment">// return object</span>
+
+<span class="comment">// Default parameters</span>
+<span class="keyword">function</span> greet(name = <span class="string">"World"</span>) { <span class="keyword">return</span> <span class="string">`Hi ${name}`</span>; }
+
+<span class="comment">// Rest parameters</span>
+<span class="keyword">function</span> sum(...nums) { <span class="keyword">return</span> nums.reduce((a, b) => a + b, <span class="string">0</span>); }
+
+<span class="comment">// IIFE (Immediately Invoked)</span>
+(() => { console.log(<span class="string">"runs now"</span>); })();</code></pre>
+      <div class="tip-box">
+        <strong>Tip:</strong> Arrow functions don't have their own <code>this</code> — they inherit it from the enclosing scope. Use regular functions for object methods and class methods.
+      </div>
+    </section>
+
+    <!-- Destructuring & Spread -->
+    <section class="section" id="destructuring">
+      <h2>Destructuring &amp; Spread</h2>
+      <pre class="code-block"><code><span class="comment">// Array destructuring</span>
+<span class="keyword">const</span> [a, b, ...rest] = [<span class="string">1</span>, <span class="string">2</span>, <span class="string">3</span>, <span class="string">4</span>];
+<span class="comment">// a=1, b=2, rest=[3,4]</span>
+
+<span class="comment">// Object destructuring</span>
+<span class="keyword">const</span> { name, age, city = <span class="string">"NYC"</span> } = person;
+<span class="keyword">const</span> { name: fullName } = person;  <span class="comment">// rename</span>
+
+<span class="comment">// Nested destructuring</span>
+<span class="keyword">const</span> { address: { city } } = person;
+
+<span class="comment">// Spread operator</span>
+<span class="keyword">const</span> arr2 = [...arr1, <span class="string">4</span>, <span class="string">5</span>];       <span class="comment">// array spread</span>
+<span class="keyword">const</span> obj2 = { ...obj1, key: <span class="string">"val"</span> }; <span class="comment">// object spread</span>
+
+<span class="comment">// Function argument destructuring</span>
+<span class="keyword">function</span> greet({ name, age }) {
+  <span class="keyword">return</span> <span class="string">`${name} is ${age}`</span>;
+}</code></pre>
+    </section>
+
+    <!-- Control Flow -->
+    <section class="section" id="control">
+      <h2>Control Flow</h2>
+      <pre class="code-block"><code><span class="comment">// Ternary</span>
+<span class="keyword">const</span> status = age >= <span class="string">18</span> ? <span class="string">"adult"</span> : <span class="string">"minor"</span>;
+
+<span class="comment">// Nullish coalescing (??) — null/undefined only</span>
+<span class="keyword">const</span> val = input ?? <span class="string">"default"</span>;
+
+<span class="comment">// Logical OR (||) — any falsy value</span>
+<span class="keyword">const</span> val = input || <span class="string">"default"</span>;
+
+<span class="comment">// Logical AND (&&) — short circuit</span>
+isValid && doSomething();
+
+<span class="comment">// Optional chaining</span>
+user?.address?.city
+arr?.[<span class="string">0</span>]
+fn?.()
+
+<span class="comment">// for...of (iterables: arrays, strings, maps, sets)</span>
+<span class="keyword">for</span> (<span class="keyword">const</span> item <span class="keyword">of</span> array) { }
+
+<span class="comment">// for...in (object keys)</span>
+<span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> object) { }
+
+<span class="comment">// Switch</span>
+<span class="keyword">switch</span> (action) {
+  <span class="keyword">case</span> <span class="string">"start"</span>: start(); <span class="keyword">break</span>;
+  <span class="keyword">case</span> <span class="string">"stop"</span>:  stop();  <span class="keyword">break</span>;
+  <span class="keyword">default</span>: idle();
+}
+
+<span class="comment">// try/catch/finally</span>
+<span class="keyword">try</span> {
+  riskyOperation();
+} <span class="keyword">catch</span> (err) {
+  console.error(err.message);
+} <span class="keyword">finally</span> {
+  cleanup();
+}</code></pre>
+    </section>
+
+    <!-- DOM Manipulation -->
+    <section class="section" id="dom">
+      <h2>DOM Manipulation</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Method</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>document.getElementById("id")</code></td><td class="desc">Select by ID</td></tr>
+          <tr><td><code>document.querySelector(".class")</code></td><td class="desc">Select first match (CSS selector)</td></tr>
+          <tr><td><code>document.querySelectorAll("p")</code></td><td class="desc">Select all matches (NodeList)</td></tr>
+          <tr><td><code>el.textContent = "text"</code></td><td class="desc">Set text content</td></tr>
+          <tr><td><code>el.innerHTML = "&lt;b&gt;html&lt;/b&gt;"</code></td><td class="desc">Set HTML content</td></tr>
+          <tr><td><code>el.setAttribute("href", url)</code></td><td class="desc">Set attribute</td></tr>
+          <tr><td><code>el.getAttribute("href")</code></td><td class="desc">Get attribute</td></tr>
+          <tr><td><code>el.classList.add("active")</code></td><td class="desc">Add CSS class</td></tr>
+          <tr><td><code>el.classList.remove("active")</code></td><td class="desc">Remove CSS class</td></tr>
+          <tr><td><code>el.classList.toggle("active")</code></td><td class="desc">Toggle CSS class</td></tr>
+          <tr><td><code>el.classList.contains("active")</code></td><td class="desc">Check if class exists</td></tr>
+          <tr><td><code>el.style.color = "red"</code></td><td class="desc">Set inline style</td></tr>
+          <tr><td><code>document.createElement("div")</code></td><td class="desc">Create element</td></tr>
+          <tr><td><code>parent.appendChild(child)</code></td><td class="desc">Append child element</td></tr>
+          <tr><td><code>parent.removeChild(child)</code></td><td class="desc">Remove child element</td></tr>
+          <tr><td><code>el.remove()</code></td><td class="desc">Remove element from DOM</td></tr>
+          <tr><td><code>el.closest(".class")</code></td><td class="desc">Find nearest ancestor matching selector</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Events</h3>
+      <pre class="code-block"><code>el.addEventListener(<span class="string">"click"</span>, (e) => {
+  e.preventDefault();     <span class="comment">// prevent default behavior</span>
+  e.stopPropagation();    <span class="comment">// stop event bubbling</span>
+  e.target                <span class="comment">// element that triggered event</span>
+  e.currentTarget         <span class="comment">// element listener is attached to</span>
+});
+
+<span class="comment">// Common events: click, submit, input, change,</span>
+<span class="comment">// keydown, keyup, mouseover, mouseout, scroll,</span>
+<span class="comment">// load, DOMContentLoaded, resize, focus, blur</span>
+
+<span class="comment">// Event delegation</span>
+document.querySelector(<span class="string">"ul"</span>).addEventListener(<span class="string">"click"</span>, (e) => {
+  <span class="keyword">if</span> (e.target.matches(<span class="string">"li"</span>)) {
+    handleClick(e.target);
+  }
+});</code></pre>
+    </section>
+
+    <!-- Async / Promises -->
+    <section class="section" id="async">
+      <h2>Async / Promises</h2>
+      <pre class="code-block"><code><span class="comment">// Promise</span>
+<span class="keyword">const</span> p = <span class="keyword">new</span> Promise((resolve, reject) => {
+  <span class="comment">// async work...</span>
+  resolve(<span class="string">"done"</span>);   <span class="comment">// or reject(new Error("fail"))</span>
+});
+
+p.then(val => console.log(val))
+ .catch(err => console.error(err))
+ .finally(() => cleanup());
+
+<span class="comment">// async/await</span>
+<span class="keyword">async function</span> fetchData() {
+  <span class="keyword">try</span> {
+    <span class="keyword">const</span> res = <span class="keyword">await</span> fetch(<span class="string">"/api/data"</span>);
+    <span class="keyword">const</span> data = <span class="keyword">await</span> res.json();
+    <span class="keyword">return</span> data;
+  } <span class="keyword">catch</span> (err) {
+    console.error(err);
+  }
+}
+
+<span class="comment">// Parallel execution</span>
+<span class="keyword">const</span> [a, b] = <span class="keyword">await</span> Promise.all([fetchA(), fetchB()]);
+
+<span class="comment">// Race — first to settle wins</span>
+<span class="keyword">const</span> result = <span class="keyword">await</span> Promise.race([fetchA(), timeout(<span class="string">5000</span>)]);
+
+<span class="comment">// allSettled — wait for all, never rejects</span>
+<span class="keyword">const</span> results = <span class="keyword">await</span> Promise.allSettled([p1, p2, p3]);</code></pre>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Fetch API</h3>
+      <pre class="code-block"><code><span class="comment">// GET</span>
+<span class="keyword">const</span> res = <span class="keyword">await</span> fetch(<span class="string">"/api/users"</span>);
+<span class="keyword">const</span> users = <span class="keyword">await</span> res.json();
+
+<span class="comment">// POST</span>
+<span class="keyword">const</span> res = <span class="keyword">await</span> fetch(<span class="string">"/api/users"</span>, {
+  method: <span class="string">"POST"</span>,
+  headers: { <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span> },
+  body: JSON.stringify({ name: <span class="string">"Alice"</span> }),
+});
+
+<span class="comment">// Check response</span>
+<span class="keyword">if</span> (!res.ok) <span class="keyword">throw new</span> Error(<span class="string">`HTTP ${res.status}`</span>);</code></pre>
+    </section>
+
+    <!-- Classes -->
+    <section class="section" id="classes">
+      <h2>Classes</h2>
+      <pre class="code-block"><code><span class="keyword">class</span> Animal {
+  <span class="comment">// Private field</span>
+  #sound;
+
+  <span class="keyword">constructor</span>(name, sound) {
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.#sound = sound;
+  }
+
+  <span class="comment">// Method</span>
+  speak() {
+    <span class="keyword">return</span> <span class="string">`${this.name} says ${this.#sound}`</span>;
+  }
+
+  <span class="comment">// Getter</span>
+  <span class="keyword">get</span> info() { <span class="keyword">return</span> <span class="string">`${this.name}`</span>; }
+
+  <span class="comment">// Static method</span>
+  <span class="keyword">static</span> create(name) { <span class="keyword">return new</span> Animal(name, <span class="string">"..."</span>); }
+}
+
+<span class="comment">// Inheritance</span>
+<span class="keyword">class</span> Dog <span class="keyword">extends</span> Animal {
+  <span class="keyword">constructor</span>(name) {
+    <span class="keyword">super</span>(name, <span class="string">"Woof"</span>);
+  }
+
+  fetch(item) {
+    <span class="keyword">return</span> <span class="string">`${this.name} fetches ${item}`</span>;
+  }
+}</code></pre>
+    </section>
+
+    <!-- Modules -->
+    <section class="section" id="modules">
+      <h2>Modules</h2>
+      <pre class="code-block"><code><span class="comment">// Named export</span>
+<span class="keyword">export</span> <span class="keyword">const</span> PI = <span class="string">3.14</span>;
+<span class="keyword">export</span> <span class="keyword">function</span> add(a, b) { <span class="keyword">return</span> a + b; }
+
+<span class="comment">// Default export</span>
+<span class="keyword">export default</span> <span class="keyword">class</span> App { }
+
+<span class="comment">// Named import</span>
+<span class="keyword">import</span> { PI, add } <span class="keyword">from</span> <span class="string">"./math.js"</span>;
+
+<span class="comment">// Default import</span>
+<span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">"./App.js"</span>;
+
+<span class="comment">// Rename import</span>
+<span class="keyword">import</span> { add <span class="keyword">as</span> sum } <span class="keyword">from</span> <span class="string">"./math.js"</span>;
+
+<span class="comment">// Import all</span>
+<span class="keyword">import</span> * <span class="keyword">as</span> math <span class="keyword">from</span> <span class="string">"./math.js"</span>;
+
+<span class="comment">// Dynamic import</span>
+<span class="keyword">const</span> module = <span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">"./heavy.js"</span>);</code></pre>
+    </section>
+
+    <!-- Useful Patterns -->
+    <section class="section" id="useful">
+      <h2>Useful Patterns</h2>
+      <pre class="code-block"><code><span class="comment">// Debounce</span>
+<span class="keyword">function</span> debounce(fn, ms) {
+  <span class="keyword">let</span> timer;
+  <span class="keyword">return</span> (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), ms);
+  };
+}
+
+<span class="comment">// Sleep / delay</span>
+<span class="keyword">const</span> sleep = ms => <span class="keyword">new</span> Promise(r => setTimeout(r, ms));
+<span class="keyword">await</span> sleep(<span class="string">1000</span>);
+
+<span class="comment">// Random integer between min and max (inclusive)</span>
+<span class="keyword">const</span> rand = (min, max) => Math.floor(Math.random() * (max - min + <span class="string">1</span>)) + min;
+
+<span class="comment">// Shuffle array</span>
+arr.sort(() => Math.random() - <span class="string">0.5</span>);
+
+<span class="comment">// Group by</span>
+<span class="keyword">const</span> grouped = Object.groupBy(items, item => item.category); <span class="comment">// ES2024</span>
+
+<span class="comment">// Remove duplicates</span>
+[...new Set(arr)]
+
+<span class="comment">// Check empty object</span>
+Object.keys(obj).length === <span class="string">0</span>
+
+<span class="comment">// JSON</span>
+JSON.stringify(obj)          <span class="comment">// object → string</span>
+JSON.stringify(obj, null, 2) <span class="comment">// pretty print</span>
+JSON.parse(str)              <span class="comment">// string → object</span></code></pre>
+    </section>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="css-flexbox.html">CSS Flexbox</a></h3>
+          <p>Complete Flexbox guide with container/item properties and layout patterns.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="regex.html">Regex</a></h3>
+          <p>Regular expression syntax, quantifiers, groups, and common patterns.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="python.html">Python</a></h3>
+          <p>Python syntax, data types, functions, classes, and standard library.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
