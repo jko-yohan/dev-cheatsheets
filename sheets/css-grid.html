@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="CSS Grid cheat sheet with all container and item properties. Templates, areas, alignment, sizing functions, and responsive layout patterns.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/css-grid.html">
+  <meta property="og:title" content="CSS Grid Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Complete CSS Grid reference with properties, sizing functions, template areas, and responsive layout patterns.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/css-grid.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "CSS Grid Cheat Sheet - Quick Reference",
+    "description": "Complete CSS Grid Layout reference with all properties and patterns",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/css-grid.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+  <style>
+    .prop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .prop-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .prop-card h3 {
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 4px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .prop-card .values {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .prop-card .values code {
+      background: var(--bg-code);
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: var(--green);
+      font-size: 0.8rem;
+    }
+    .prop-card p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Filter properties..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / CSS Grid Cheat Sheet</div>
+      <h1>CSS Grid Cheat Sheet</h1>
+      <p class="description">Complete CSS Grid Layout reference. Container and item properties, sizing functions, template areas, and responsive patterns.</p>
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#basics">Grid Basics</a></li>
+        <li><a href="#container">Container Properties</a></li>
+        <li><a href="#item">Item Properties</a></li>
+        <li><a href="#sizing">Sizing Functions</a></li>
+        <li><a href="#areas">Template Areas</a></li>
+        <li><a href="#alignment">Alignment</a></li>
+        <li><a href="#patterns">Common Patterns</a></li>
+      </ul>
+    </nav>
+
+    <!-- Basics -->
+    <section class="section" id="basics">
+      <h2>Grid Basics</h2>
+      <p style="color:var(--text-secondary);margin-bottom:16px;">CSS Grid is a two-dimensional layout system for creating complex row and column layouts.</p>
+      <pre class="code-block"><code><span class="keyword">.container</span> {
+  <span class="keyword">display</span>: <span class="string">grid</span>;
+  <span class="keyword">grid-template-columns</span>: <span class="string">1fr 2fr 1fr</span>;    <span class="comment">/* 3 columns */</span>
+  <span class="keyword">grid-template-rows</span>: <span class="string">auto 1fr auto</span>;     <span class="comment">/* 3 rows */</span>
+  <span class="keyword">gap</span>: <span class="string">16px</span>;                              <span class="comment">/* space between cells */</span>
+}</code></pre>
+      <div class="tip-box">
+        <strong>Tip:</strong> <code>fr</code> (fraction) distributes available space. <code>1fr 2fr</code> means the second column gets twice the space of the first.
+      </div>
+    </section>
+
+    <!-- Container Properties -->
+    <section class="section" id="container">
+      <h2>Container Properties</h2>
+
+      <div class="prop-grid">
+        <div class="prop-card">
+          <h3>display</h3>
+          <div class="values"><code>grid</code> <code>inline-grid</code></div>
+          <p>Defines a grid container. <code>inline-grid</code> makes the container inline-level.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>grid-template-columns</h3>
+          <div class="values"><code>&lt;track-size&gt;...</code> | <code>repeat()</code> | <code>none</code></div>
+          <p>Defines the column sizes. Example: <code>200px 1fr 2fr</code> or <code>repeat(3, 1fr)</code>.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>grid-template-rows</h3>
+          <div class="values"><code>&lt;track-size&gt;...</code> | <code>repeat()</code> | <code>none</code></div>
+          <p>Defines the row sizes. Example: <code>100px auto 1fr</code>.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>grid-template-areas</h3>
+          <div class="values"><code>"name name"</code> per row</div>
+          <p>Defines named grid areas. Use <code>.</code> for empty cells. Items reference areas with <code>grid-area</code>.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>grid-template</h3>
+          <div class="values">Shorthand for <code>rows</code> / <code>columns</code> / <code>areas</code></div>
+          <p>Example: <code>"header header" 80px "sidebar main" 1fr / 200px 1fr</code></p>
+        </div>
+
+        <div class="prop-card">
+          <h3>grid-auto-columns</h3>
+          <div class="values"><code>&lt;track-size&gt;</code></div>
+          <p>Size for implicitly-created columns (when items are placed beyond explicit grid).</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>grid-auto-rows</h3>
+          <div class="values"><code>&lt;track-size&gt;</code></div>
+          <p>Size for implicitly-created rows. Example: <code>grid-auto-rows: minmax(100px, auto)</code>.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>grid-auto-flow</h3>
+          <div class="values"><code>row</code> <code>column</code> <code>dense</code> <code>row dense</code></div>
+          <p>Controls how auto-placed items flow. <code>dense</code> fills gaps from earlier items.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>gap / row-gap / column-gap</h3>
+          <div class="values"><code>&lt;length&gt;</code></div>
+          <p>Spacing between grid cells. <code>gap: 16px 24px</code> sets row and column gaps.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Item Properties -->
+    <section class="section" id="item">
+      <h2>Item Properties</h2>
+
+      <div class="prop-grid">
+        <div class="prop-card">
+          <h3>grid-column-start / end</h3>
+          <div class="values"><code>&lt;line&gt;</code> | <code>span &lt;n&gt;</code> | <code>auto</code></div>
+          <p>Where the item starts/ends on column axis. Lines are numbered from 1.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>grid-column</h3>
+          <div class="values">Shorthand: <code>start / end</code></div>
+          <p>Example: <code>grid-column: 1 / 3</code> spans columns 1-2. <code>grid-column: 1 / -1</code> spans all.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>grid-row-start / end</h3>
+          <div class="values"><code>&lt;line&gt;</code> | <code>span &lt;n&gt;</code> | <code>auto</code></div>
+          <p>Where the item starts/ends on row axis.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>grid-row</h3>
+          <div class="values">Shorthand: <code>start / end</code></div>
+          <p>Example: <code>grid-row: 1 / span 2</code> starts at row 1, spans 2 rows.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>grid-area</h3>
+          <div class="values"><code>&lt;name&gt;</code> | <code>row-start / col-start / row-end / col-end</code></div>
+          <p>Assigns to a named area or specifies all four positions. Example: <code>grid-area: header</code>.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>justify-self</h3>
+          <div class="values"><code>start</code> <code>end</code> <code>center</code> <code>stretch</code></div>
+          <p>Aligns the item along the inline (row) axis within its cell.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>align-self</h3>
+          <div class="values"><code>start</code> <code>end</code> <code>center</code> <code>stretch</code></div>
+          <p>Aligns the item along the block (column) axis within its cell.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>place-self</h3>
+          <div class="values">Shorthand: <code>align-self</code> / <code>justify-self</code></div>
+          <p>Example: <code>place-self: center</code> centers in both axes.</p>
+        </div>
+      </div>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Line Number Examples</h3>
+      <pre class="code-block"><code><span class="comment">/* Span specific columns */</span>
+<span class="keyword">.item-a</span> { <span class="keyword">grid-column</span>: <span class="string">1 / 3</span>; }       <span class="comment">/* columns 1-2 */</span>
+<span class="keyword">.item-b</span> { <span class="keyword">grid-column</span>: <span class="string">2 / span 2</span>; }  <span class="comment">/* start at 2, span 2 */</span>
+<span class="keyword">.item-c</span> { <span class="keyword">grid-column</span>: <span class="string">1 / -1</span>; }      <span class="comment">/* full width (all columns) */</span>
+
+<span class="comment">/* Span specific rows */</span>
+<span class="keyword">.item-d</span> { <span class="keyword">grid-row</span>: <span class="string">1 / 4</span>; }          <span class="comment">/* rows 1-3 */</span>
+<span class="keyword">.item-e</span> { <span class="keyword">grid-row</span>: <span class="string">span 2</span>; }         <span class="comment">/* span 2 rows from auto */</span></code></pre>
+    </section>
+
+    <!-- Sizing Functions -->
+    <section class="section" id="sizing">
+      <h2>Sizing Functions</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Function</th><th>Description</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>fr</code></td><td class="desc">Fraction of available space</td><td class="desc"><code>1fr 2fr 1fr</code></td></tr>
+          <tr><td><code>repeat(n, size)</code></td><td class="desc">Repeat a track pattern n times</td><td class="desc"><code>repeat(3, 1fr)</code> = <code>1fr 1fr 1fr</code></td></tr>
+          <tr><td><code>repeat(auto-fill, ...)</code></td><td class="desc">Fill with as many tracks as fit</td><td class="desc"><code>repeat(auto-fill, minmax(200px, 1fr))</code></td></tr>
+          <tr><td><code>repeat(auto-fit, ...)</code></td><td class="desc">Like auto-fill but collapses empty tracks</td><td class="desc"><code>repeat(auto-fit, minmax(200px, 1fr))</code></td></tr>
+          <tr><td><code>minmax(min, max)</code></td><td class="desc">Track size between min and max</td><td class="desc"><code>minmax(100px, 1fr)</code></td></tr>
+          <tr><td><code>min-content</code></td><td class="desc">Smallest size without overflow</td><td class="desc">Shrink-wraps to content</td></tr>
+          <tr><td><code>max-content</code></td><td class="desc">Size based on largest content</td><td class="desc">No wrapping</td></tr>
+          <tr><td><code>fit-content(max)</code></td><td class="desc">Clamp between min-content and max</td><td class="desc"><code>fit-content(300px)</code></td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box">
+        <strong>auto-fill vs auto-fit:</strong> <code>auto-fill</code> keeps empty tracks (maintains space). <code>auto-fit</code> collapses empty tracks so items stretch to fill. Use <code>auto-fit</code> for most responsive grids.
+      </div>
+    </section>
+
+    <!-- Template Areas -->
+    <section class="section" id="areas">
+      <h2>Template Areas</h2>
+      <pre class="code-block"><code><span class="keyword">.layout</span> {
+  <span class="keyword">display</span>: <span class="string">grid</span>;
+  <span class="keyword">grid-template-columns</span>: <span class="string">200px 1fr</span>;
+  <span class="keyword">grid-template-rows</span>: <span class="string">60px 1fr 40px</span>;
+  <span class="keyword">grid-template-areas</span>:
+    <span class="string">"header  header"</span>
+    <span class="string">"sidebar main"</span>
+    <span class="string">"footer  footer"</span>;
+  <span class="keyword">min-height</span>: <span class="string">100vh</span>;
+}
+
+<span class="keyword">.header</span>  { <span class="keyword">grid-area</span>: <span class="string">header</span>; }
+<span class="keyword">.sidebar</span> { <span class="keyword">grid-area</span>: <span class="string">sidebar</span>; }
+<span class="keyword">.main</span>    { <span class="keyword">grid-area</span>: <span class="string">main</span>; }
+<span class="keyword">.footer</span>  { <span class="keyword">grid-area</span>: <span class="string">footer</span>; }
+
+<span class="comment">/* Use . for empty cells */</span>
+<span class="keyword">grid-template-areas</span>:
+  <span class="string">"header header header"</span>
+  <span class="string">".      main   sidebar"</span>
+  <span class="string">"footer footer footer"</span>;</code></pre>
+    </section>
+
+    <!-- Alignment -->
+    <section class="section" id="alignment">
+      <h2>Alignment</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Property</th><th>Axis</th><th>Applies To</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>justify-items</code></td><td>Inline (row)</td><td>Container</td><td class="desc">Align all items within their cells horizontally</td></tr>
+          <tr><td><code>align-items</code></td><td>Block (column)</td><td>Container</td><td class="desc">Align all items within their cells vertically</td></tr>
+          <tr><td><code>place-items</code></td><td>Both</td><td>Container</td><td class="desc">Shorthand for <code>align-items</code> / <code>justify-items</code></td></tr>
+          <tr><td><code>justify-content</code></td><td>Inline</td><td>Container</td><td class="desc">Align the entire grid within the container horizontally</td></tr>
+          <tr><td><code>align-content</code></td><td>Block</td><td>Container</td><td class="desc">Align the entire grid within the container vertically</td></tr>
+          <tr><td><code>place-content</code></td><td>Both</td><td>Container</td><td class="desc">Shorthand for <code>align-content</code> / <code>justify-content</code></td></tr>
+          <tr><td><code>justify-self</code></td><td>Inline</td><td>Item</td><td class="desc">Align a single item horizontally within its cell</td></tr>
+          <tr><td><code>align-self</code></td><td>Block</td><td>Item</td><td class="desc">Align a single item vertically within its cell</td></tr>
+          <tr><td><code>place-self</code></td><td>Both</td><td>Item</td><td class="desc">Shorthand for <code>align-self</code> / <code>justify-self</code></td></tr>
+        </tbody>
+      </table>
+      <p style="color:var(--text-secondary);margin-top:12px;font-size:0.875rem;">Values: <code style="background:var(--bg-code);padding:2px 6px;border-radius:4px;color:var(--green);">start</code> <code style="background:var(--bg-code);padding:2px 6px;border-radius:4px;color:var(--green);">end</code> <code style="background:var(--bg-code);padding:2px 6px;border-radius:4px;color:var(--green);">center</code> <code style="background:var(--bg-code);padding:2px 6px;border-radius:4px;color:var(--green);">stretch</code> (+ <code style="background:var(--bg-code);padding:2px 6px;border-radius:4px;color:var(--green);">space-between</code> <code style="background:var(--bg-code);padding:2px 6px;border-radius:4px;color:var(--green);">space-around</code> <code style="background:var(--bg-code);padding:2px 6px;border-radius:4px;color:var(--green);">space-evenly</code> for content properties)</p>
+    </section>
+
+    <!-- Common Patterns -->
+    <section class="section" id="patterns">
+      <h2>Common Patterns</h2>
+
+      <h3 style="margin-bottom:8px;color:var(--text-secondary);">Responsive card grid (no media queries)</h3>
+      <pre class="code-block"><code><span class="keyword">.cards</span> {
+  <span class="keyword">display</span>: <span class="string">grid</span>;
+  <span class="keyword">grid-template-columns</span>: <span class="string">repeat(auto-fit, minmax(250px, 1fr))</span>;
+  <span class="keyword">gap</span>: <span class="string">16px</span>;
+}</code></pre>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Holy grail layout</h3>
+      <pre class="code-block"><code><span class="keyword">.page</span> {
+  <span class="keyword">display</span>: <span class="string">grid</span>;
+  <span class="keyword">grid-template</span>:
+    <span class="string">"header header header"</span> <span class="string">auto</span>
+    <span class="string">"nav    main   aside"</span>  <span class="string">1fr</span>
+    <span class="string">"footer footer footer"</span> <span class="string">auto</span>
+    / <span class="string">200px 1fr 200px</span>;
+  <span class="keyword">min-height</span>: <span class="string">100vh</span>;
+}</code></pre>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Center anything</h3>
+      <pre class="code-block"><code><span class="keyword">.center</span> {
+  <span class="keyword">display</span>: <span class="string">grid</span>;
+  <span class="keyword">place-items</span>: <span class="string">center</span>;
+  <span class="keyword">min-height</span>: <span class="string">100vh</span>;
+}</code></pre>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Pancake stack (header, content, footer)</h3>
+      <pre class="code-block"><code><span class="keyword">.stack</span> {
+  <span class="keyword">display</span>: <span class="string">grid</span>;
+  <span class="keyword">grid-template-rows</span>: <span class="string">auto 1fr auto</span>;
+  <span class="keyword">min-height</span>: <span class="string">100vh</span>;
+}</code></pre>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Responsive sidebar</h3>
+      <pre class="code-block"><code><span class="keyword">.layout</span> {
+  <span class="keyword">display</span>: <span class="string">grid</span>;
+  <span class="keyword">grid-template-columns</span>: <span class="string">minmax(150px, 25%) 1fr</span>;
+  <span class="keyword">gap</span>: <span class="string">24px</span>;
+}
+
+<span class="comment">/* Stack on mobile */</span>
+<span class="keyword">@media</span> (<span class="string">max-width: 768px</span>) {
+  <span class="keyword">.layout</span> { <span class="keyword">grid-template-columns</span>: <span class="string">1fr</span>; }
+}</code></pre>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">RAM (Repeat, Auto, Minmax)</h3>
+      <pre class="code-block"><code><span class="comment">/* The most useful responsive pattern */</span>
+<span class="keyword">.grid</span> {
+  <span class="keyword">display</span>: <span class="string">grid</span>;
+  <span class="keyword">grid-template-columns</span>: <span class="string">repeat(auto-fit, minmax(min(100%, 300px), 1fr))</span>;
+  <span class="keyword">gap</span>: <span class="string">16px</span>;
+}
+<span class="comment">/* min() prevents overflow on small screens */</span></code></pre>
+    </section>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="css-flexbox.html">CSS Flexbox</a></h3>
+          <p>One-dimensional layout with flex container and item properties.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="javascript.html">JavaScript</a></h3>
+          <p>Core JS syntax, DOM manipulation, array methods, async/await, and ES6+ features.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="html-entities.html">HTML Entities</a></h3>
+          <p>Common HTML character entities and special symbols reference.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr, .prop-card').forEach(el => {
+        const text = el.textContent.toLowerCase();
+        el.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
