@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP Status Codes Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="HTTP status codes cheat sheet. Complete list of 1xx, 2xx, 3xx, 4xx, and 5xx status codes with descriptions, use cases, and examples.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/http-status.html">
+  <meta property="og:title" content="HTTP Status Codes Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Complete HTTP status codes reference organized by category with descriptions and common use cases.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/http-status.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "HTTP Status Codes Cheat Sheet - Quick Reference",
+    "description": "Complete HTTP status codes reference with descriptions and use cases",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/http-status.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+  <style>
+    .status-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .status-1xx .status-badge { background: #1a3a5c; color: var(--accent); }
+    .status-2xx .status-badge { background: #1a3d2a; color: var(--green); }
+    .status-3xx .status-badge { background: #3d3a1a; color: var(--yellow); }
+    .status-4xx .status-badge { background: #3d1a1a; color: var(--red); }
+    .status-5xx .status-badge { background: #2d1a3d; color: var(--purple); }
+    .cmd-table td:first-child { white-space: nowrap; }
+    .use-case {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Search status codes..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / HTTP Status Codes</div>
+      <h1>HTTP Status Codes Cheat Sheet</h1>
+      <p class="description">Complete reference of HTTP response status codes. Organized by category with descriptions and common use cases.</p>
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#1xx">1xx — Informational</a></li>
+        <li><a href="#2xx">2xx — Success</a></li>
+        <li><a href="#3xx">3xx — Redirection</a></li>
+        <li><a href="#4xx">4xx — Client Error</a></li>
+        <li><a href="#5xx">5xx — Server Error</a></li>
+        <li><a href="#quick">Quick Lookup</a></li>
+      </ul>
+    </nav>
+
+    <!-- 1xx Informational -->
+    <section class="section status-1xx" id="1xx">
+      <h2>1xx — Informational</h2>
+      <p style="color:var(--text-secondary);margin-bottom:16px;">The server has received the request and is continuing the process.</p>
+      <table class="cmd-table">
+        <thead><tr><th>Code</th><th>Name</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><span class="status-badge">100</span></td><td>Continue</td><td class="desc">Server received request headers; client should send body. Used with <code>Expect: 100-continue</code>.</td></tr>
+          <tr><td><span class="status-badge">101</span></td><td>Switching Protocols</td><td class="desc">Server is switching protocols as requested (e.g., upgrading to WebSocket).</td></tr>
+          <tr><td><span class="status-badge">102</span></td><td>Processing</td><td class="desc">Server is processing the request but no response yet (WebDAV).</td></tr>
+          <tr><td><span class="status-badge">103</span></td><td>Early Hints</td><td class="desc">Server sends preliminary headers to let browser preload resources.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 2xx Success -->
+    <section class="section status-2xx" id="2xx">
+      <h2>2xx — Success</h2>
+      <p style="color:var(--text-secondary);margin-bottom:16px;">The request was successfully received, understood, and accepted.</p>
+      <table class="cmd-table">
+        <thead><tr><th>Code</th><th>Name</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><span class="status-badge">200</span></td><td>OK</td><td class="desc">Standard success response. Body contains the result.<br><span class="use-case">GET request returns data; POST action completed.</span></td></tr>
+          <tr><td><span class="status-badge">201</span></td><td>Created</td><td class="desc">Resource successfully created.<br><span class="use-case">POST /users creates a new user; response includes Location header.</span></td></tr>
+          <tr><td><span class="status-badge">202</span></td><td>Accepted</td><td class="desc">Request accepted for processing but not completed yet.<br><span class="use-case">Background job queued; async processing.</span></td></tr>
+          <tr><td><span class="status-badge">203</span></td><td>Non-Authoritative Info</td><td class="desc">Response from a transforming proxy, not the origin server.</td></tr>
+          <tr><td><span class="status-badge">204</span></td><td>No Content</td><td class="desc">Success but no body in response.<br><span class="use-case">DELETE request; PUT that doesn't return updated resource.</span></td></tr>
+          <tr><td><span class="status-badge">205</span></td><td>Reset Content</td><td class="desc">Success; client should reset the document view (e.g., clear form).</td></tr>
+          <tr><td><span class="status-badge">206</span></td><td>Partial Content</td><td class="desc">Server delivering part of the resource due to Range header.<br><span class="use-case">Video streaming; file download resume.</span></td></tr>
+          <tr><td><span class="status-badge">207</span></td><td>Multi-Status</td><td class="desc">Multiple status codes for multiple operations (WebDAV).</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 3xx Redirection -->
+    <section class="section status-3xx" id="3xx">
+      <h2>3xx — Redirection</h2>
+      <p style="color:var(--text-secondary);margin-bottom:16px;">Further action is needed to complete the request.</p>
+      <table class="cmd-table">
+        <thead><tr><th>Code</th><th>Name</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><span class="status-badge">300</span></td><td>Multiple Choices</td><td class="desc">Multiple options for the resource (rare).</td></tr>
+          <tr><td><span class="status-badge">301</span></td><td>Moved Permanently</td><td class="desc">Resource permanently moved to new URL. Browsers cache this.<br><span class="use-case">Domain migration; HTTP to HTTPS redirect.</span></td></tr>
+          <tr><td><span class="status-badge">302</span></td><td>Found</td><td class="desc">Resource temporarily at a different URL.<br><span class="use-case">Temporary maintenance redirect.</span></td></tr>
+          <tr><td><span class="status-badge">303</span></td><td>See Other</td><td class="desc">Redirect to another resource using GET.<br><span class="use-case">After POST form submission, redirect to success page.</span></td></tr>
+          <tr><td><span class="status-badge">304</span></td><td>Not Modified</td><td class="desc">Cached version is still valid; no body sent.<br><span class="use-case">Browser cache validation with If-Modified-Since / ETag.</span></td></tr>
+          <tr><td><span class="status-badge">307</span></td><td>Temporary Redirect</td><td class="desc">Like 302 but method and body must not change.<br><span class="use-case">API version redirect preserving POST method.</span></td></tr>
+          <tr><td><span class="status-badge">308</span></td><td>Permanent Redirect</td><td class="desc">Like 301 but method and body must not change.</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box">
+        <strong>Tip:</strong> Use <code>301</code> for permanent URL changes (SEO-friendly). Use <code>307</code>/<code>308</code> when you need to preserve the HTTP method (important for POST/PUT redirects).
+      </div>
+    </section>
+
+    <!-- 4xx Client Error -->
+    <section class="section status-4xx" id="4xx">
+      <h2>4xx — Client Error</h2>
+      <p style="color:var(--text-secondary);margin-bottom:16px;">The request contains bad syntax or cannot be fulfilled.</p>
+      <table class="cmd-table">
+        <thead><tr><th>Code</th><th>Name</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><span class="status-badge">400</span></td><td>Bad Request</td><td class="desc">Server cannot process due to malformed request.<br><span class="use-case">Invalid JSON body; missing required fields.</span></td></tr>
+          <tr><td><span class="status-badge">401</span></td><td>Unauthorized</td><td class="desc">Authentication required or failed.<br><span class="use-case">Missing or invalid JWT token; expired session.</span></td></tr>
+          <tr><td><span class="status-badge">402</span></td><td>Payment Required</td><td class="desc">Reserved for future use. Some APIs use for quota limits.</td></tr>
+          <tr><td><span class="status-badge">403</span></td><td>Forbidden</td><td class="desc">Server understood but refuses to authorize.<br><span class="use-case">User authenticated but lacks permissions.</span></td></tr>
+          <tr><td><span class="status-badge">404</span></td><td>Not Found</td><td class="desc">Resource does not exist at this URL.<br><span class="use-case">Wrong URL; deleted resource.</span></td></tr>
+          <tr><td><span class="status-badge">405</span></td><td>Method Not Allowed</td><td class="desc">HTTP method not supported for this endpoint.<br><span class="use-case">POST to a read-only endpoint.</span></td></tr>
+          <tr><td><span class="status-badge">406</span></td><td>Not Acceptable</td><td class="desc">Server can't produce a response matching Accept headers.</td></tr>
+          <tr><td><span class="status-badge">407</span></td><td>Proxy Auth Required</td><td class="desc">Must authenticate with the proxy first.</td></tr>
+          <tr><td><span class="status-badge">408</span></td><td>Request Timeout</td><td class="desc">Server timed out waiting for the request.</td></tr>
+          <tr><td><span class="status-badge">409</span></td><td>Conflict</td><td class="desc">Request conflicts with current state of the resource.<br><span class="use-case">Duplicate entry; edit conflict; version mismatch.</span></td></tr>
+          <tr><td><span class="status-badge">410</span></td><td>Gone</td><td class="desc">Resource permanently deleted (no forwarding).<br><span class="use-case">Intentionally removed API endpoint.</span></td></tr>
+          <tr><td><span class="status-badge">411</span></td><td>Length Required</td><td class="desc">Missing Content-Length header.</td></tr>
+          <tr><td><span class="status-badge">412</span></td><td>Precondition Failed</td><td class="desc">Precondition in headers evaluated to false.<br><span class="use-case">If-Match / If-Unmodified-Since conditions.</span></td></tr>
+          <tr><td><span class="status-badge">413</span></td><td>Payload Too Large</td><td class="desc">Request body exceeds server limits.<br><span class="use-case">File upload too big.</span></td></tr>
+          <tr><td><span class="status-badge">414</span></td><td>URI Too Long</td><td class="desc">URL exceeds server limits.</td></tr>
+          <tr><td><span class="status-badge">415</span></td><td>Unsupported Media Type</td><td class="desc">Content-Type not supported.<br><span class="use-case">Sending XML to a JSON-only endpoint.</span></td></tr>
+          <tr><td><span class="status-badge">416</span></td><td>Range Not Satisfiable</td><td class="desc">Range header specifies range outside file size.</td></tr>
+          <tr><td><span class="status-badge">418</span></td><td>I'm a Teapot</td><td class="desc">April Fools' joke (RFC 2324). Not expected in production.</td></tr>
+          <tr><td><span class="status-badge">422</span></td><td>Unprocessable Entity</td><td class="desc">Request is well-formed but semantically invalid.<br><span class="use-case">Validation errors (valid JSON but invalid data).</span></td></tr>
+          <tr><td><span class="status-badge">429</span></td><td>Too Many Requests</td><td class="desc">Rate limit exceeded.<br><span class="use-case">API throttling; includes Retry-After header.</span></td></tr>
+          <tr><td><span class="status-badge">451</span></td><td>Unavailable for Legal</td><td class="desc">Blocked for legal reasons (censorship, court order).</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box warning">
+        <strong>401 vs 403:</strong> <code>401</code> means "who are you?" (not authenticated). <code>403</code> means "I know who you are, but you can't do this" (not authorized).
+      </div>
+    </section>
+
+    <!-- 5xx Server Error -->
+    <section class="section status-5xx" id="5xx">
+      <h2>5xx — Server Error</h2>
+      <p style="color:var(--text-secondary);margin-bottom:16px;">The server failed to fulfill a valid request.</p>
+      <table class="cmd-table">
+        <thead><tr><th>Code</th><th>Name</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><span class="status-badge">500</span></td><td>Internal Server Error</td><td class="desc">Generic server error. Something unexpected went wrong.<br><span class="use-case">Unhandled exception; bug in server code.</span></td></tr>
+          <tr><td><span class="status-badge">501</span></td><td>Not Implemented</td><td class="desc">Server doesn't support the request method.</td></tr>
+          <tr><td><span class="status-badge">502</span></td><td>Bad Gateway</td><td class="desc">Server acting as gateway got invalid response from upstream.<br><span class="use-case">Reverse proxy (Nginx) can't reach the app server.</span></td></tr>
+          <tr><td><span class="status-badge">503</span></td><td>Service Unavailable</td><td class="desc">Server is temporarily unable to handle requests.<br><span class="use-case">Server overloaded; maintenance mode.</span></td></tr>
+          <tr><td><span class="status-badge">504</span></td><td>Gateway Timeout</td><td class="desc">Gateway didn't get a response from upstream in time.<br><span class="use-case">Upstream server too slow or down.</span></td></tr>
+          <tr><td><span class="status-badge">505</span></td><td>HTTP Version Not Supported</td><td class="desc">Server doesn't support the HTTP version used.</td></tr>
+          <tr><td><span class="status-badge">507</span></td><td>Insufficient Storage</td><td class="desc">Server cannot store the representation (WebDAV).</td></tr>
+          <tr><td><span class="status-badge">508</span></td><td>Loop Detected</td><td class="desc">Server detected infinite loop processing the request.</td></tr>
+          <tr><td><span class="status-badge">511</span></td><td>Network Auth Required</td><td class="desc">Client must authenticate to access the network (captive portal).</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Quick Lookup -->
+    <section class="section" id="quick">
+      <h2>Quick Lookup — Most Used</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Code</th><th>When to Use</th></tr></thead>
+        <tbody>
+          <tr><td><code>200</code></td><td class="desc">GET success, general success</td></tr>
+          <tr><td><code>201</code></td><td class="desc">POST created a new resource</td></tr>
+          <tr><td><code>204</code></td><td class="desc">DELETE success, no body needed</td></tr>
+          <tr><td><code>301</code></td><td class="desc">Permanent URL change</td></tr>
+          <tr><td><code>304</code></td><td class="desc">Resource not modified (use cache)</td></tr>
+          <tr><td><code>400</code></td><td class="desc">Bad request (malformed input)</td></tr>
+          <tr><td><code>401</code></td><td class="desc">Not authenticated</td></tr>
+          <tr><td><code>403</code></td><td class="desc">Authenticated but not authorized</td></tr>
+          <tr><td><code>404</code></td><td class="desc">Resource not found</td></tr>
+          <tr><td><code>409</code></td><td class="desc">Conflict (duplicate, version mismatch)</td></tr>
+          <tr><td><code>422</code></td><td class="desc">Validation error (valid format, invalid data)</td></tr>
+          <tr><td><code>429</code></td><td class="desc">Rate limit exceeded</td></tr>
+          <tr><td><code>500</code></td><td class="desc">Unexpected server error</td></tr>
+          <tr><td><code>502</code></td><td class="desc">Bad gateway (upstream down)</td></tr>
+          <tr><td><code>503</code></td><td class="desc">Service unavailable (maintenance/overload)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="javascript.html">JavaScript</a></h3>
+          <p>Core JS syntax, DOM manipulation, array methods, async/await, and ES6+ features.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="python.html">Python</a></h3>
+          <p>Python syntax, data types, functions, classes, and standard library essentials.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="git.html">Git Commands</a></h3>
+          <p>Essential Git commands for setup, branching, merging, stashing, and more.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
