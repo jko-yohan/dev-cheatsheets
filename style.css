@@ -1,0 +1,481 @@
+/* === Reset & Base === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-card: #1c2128;
+  --bg-code: #2d333b;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --accent: #58a6ff;
+  --accent-hover: #79c0ff;
+  --border: #30363d;
+  --green: #3fb950;
+  --yellow: #d29922;
+  --red: #f85149;
+  --purple: #bc8cff;
+  --orange: #f0883e;
+  --radius: 8px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+code, pre {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
+
+/* === Layout === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* === Header === */
+.site-header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.site-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.site-logo span {
+  color: var(--accent);
+}
+
+/* === Search === */
+.search-box {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-box input:focus {
+  border-color: var(--accent);
+}
+
+.search-box svg {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  fill: var(--text-muted);
+}
+
+/* === Ad Banner === */
+.ad-banner {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 20px 0;
+  text-align: center;
+  min-height: 90px;
+}
+
+/* === Home Page Grid === */
+.hero {
+  text-align: center;
+  padding: 48px 0 32px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sheets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 0 0 48px;
+}
+
+.sheet-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sheet-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.sheet-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.sheet-card h3 a {
+  color: var(--text-primary);
+}
+
+.sheet-card h3 a:hover {
+  color: var(--accent);
+}
+
+.sheet-card p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  flex: 1;
+}
+
+.sheet-card .tag {
+  display: inline-block;
+  background: var(--bg-code);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-right: 4px;
+}
+
+/* === Cheat Sheet Page === */
+.sheet-header {
+  padding: 32px 0 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.sheet-header .breadcrumb {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.sheet-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.sheet-header .description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* === TOC === */
+.toc {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+}
+
+.toc h2 {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.toc ul {
+  list-style: none;
+  columns: 2;
+  gap: 24px;
+}
+
+.toc li {
+  padding: 2px 0;
+}
+
+.toc a {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.toc a:hover {
+  color: var(--accent);
+}
+
+/* === Section === */
+.section {
+  margin-bottom: 32px;
+}
+
+.section h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+
+/* === Command Cards === */
+.cmd-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.cmd-table th {
+  text-align: left;
+  background: var(--bg-secondary);
+  padding: 10px 12px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.cmd-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  vertical-align: top;
+}
+
+.cmd-table tr:hover {
+  background: var(--bg-secondary);
+}
+
+.cmd-table code {
+  background: var(--bg-code);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--green);
+  white-space: nowrap;
+}
+
+.cmd-table .desc {
+  color: var(--text-secondary);
+}
+
+/* === Code Blocks === */
+pre.code-block {
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  overflow-x: auto;
+  margin: 12px 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+pre.code-block code {
+  background: none;
+  padding: 0;
+  color: var(--text-primary);
+}
+
+.code-block .comment {
+  color: var(--text-muted);
+}
+
+.code-block .keyword {
+  color: var(--purple);
+}
+
+.code-block .string {
+  color: var(--green);
+}
+
+.code-block .flag {
+  color: var(--yellow);
+}
+
+/* === Tip / Note Boxes === */
+.tip-box {
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--green);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 0.875rem;
+}
+
+.tip-box.warning {
+  border-left-color: var(--yellow);
+}
+
+.tip-box strong {
+  color: var(--green);
+}
+
+.tip-box.warning strong {
+  color: var(--yellow);
+}
+
+/* === Related Sheets === */
+.related-sheets {
+  padding: 32px 0;
+  border-top: 1px solid var(--border);
+  margin-top: 32px;
+}
+
+.related-sheets h2 {
+  font-size: 1.125rem;
+  margin-bottom: 16px;
+  color: var(--text-secondary);
+}
+
+.related-sheets .sheets-grid {
+  padding-bottom: 0;
+}
+
+/* === Footer === */
+.site-footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  padding: 24px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: 48px;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .sheets-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toc ul {
+    columns: 1;
+  }
+
+  .sheet-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .site-header .container {
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    max-width: 100%;
+    order: 3;
+    width: 100%;
+  }
+
+  .cmd-table {
+    font-size: 0.8rem;
+  }
+
+  .cmd-table th, .cmd-table td {
+    padding: 8px;
+  }
+}
+
+/* === Print === */
+@media print {
+  .site-header,
+  .site-footer,
+  .ad-banner,
+  .search-box,
+  .related-sheets {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .cmd-table code {
+    background: #f0f0f0;
+    color: #000;
+  }
+
+  pre.code-block {
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+  }
+
+  a {
+    color: #000;
+  }
+}
