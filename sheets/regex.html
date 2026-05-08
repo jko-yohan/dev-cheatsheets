@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regex Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="Regular expression cheat sheet with syntax, character classes, quantifiers, anchors, groups, lookaheads, and common patterns with examples.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/regex.html">
+  <meta property="og:title" content="Regex Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Complete regex reference: character classes, quantifiers, anchors, groups, lookaheads, and ready-to-use patterns.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/regex.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Regex Cheat Sheet - Quick Reference",
+    "description": "Complete regular expression reference with syntax, examples, and common patterns",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/regex.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Filter patterns..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / Regex Cheat Sheet</div>
+      <h1>Regex Cheat Sheet</h1>
+      <p class="description">Complete regular expression reference. Character classes, quantifiers, anchors, groups, lookaheads, and ready-to-use patterns.</p>
+    </div>
+
+    <!-- Ad Banner Top -->
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#characters">Characters</a></li>
+        <li><a href="#quantifiers">Quantifiers</a></li>
+        <li><a href="#anchors">Anchors &amp; Boundaries</a></li>
+        <li><a href="#classes">Character Classes</a></li>
+        <li><a href="#groups">Groups &amp; References</a></li>
+        <li><a href="#lookaround">Lookahead &amp; Lookbehind</a></li>
+        <li><a href="#flags">Flags / Modifiers</a></li>
+        <li><a href="#patterns">Common Patterns</a></li>
+        <li><a href="#languages">Regex in Languages</a></li>
+      </ul>
+    </nav>
+
+    <!-- Characters -->
+    <section class="section" id="characters">
+      <h2>Characters</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Pattern</th><th>Description</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>.</code></td><td class="desc">Any character except newline</td><td class="desc"><code>a.c</code> matches <code>abc</code>, <code>a1c</code></td></tr>
+          <tr><td><code>\d</code></td><td class="desc">Digit (0-9)</td><td class="desc"><code>\d{3}</code> matches <code>123</code></td></tr>
+          <tr><td><code>\D</code></td><td class="desc">Non-digit</td><td class="desc"><code>\D+</code> matches <code>abc</code></td></tr>
+          <tr><td><code>\w</code></td><td class="desc">Word character (a-z, A-Z, 0-9, _)</td><td class="desc"><code>\w+</code> matches <code>hello_1</code></td></tr>
+          <tr><td><code>\W</code></td><td class="desc">Non-word character</td><td class="desc"><code>\W</code> matches <code>@</code>, <code>#</code></td></tr>
+          <tr><td><code>\s</code></td><td class="desc">Whitespace (space, tab, newline)</td><td class="desc"><code>\s+</code> matches spaces/tabs</td></tr>
+          <tr><td><code>\S</code></td><td class="desc">Non-whitespace</td><td class="desc"><code>\S+</code> matches <code>hello</code></td></tr>
+          <tr><td><code>\t</code></td><td class="desc">Tab character</td><td class="desc"></td></tr>
+          <tr><td><code>\n</code></td><td class="desc">Newline character</td><td class="desc"></td></tr>
+          <tr><td><code>\\</code></td><td class="desc">Escaped backslash (literal <code>\</code>)</td><td class="desc"><code>\\n</code> matches literal <code>\n</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Quantifiers -->
+    <section class="section" id="quantifiers">
+      <h2>Quantifiers</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Pattern</th><th>Description</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>*</code></td><td class="desc">0 or more (greedy)</td><td class="desc"><code>ab*c</code> matches <code>ac</code>, <code>abc</code>, <code>abbc</code></td></tr>
+          <tr><td><code>+</code></td><td class="desc">1 or more (greedy)</td><td class="desc"><code>ab+c</code> matches <code>abc</code>, <code>abbc</code> (not <code>ac</code>)</td></tr>
+          <tr><td><code>?</code></td><td class="desc">0 or 1 (optional)</td><td class="desc"><code>colou?r</code> matches <code>color</code>, <code>colour</code></td></tr>
+          <tr><td><code>{n}</code></td><td class="desc">Exactly n times</td><td class="desc"><code>\d{4}</code> matches <code>2026</code></td></tr>
+          <tr><td><code>{n,}</code></td><td class="desc">n or more times</td><td class="desc"><code>\d{2,}</code> matches <code>12</code>, <code>123</code>, <code>1234</code></td></tr>
+          <tr><td><code>{n,m}</code></td><td class="desc">Between n and m times</td><td class="desc"><code>\d{2,4}</code> matches <code>12</code>, <code>123</code>, <code>1234</code></td></tr>
+          <tr><td><code>*?</code></td><td class="desc">0 or more (lazy / non-greedy)</td><td class="desc"><code>&lt;.*?&gt;</code> matches first tag only</td></tr>
+          <tr><td><code>+?</code></td><td class="desc">1 or more (lazy)</td><td class="desc"><code>".+?"</code> matches smallest quoted string</td></tr>
+          <tr><td><code>??</code></td><td class="desc">0 or 1 (lazy)</td><td class="desc">Prefers 0 matches if possible</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box">
+        <strong>Tip:</strong> Greedy quantifiers (<code>*</code>, <code>+</code>) match as much as possible. Add <code>?</code> to make them lazy (match as little as possible). This is crucial when parsing HTML tags or quoted strings.
+      </div>
+    </section>
+
+    <!-- Anchors & Boundaries -->
+    <section class="section" id="anchors">
+      <h2>Anchors &amp; Boundaries</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Pattern</th><th>Description</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>^</code></td><td class="desc">Start of string (or line with <code>m</code> flag)</td><td class="desc"><code>^Hello</code> matches <code>Hello world</code></td></tr>
+          <tr><td><code>$</code></td><td class="desc">End of string (or line with <code>m</code> flag)</td><td class="desc"><code>world$</code> matches <code>Hello world</code></td></tr>
+          <tr><td><code>\b</code></td><td class="desc">Word boundary</td><td class="desc"><code>\bcat\b</code> matches <code>cat</code> but not <code>catch</code></td></tr>
+          <tr><td><code>\B</code></td><td class="desc">Non-word boundary</td><td class="desc"><code>\Bcat\B</code> matches <code>concatenate</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Character Classes -->
+    <section class="section" id="classes">
+      <h2>Character Classes</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Pattern</th><th>Description</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>[abc]</code></td><td class="desc">Match a, b, or c</td><td class="desc"><code>[aeiou]</code> matches any vowel</td></tr>
+          <tr><td><code>[^abc]</code></td><td class="desc">NOT a, b, or c</td><td class="desc"><code>[^0-9]</code> matches non-digits</td></tr>
+          <tr><td><code>[a-z]</code></td><td class="desc">Range: a through z</td><td class="desc"><code>[a-zA-Z]</code> matches any letter</td></tr>
+          <tr><td><code>[0-9]</code></td><td class="desc">Range: 0 through 9</td><td class="desc">Same as <code>\d</code></td></tr>
+          <tr><td><code>[a-zA-Z0-9_]</code></td><td class="desc">Letters, digits, underscore</td><td class="desc">Same as <code>\w</code></td></tr>
+          <tr><td><code>[[:alpha:]]</code></td><td class="desc">POSIX: alphabetic characters</td><td class="desc">Used in tools like <code>grep</code></td></tr>
+          <tr><td><code>[[:digit:]]</code></td><td class="desc">POSIX: digit characters</td><td class="desc">Used in tools like <code>sed</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Groups & References -->
+    <section class="section" id="groups">
+      <h2>Groups &amp; References</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Pattern</th><th>Description</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>(abc)</code></td><td class="desc">Capturing group</td><td class="desc"><code>(ha)+</code> matches <code>haha</code></td></tr>
+          <tr><td><code>(?:abc)</code></td><td class="desc">Non-capturing group</td><td class="desc"><code>(?:ha)+</code> matches but doesn't capture</td></tr>
+          <tr><td><code>(?&lt;name&gt;abc)</code></td><td class="desc">Named capturing group</td><td class="desc"><code>(?&lt;year&gt;\d{4})</code></td></tr>
+          <tr><td><code>\1</code></td><td class="desc">Backreference to group 1</td><td class="desc"><code>(["'])(.*?)\1</code> matches quoted strings</td></tr>
+          <tr><td><code>\k&lt;name&gt;</code></td><td class="desc">Backreference to named group</td><td class="desc"><code>\k&lt;year&gt;</code></td></tr>
+          <tr><td><code>a|b</code></td><td class="desc">Alternation (a or b)</td><td class="desc"><code>cat|dog</code> matches either word</td></tr>
+          <tr><td><code>(a|b)c</code></td><td class="desc">Group with alternation</td><td class="desc"><code>(re|un)do</code> matches <code>redo</code>, <code>undo</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Lookahead & Lookbehind -->
+    <section class="section" id="lookaround">
+      <h2>Lookahead &amp; Lookbehind</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Pattern</th><th>Name</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>(?=abc)</code></td><td>Positive lookahead</td><td class="desc">Matches if followed by <code>abc</code> (doesn't consume)</td></tr>
+          <tr><td><code>(?!abc)</code></td><td>Negative lookahead</td><td class="desc">Matches if NOT followed by <code>abc</code></td></tr>
+          <tr><td><code>(?&lt;=abc)</code></td><td>Positive lookbehind</td><td class="desc">Matches if preceded by <code>abc</code></td></tr>
+          <tr><td><code>(?&lt;!abc)</code></td><td>Negative lookbehind</td><td class="desc">Matches if NOT preceded by <code>abc</code></td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment"># Lookahead: match "foo" only if followed by "bar"</span>
+<span class="string">foo(?=bar)</span>    <span class="comment">→ matches "foo" in "foobar", not in "foobaz"</span>
+
+<span class="comment"># Lookbehind: match digits preceded by "$"</span>
+<span class="string">(?&lt;=\$)\d+</span>   <span class="comment">→ matches "100" in "$100", not in "€100"</span>
+
+<span class="comment"># Negative lookahead: match "foo" NOT followed by "bar"</span>
+<span class="string">foo(?!bar)</span>    <span class="comment">→ matches "foo" in "foobaz", not in "foobar"</span></code></pre>
+    </section>
+
+    <!-- Flags / Modifiers -->
+    <section class="section" id="flags">
+      <h2>Flags / Modifiers</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Flag</th><th>Name</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>g</code></td><td>Global</td><td class="desc">Match all occurrences, not just the first</td></tr>
+          <tr><td><code>i</code></td><td>Case-insensitive</td><td class="desc">Match regardless of case</td></tr>
+          <tr><td><code>m</code></td><td>Multiline</td><td class="desc"><code>^</code> and <code>$</code> match start/end of each line</td></tr>
+          <tr><td><code>s</code></td><td>Dotall / Single-line</td><td class="desc"><code>.</code> also matches newline characters</td></tr>
+          <tr><td><code>u</code></td><td>Unicode</td><td class="desc">Enable full Unicode matching</td></tr>
+          <tr><td><code>x</code></td><td>Extended / Verbose</td><td class="desc">Allow comments and whitespace in pattern (Python, PHP)</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment">// JavaScript: flags after closing /</span>
+<span class="keyword">const</span> re = <span class="string">/hello/gi</span>;
+
+<span class="comment"># Python: flags as argument</span>
+re.findall(<span class="string">r'hello'</span>, text, <span class="keyword">re.IGNORECASE</span>)
+
+<span class="comment"># Inline flag (works in most engines)</span>
+<span class="string">(?i)hello</span></code></pre>
+    </section>
+
+    <!-- Common Patterns -->
+    <section class="section" id="patterns">
+      <h2>Common Patterns</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Use Case</th><th>Pattern</th></tr></thead>
+        <tbody>
+          <tr><td class="desc">Email (simple)</td><td><code>[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}</code></td></tr>
+          <tr><td class="desc">URL</td><td><code>https?://[^\s/$.?#].[^\s]*</code></td></tr>
+          <tr><td class="desc">IPv4 address</td><td><code>\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b</code></td></tr>
+          <tr><td class="desc">Phone (US)</td><td><code>\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}</code></td></tr>
+          <tr><td class="desc">Date (YYYY-MM-DD)</td><td><code>\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])</code></td></tr>
+          <tr><td class="desc">Time (HH:MM)</td><td><code>(?:[01]\d|2[0-3]):[0-5]\d</code></td></tr>
+          <tr><td class="desc">Hex color</td><td><code>#(?:[0-9a-fA-F]{3}){1,2}\b</code></td></tr>
+          <tr><td class="desc">HTML tag</td><td><code>&lt;([a-z]+)([^&lt;]*?)(?:&gt;(.*?)&lt;\/\1&gt;|\/&gt;)</code></td></tr>
+          <tr><td class="desc">Username (3-16 chars)</td><td><code>^[a-zA-Z0-9_-]{3,16}$</code></td></tr>
+          <tr><td class="desc">Strong password</td><td><code>^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$</code></td></tr>
+          <tr><td class="desc">Trailing whitespace</td><td><code>\s+$</code></td></tr>
+          <tr><td class="desc">Duplicate words</td><td><code>\b(\w+)\s+\1\b</code></td></tr>
+          <tr><td class="desc">Comma-separated values</td><td><code>[^,]+</code></td></tr>
+          <tr><td class="desc">Number with commas</td><td><code>\d{1,3}(,\d{3})*(\.\d+)?</code></td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box warning">
+        <strong>Warning:</strong> These patterns cover common cases but are not exhaustive validators. For production use (especially email and URL), consider using your language's built-in validation libraries.
+      </div>
+    </section>
+
+    <!-- Regex in Languages -->
+    <section class="section" id="languages">
+      <h2>Regex in Languages</h2>
+
+      <h3 style="margin-bottom:8px;color:var(--text-secondary);">JavaScript</h3>
+      <pre class="code-block"><code><span class="keyword">const</span> re = <span class="string">/\d+/g</span>;
+<span class="string">"abc 123 def 456"</span>.match(re);        <span class="comment">// ["123", "456"]</span>
+<span class="string">"hello"</span>.replace(<span class="string">/l/g</span>, <span class="string">"L"</span>);          <span class="comment">// "heLLo"</span>
+re.test(<span class="string">"abc123"</span>);                     <span class="comment">// true</span>
+
+<span class="comment">// Named groups</span>
+<span class="keyword">const</span> m = <span class="string">"2026-05-08"</span>.match(<span class="string">/(?&lt;y&gt;\d{4})-(?&lt;m&gt;\d{2})-(?&lt;d&gt;\d{2})/</span>);
+m.groups.y;                             <span class="comment">// "2026"</span></code></pre>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Python</h3>
+      <pre class="code-block"><code><span class="keyword">import</span> re
+
+re.findall(<span class="string">r'\d+'</span>, <span class="string">'abc 123 def 456'</span>)    <span class="comment"># ['123', '456']</span>
+re.sub(<span class="string">r'l'</span>, <span class="string">'L'</span>, <span class="string">'hello'</span>)                <span class="comment"># 'heLLo'</span>
+re.search(<span class="string">r'\d+'</span>, <span class="string">'abc123'</span>).group()      <span class="comment"># '123'</span>
+re.split(<span class="string">r'[,;]'</span>, <span class="string">'a,b;c'</span>)               <span class="comment"># ['a', 'b', 'c']</span>
+
+<span class="comment"># Named groups</span>
+m = re.search(<span class="string">r'(?P&lt;year&gt;\d{4})'</span>, <span class="string">'2026-05'</span>)
+m.group(<span class="string">'year'</span>)                            <span class="comment"># '2026'</span></code></pre>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Bash (grep / sed)</h3>
+      <pre class="code-block"><code><span class="comment"># grep: find lines matching a pattern</span>
+grep <span class="flag">-E</span> <span class="string">'\d{3}-\d{4}'</span> file.txt
+grep <span class="flag">-oP</span> <span class="string">'(?&lt;=@)\S+'</span> emails.txt     <span class="comment"># extract domains</span>
+
+<span class="comment"># sed: search and replace</span>
+sed <span class="flag">-E</span> <span class="string">'s/foo/bar/g'</span> file.txt        <span class="comment"># replace all "foo" with "bar"</span>
+sed <span class="flag">-n</span> <span class="string">'/^Error/p'</span> log.txt          <span class="comment"># print lines starting with "Error"</span></code></pre>
+    </section>
+
+    <!-- Ad Banner Bottom -->
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="git.html">Git Commands</a></h3>
+          <p>Essential Git commands for setup, branching, merging, stashing, and more.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="bash.html">Bash / Shell</a></h3>
+          <p>Essential terminal commands, scripting basics, and shell shortcuts.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="javascript.html">JavaScript</a></h3>
+          <p>Core JS syntax, DOM manipulation, array methods, async/await, and ES6+ features.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
