@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vim Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="Vim cheat sheet with modes, navigation, editing, search/replace, visual mode, buffers, tabs, macros, and essential .vimrc settings.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/vim.html">
+  <meta property="og:title" content="Vim Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Essential Vim commands: modes, navigation, editing, search, visual mode, buffers, macros, and configuration.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/vim.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Vim Cheat Sheet - Quick Reference",
+    "description": "Essential Vim commands and shortcuts",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/vim.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Filter commands..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / Vim Cheat Sheet</div>
+      <h1>Vim Cheat Sheet</h1>
+      <p class="description">Essential Vim commands and shortcuts. Modes, navigation, editing, search/replace, visual mode, buffers, tabs, and macros.</p>
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#modes">Modes</a></li>
+        <li><a href="#navigation">Navigation</a></li>
+        <li><a href="#editing">Editing</a></li>
+        <li><a href="#copy">Copy, Paste &amp; Delete</a></li>
+        <li><a href="#search">Search &amp; Replace</a></li>
+        <li><a href="#visual">Visual Mode</a></li>
+        <li><a href="#files">File Operations</a></li>
+        <li><a href="#windows">Windows &amp; Tabs</a></li>
+        <li><a href="#macros">Macros &amp; Registers</a></li>
+        <li><a href="#config">Configuration</a></li>
+      </ul>
+    </nav>
+
+    <!-- Modes -->
+    <section class="section" id="modes">
+      <h2>Modes</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Key</th><th>Mode</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>Esc</code></td><td>Normal</td><td class="desc">Default mode for navigation and commands</td></tr>
+          <tr><td><code>i</code></td><td>Insert</td><td class="desc">Insert text before cursor</td></tr>
+          <tr><td><code>I</code></td><td>Insert</td><td class="desc">Insert at beginning of line</td></tr>
+          <tr><td><code>a</code></td><td>Insert</td><td class="desc">Insert (append) after cursor</td></tr>
+          <tr><td><code>A</code></td><td>Insert</td><td class="desc">Insert at end of line</td></tr>
+          <tr><td><code>o</code></td><td>Insert</td><td class="desc">Open new line below and insert</td></tr>
+          <tr><td><code>O</code></td><td>Insert</td><td class="desc">Open new line above and insert</td></tr>
+          <tr><td><code>v</code></td><td>Visual</td><td class="desc">Character-wise visual selection</td></tr>
+          <tr><td><code>V</code></td><td>Visual Line</td><td class="desc">Line-wise visual selection</td></tr>
+          <tr><td><code>Ctrl+v</code></td><td>Visual Block</td><td class="desc">Block (column) visual selection</td></tr>
+          <tr><td><code>:</code></td><td>Command</td><td class="desc">Enter command-line mode</td></tr>
+          <tr><td><code>R</code></td><td>Replace</td><td class="desc">Replace characters as you type</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section" id="navigation">
+      <h2>Navigation</h2>
+      <h3 style="margin-bottom:8px;color:var(--text-secondary);">Basic Movement</h3>
+      <table class="cmd-table">
+        <thead><tr><th>Key</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>h j k l</code></td><td class="desc">Left, down, up, right</td></tr>
+          <tr><td><code>w</code></td><td class="desc">Next word start</td></tr>
+          <tr><td><code>b</code></td><td class="desc">Previous word start</td></tr>
+          <tr><td><code>e</code></td><td class="desc">End of current/next word</td></tr>
+          <tr><td><code>W / B / E</code></td><td class="desc">Same as w/b/e but by WORD (whitespace-delimited)</td></tr>
+          <tr><td><code>0</code></td><td class="desc">Beginning of line</td></tr>
+          <tr><td><code>^</code></td><td class="desc">First non-blank character of line</td></tr>
+          <tr><td><code>$</code></td><td class="desc">End of line</td></tr>
+          <tr><td><code>f{char}</code></td><td class="desc">Jump to next occurrence of char on line</td></tr>
+          <tr><td><code>F{char}</code></td><td class="desc">Jump to previous occurrence of char</td></tr>
+          <tr><td><code>t{char}</code></td><td class="desc">Jump to just before next char</td></tr>
+          <tr><td><code>;</code></td><td class="desc">Repeat last f/F/t/T motion</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Screen &amp; File Movement</h3>
+      <table class="cmd-table">
+        <thead><tr><th>Key</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>gg</code></td><td class="desc">Go to first line of file</td></tr>
+          <tr><td><code>G</code></td><td class="desc">Go to last line of file</td></tr>
+          <tr><td><code>{n}G</code> or <code>:{n}</code></td><td class="desc">Go to line n</td></tr>
+          <tr><td><code>Ctrl+f</code></td><td class="desc">Page down</td></tr>
+          <tr><td><code>Ctrl+b</code></td><td class="desc">Page up</td></tr>
+          <tr><td><code>Ctrl+d</code></td><td class="desc">Half page down</td></tr>
+          <tr><td><code>Ctrl+u</code></td><td class="desc">Half page up</td></tr>
+          <tr><td><code>H</code></td><td class="desc">Top of screen</td></tr>
+          <tr><td><code>M</code></td><td class="desc">Middle of screen</td></tr>
+          <tr><td><code>L</code></td><td class="desc">Bottom of screen</td></tr>
+          <tr><td><code>zz</code></td><td class="desc">Center current line on screen</td></tr>
+          <tr><td><code>{</code> / <code>}</code></td><td class="desc">Previous / next paragraph</td></tr>
+          <tr><td><code>%</code></td><td class="desc">Jump to matching bracket</td></tr>
+          <tr><td><code>Ctrl+o</code></td><td class="desc">Jump back to previous position</td></tr>
+          <tr><td><code>Ctrl+i</code></td><td class="desc">Jump forward</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Editing -->
+    <section class="section" id="editing">
+      <h2>Editing</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Key</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>r{char}</code></td><td class="desc">Replace single character</td></tr>
+          <tr><td><code>s</code></td><td class="desc">Delete character and enter insert mode</td></tr>
+          <tr><td><code>S</code> or <code>cc</code></td><td class="desc">Delete line contents and enter insert mode</td></tr>
+          <tr><td><code>c{motion}</code></td><td class="desc">Change (delete + insert). e.g., <code>cw</code> = change word</td></tr>
+          <tr><td><code>C</code></td><td class="desc">Change from cursor to end of line</td></tr>
+          <tr><td><code>ciw</code></td><td class="desc">Change inner word (delete word, enter insert)</td></tr>
+          <tr><td><code>ci"</code></td><td class="desc">Change inside quotes</td></tr>
+          <tr><td><code>ci(</code></td><td class="desc">Change inside parentheses</td></tr>
+          <tr><td><code>ca{</code></td><td class="desc">Change around braces (including braces)</td></tr>
+          <tr><td><code>J</code></td><td class="desc">Join current line with next</td></tr>
+          <tr><td><code>u</code></td><td class="desc">Undo</td></tr>
+          <tr><td><code>Ctrl+r</code></td><td class="desc">Redo</td></tr>
+          <tr><td><code>.</code></td><td class="desc">Repeat last change</td></tr>
+          <tr><td><code>~</code></td><td class="desc">Toggle case of character</td></tr>
+          <tr><td><code>&gt;&gt;</code></td><td class="desc">Indent line</td></tr>
+          <tr><td><code>&lt;&lt;</code></td><td class="desc">Unindent line</td></tr>
+          <tr><td><code>=</code></td><td class="desc">Auto-indent (e.g., <code>gg=G</code> to indent entire file)</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box">
+        <strong>Tip:</strong> The <code>c</code>, <code>d</code>, <code>y</code> commands follow the pattern: <strong>operator + motion</strong>. E.g., <code>d3w</code> = delete 3 words, <code>y$</code> = yank to end of line, <code>ci"</code> = change inside quotes.
+      </div>
+    </section>
+
+    <!-- Copy, Paste & Delete -->
+    <section class="section" id="copy">
+      <h2>Copy, Paste &amp; Delete</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Key</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>x</code></td><td class="desc">Delete character under cursor</td></tr>
+          <tr><td><code>X</code></td><td class="desc">Delete character before cursor</td></tr>
+          <tr><td><code>dd</code></td><td class="desc">Delete (cut) current line</td></tr>
+          <tr><td><code>d{motion}</code></td><td class="desc">Delete by motion (e.g., <code>dw</code>, <code>d$</code>, <code>dG</code>)</td></tr>
+          <tr><td><code>D</code></td><td class="desc">Delete from cursor to end of line</td></tr>
+          <tr><td><code>diw</code></td><td class="desc">Delete inner word</td></tr>
+          <tr><td><code>di"</code></td><td class="desc">Delete inside quotes</td></tr>
+          <tr><td><code>{n}dd</code></td><td class="desc">Delete n lines</td></tr>
+          <tr><td><code>yy</code></td><td class="desc">Yank (copy) current line</td></tr>
+          <tr><td><code>y{motion}</code></td><td class="desc">Yank by motion (e.g., <code>yw</code>, <code>y$</code>)</td></tr>
+          <tr><td><code>{n}yy</code></td><td class="desc">Yank n lines</td></tr>
+          <tr><td><code>p</code></td><td class="desc">Paste after cursor / below current line</td></tr>
+          <tr><td><code>P</code></td><td class="desc">Paste before cursor / above current line</td></tr>
+          <tr><td><code>"+y</code></td><td class="desc">Yank to system clipboard</td></tr>
+          <tr><td><code>"+p</code></td><td class="desc">Paste from system clipboard</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Search & Replace -->
+    <section class="section" id="search">
+      <h2>Search &amp; Replace</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Key / Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>/pattern</code></td><td class="desc">Search forward</td></tr>
+          <tr><td><code>?pattern</code></td><td class="desc">Search backward</td></tr>
+          <tr><td><code>n</code></td><td class="desc">Next match</td></tr>
+          <tr><td><code>N</code></td><td class="desc">Previous match</td></tr>
+          <tr><td><code>*</code></td><td class="desc">Search for word under cursor (forward)</td></tr>
+          <tr><td><code>#</code></td><td class="desc">Search for word under cursor (backward)</td></tr>
+          <tr><td><code>:noh</code></td><td class="desc">Clear search highlighting</td></tr>
+          <tr><td><code>:%s/old/new/g</code></td><td class="desc">Replace all in file</td></tr>
+          <tr><td><code>:%s/old/new/gc</code></td><td class="desc">Replace all with confirmation</td></tr>
+          <tr><td><code>:s/old/new/g</code></td><td class="desc">Replace all in current line</td></tr>
+          <tr><td><code>:5,10s/old/new/g</code></td><td class="desc">Replace in lines 5-10</td></tr>
+          <tr><td><code>:'&lt;,'&gt;s/old/new/g</code></td><td class="desc">Replace in visual selection</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Visual Mode -->
+    <section class="section" id="visual">
+      <h2>Visual Mode</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Key</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>v</code></td><td class="desc">Start character visual mode</td></tr>
+          <tr><td><code>V</code></td><td class="desc">Start line visual mode</td></tr>
+          <tr><td><code>Ctrl+v</code></td><td class="desc">Start block visual mode</td></tr>
+          <tr><td><code>o</code></td><td class="desc">Move to other end of selection</td></tr>
+          <tr><td><code>d</code></td><td class="desc">Delete selection</td></tr>
+          <tr><td><code>y</code></td><td class="desc">Yank selection</td></tr>
+          <tr><td><code>c</code></td><td class="desc">Change selection</td></tr>
+          <tr><td><code>&gt;</code> / <code>&lt;</code></td><td class="desc">Indent / unindent selection</td></tr>
+          <tr><td><code>U</code> / <code>u</code></td><td class="desc">Uppercase / lowercase selection</td></tr>
+          <tr><td><code>gv</code></td><td class="desc">Reselect last visual selection</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment"># Block insert (add text to multiple lines)</span>
+<span class="string">Ctrl+v</span> → select column → <span class="string">I</span> → type text → <span class="string">Esc</span>
+
+<span class="comment"># Block append</span>
+<span class="string">Ctrl+v</span> → select column → <span class="string">A</span> → type text → <span class="string">Esc</span></code></pre>
+    </section>
+
+    <!-- File Operations -->
+    <section class="section" id="files">
+      <h2>File Operations</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>:w</code></td><td class="desc">Save file</td></tr>
+          <tr><td><code>:w filename</code></td><td class="desc">Save as</td></tr>
+          <tr><td><code>:q</code></td><td class="desc">Quit (fails if unsaved changes)</td></tr>
+          <tr><td><code>:q!</code></td><td class="desc">Quit without saving</td></tr>
+          <tr><td><code>:wq</code> or <code>:x</code> or <code>ZZ</code></td><td class="desc">Save and quit</td></tr>
+          <tr><td><code>:e filename</code></td><td class="desc">Open file</td></tr>
+          <tr><td><code>:e!</code></td><td class="desc">Reload file (discard changes)</td></tr>
+          <tr><td><code>:r filename</code></td><td class="desc">Insert file contents below cursor</td></tr>
+          <tr><td><code>:r !command</code></td><td class="desc">Insert command output</td></tr>
+          <tr><td><code>:saveas filename</code></td><td class="desc">Save as and switch to new file</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Windows & Tabs -->
+    <section class="section" id="windows">
+      <h2>Windows &amp; Tabs</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Key / Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>:sp file</code></td><td class="desc">Horizontal split</td></tr>
+          <tr><td><code>:vsp file</code></td><td class="desc">Vertical split</td></tr>
+          <tr><td><code>Ctrl+w w</code></td><td class="desc">Cycle between windows</td></tr>
+          <tr><td><code>Ctrl+w h/j/k/l</code></td><td class="desc">Move to left/down/up/right window</td></tr>
+          <tr><td><code>Ctrl+w =</code></td><td class="desc">Make all windows equal size</td></tr>
+          <tr><td><code>Ctrl+w _</code></td><td class="desc">Maximize current window height</td></tr>
+          <tr><td><code>Ctrl+w |</code></td><td class="desc">Maximize current window width</td></tr>
+          <tr><td><code>:close</code></td><td class="desc">Close current window</td></tr>
+          <tr><td><code>:only</code></td><td class="desc">Close all other windows</td></tr>
+          <tr><td><code>:tabnew file</code></td><td class="desc">Open file in new tab</td></tr>
+          <tr><td><code>gt / gT</code></td><td class="desc">Next / previous tab</td></tr>
+          <tr><td><code>:tabclose</code></td><td class="desc">Close current tab</td></tr>
+          <tr><td><code>:ls</code></td><td class="desc">List buffers</td></tr>
+          <tr><td><code>:bn / :bp</code></td><td class="desc">Next / previous buffer</td></tr>
+          <tr><td><code>:bd</code></td><td class="desc">Close buffer</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Macros & Registers -->
+    <section class="section" id="macros">
+      <h2>Macros &amp; Registers</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Key</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>qa</code></td><td class="desc">Start recording macro into register 'a'</td></tr>
+          <tr><td><code>q</code></td><td class="desc">Stop recording</td></tr>
+          <tr><td><code>@a</code></td><td class="desc">Play macro 'a'</td></tr>
+          <tr><td><code>@@</code></td><td class="desc">Replay last macro</td></tr>
+          <tr><td><code>10@a</code></td><td class="desc">Play macro 'a' 10 times</td></tr>
+          <tr><td><code>"ay</code></td><td class="desc">Yank into register 'a'</td></tr>
+          <tr><td><code>"ap</code></td><td class="desc">Paste from register 'a'</td></tr>
+          <tr><td><code>:reg</code></td><td class="desc">Show all registers</td></tr>
+          <tr><td><code>ma</code></td><td class="desc">Set mark 'a' at current position</td></tr>
+          <tr><td><code>'a</code></td><td class="desc">Jump to mark 'a'</td></tr>
+          <tr><td><code>:marks</code></td><td class="desc">Show all marks</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Configuration -->
+    <section class="section" id="config">
+      <h2>Configuration</h2>
+      <pre class="code-block"><code><span class="comment">" Essential .vimrc settings</span>
+<span class="keyword">set</span> number            <span class="comment">" show line numbers</span>
+<span class="keyword">set</span> relativenumber    <span class="comment">" relative line numbers</span>
+<span class="keyword">set</span> tabstop=4          <span class="comment">" tab = 4 spaces</span>
+<span class="keyword">set</span> shiftwidth=4       <span class="comment">" indent = 4 spaces</span>
+<span class="keyword">set</span> expandtab          <span class="comment">" use spaces instead of tabs</span>
+<span class="keyword">set</span> autoindent         <span class="comment">" auto indent new lines</span>
+<span class="keyword">set</span> smartindent        <span class="comment">" smart auto indent</span>
+<span class="keyword">set</span> ignorecase         <span class="comment">" case insensitive search</span>
+<span class="keyword">set</span> smartcase          <span class="comment">" case sensitive if uppercase used</span>
+<span class="keyword">set</span> hlsearch           <span class="comment">" highlight search results</span>
+<span class="keyword">set</span> incsearch          <span class="comment">" incremental search</span>
+<span class="keyword">set</span> wrap               <span class="comment">" wrap long lines</span>
+<span class="keyword">set</span> mouse=a            <span class="comment">" enable mouse</span>
+<span class="keyword">set</span> clipboard=unnamedplus  <span class="comment">" use system clipboard</span>
+<span class="keyword">syntax</span> on              <span class="comment">" syntax highlighting</span>
+<span class="keyword">set</span> cursorline         <span class="comment">" highlight current line</span></code></pre>
+    </section>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="bash.html">Bash / Shell</a></h3>
+          <p>Terminal commands, scripting, permissions, and keyboard shortcuts.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="vscode.html">VS Code Shortcuts</a></h3>
+          <p>Essential keyboard shortcuts for Visual Studio Code.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="git.html">Git Commands</a></h3>
+          <p>Essential Git commands for setup, branching, merging, and more.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

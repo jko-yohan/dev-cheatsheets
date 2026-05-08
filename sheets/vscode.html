@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VS Code Shortcuts Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="VS Code keyboard shortcuts cheat sheet. Essential shortcuts for editing, navigation, search, terminal, debugging, Git, and extensions on Mac and Windows/Linux.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/vscode.html">
+  <meta property="og:title" content="VS Code Shortcuts Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Essential VS Code keyboard shortcuts for editing, navigation, search, terminal, debugging, and Git.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/vscode.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "VS Code Shortcuts Cheat Sheet - Quick Reference",
+    "description": "Essential VS Code keyboard shortcuts",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/vscode.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+  <style>
+    .os-toggle { display:flex; gap:8px; margin-bottom:16px; }
+    .os-toggle button { background:var(--bg-code); border:1px solid var(--border); border-radius:var(--radius); padding:6px 16px; color:var(--text-secondary); cursor:pointer; font-size:0.85rem; }
+    .os-toggle button.active { background:var(--accent); color:var(--bg-primary); border-color:var(--accent); }
+    .win { display:none; }
+    body.show-win .win { display:table-cell; }
+    body.show-win .mac { display:none; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Filter shortcuts..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / VS Code Shortcuts</div>
+      <h1>VS Code Shortcuts Cheat Sheet</h1>
+      <p class="description">Essential keyboard shortcuts for Visual Studio Code. Editing, navigation, search, terminal, debugging, and Git integration.</p>
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="os-toggle">
+      <button class="active" id="btn-mac" onclick="setOS('mac')">Mac</button>
+      <button id="btn-win" onclick="setOS('win')">Windows / Linux</button>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#general">General</a></li>
+        <li><a href="#editing">Editing</a></li>
+        <li><a href="#navigation">Navigation</a></li>
+        <li><a href="#search">Search &amp; Replace</a></li>
+        <li><a href="#multi">Multi-Cursor</a></li>
+        <li><a href="#terminal">Terminal</a></li>
+        <li><a href="#debug">Debugging</a></li>
+        <li><a href="#sidebar">Sidebar &amp; Panels</a></li>
+      </ul>
+    </nav>
+
+    <!-- General -->
+    <section class="section" id="general">
+      <h2>General</h2>
+      <table class="cmd-table">
+        <thead><tr><th class="mac">Mac</th><th class="win">Windows / Linux</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="mac"><code>Cmd+Shift+P</code></td><td class="win"><code>Ctrl+Shift+P</code></td><td class="desc">Command Palette</td></tr>
+          <tr><td class="mac"><code>Cmd+P</code></td><td class="win"><code>Ctrl+P</code></td><td class="desc">Quick Open file</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+N</code></td><td class="win"><code>Ctrl+Shift+N</code></td><td class="desc">New window</td></tr>
+          <tr><td class="mac"><code>Cmd+W</code></td><td class="win"><code>Ctrl+W</code></td><td class="desc">Close editor tab</td></tr>
+          <tr><td class="mac"><code>Cmd+,</code></td><td class="win"><code>Ctrl+,</code></td><td class="desc">Open Settings</td></tr>
+          <tr><td class="mac"><code>Cmd+K Cmd+S</code></td><td class="win"><code>Ctrl+K Ctrl+S</code></td><td class="desc">Keyboard Shortcuts</td></tr>
+          <tr><td class="mac"><code>Cmd+S</code></td><td class="win"><code>Ctrl+S</code></td><td class="desc">Save file</td></tr>
+          <tr><td class="mac"><code>Cmd+Z</code></td><td class="win"><code>Ctrl+Z</code></td><td class="desc">Undo</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+Z</code></td><td class="win"><code>Ctrl+Shift+Z</code></td><td class="desc">Redo</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Editing -->
+    <section class="section" id="editing">
+      <h2>Editing</h2>
+      <table class="cmd-table">
+        <thead><tr><th class="mac">Mac</th><th class="win">Windows / Linux</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="mac"><code>Cmd+X</code></td><td class="win"><code>Ctrl+X</code></td><td class="desc">Cut line (no selection needed)</td></tr>
+          <tr><td class="mac"><code>Cmd+C</code></td><td class="win"><code>Ctrl+C</code></td><td class="desc">Copy line (no selection needed)</td></tr>
+          <tr><td class="mac"><code>Option+Up/Down</code></td><td class="win"><code>Alt+Up/Down</code></td><td class="desc">Move line up/down</td></tr>
+          <tr><td class="mac"><code>Shift+Option+Up/Down</code></td><td class="win"><code>Shift+Alt+Up/Down</code></td><td class="desc">Copy line up/down</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+K</code></td><td class="win"><code>Ctrl+Shift+K</code></td><td class="desc">Delete line</td></tr>
+          <tr><td class="mac"><code>Cmd+Enter</code></td><td class="win"><code>Ctrl+Enter</code></td><td class="desc">Insert line below</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+Enter</code></td><td class="win"><code>Ctrl+Shift+Enter</code></td><td class="desc">Insert line above</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+\</code></td><td class="win"><code>Ctrl+Shift+\</code></td><td class="desc">Jump to matching bracket</td></tr>
+          <tr><td class="mac"><code>Cmd+]</code> / <code>Cmd+[</code></td><td class="win"><code>Ctrl+]</code> / <code>Ctrl+[</code></td><td class="desc">Indent / outdent line</td></tr>
+          <tr><td class="mac"><code>Cmd+/</code></td><td class="win"><code>Ctrl+/</code></td><td class="desc">Toggle line comment</td></tr>
+          <tr><td class="mac"><code>Shift+Option+A</code></td><td class="win"><code>Shift+Alt+A</code></td><td class="desc">Toggle block comment</td></tr>
+          <tr><td class="mac"><code>Cmd+D</code></td><td class="win"><code>Ctrl+D</code></td><td class="desc">Select word (repeat for next occurrence)</td></tr>
+          <tr><td class="mac"><code>Cmd+L</code></td><td class="win"><code>Ctrl+L</code></td><td class="desc">Select current line</td></tr>
+          <tr><td class="mac"><code>Shift+Option+F</code></td><td class="win"><code>Shift+Alt+F</code></td><td class="desc">Format document</td></tr>
+          <tr><td class="mac"><code>Cmd+K Cmd+F</code></td><td class="win"><code>Ctrl+K Ctrl+F</code></td><td class="desc">Format selection</td></tr>
+          <tr><td class="mac"><code>F2</code></td><td class="win"><code>F2</code></td><td class="desc">Rename symbol</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section" id="navigation">
+      <h2>Navigation</h2>
+      <table class="cmd-table">
+        <thead><tr><th class="mac">Mac</th><th class="win">Windows / Linux</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="mac"><code>Ctrl+G</code></td><td class="win"><code>Ctrl+G</code></td><td class="desc">Go to line number</td></tr>
+          <tr><td class="mac"><code>Cmd+P</code></td><td class="win"><code>Ctrl+P</code></td><td class="desc">Go to file</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+O</code></td><td class="win"><code>Ctrl+Shift+O</code></td><td class="desc">Go to symbol in file</td></tr>
+          <tr><td class="mac"><code>Cmd+T</code></td><td class="win"><code>Ctrl+T</code></td><td class="desc">Go to symbol in workspace</td></tr>
+          <tr><td class="mac"><code>F12</code></td><td class="win"><code>F12</code></td><td class="desc">Go to definition</td></tr>
+          <tr><td class="mac"><code>Option+F12</code></td><td class="win"><code>Alt+F12</code></td><td class="desc">Peek definition</td></tr>
+          <tr><td class="mac"><code>Shift+F12</code></td><td class="win"><code>Shift+F12</code></td><td class="desc">Show references</td></tr>
+          <tr><td class="mac"><code>Ctrl+-</code></td><td class="win"><code>Alt+Left</code></td><td class="desc">Go back</td></tr>
+          <tr><td class="mac"><code>Ctrl+Shift+-</code></td><td class="win"><code>Alt+Right</code></td><td class="desc">Go forward</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+M</code></td><td class="win"><code>Ctrl+Shift+M</code></td><td class="desc">Show Problems panel</td></tr>
+          <tr><td class="mac"><code>F8</code></td><td class="win"><code>F8</code></td><td class="desc">Go to next error/warning</td></tr>
+          <tr><td class="mac"><code>Cmd+1/2/3</code></td><td class="win"><code>Ctrl+1/2/3</code></td><td class="desc">Focus editor group 1/2/3</td></tr>
+          <tr><td class="mac"><code>Cmd+\</code></td><td class="win"><code>Ctrl+\</code></td><td class="desc">Split editor</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Search & Replace -->
+    <section class="section" id="search">
+      <h2>Search &amp; Replace</h2>
+      <table class="cmd-table">
+        <thead><tr><th class="mac">Mac</th><th class="win">Windows / Linux</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="mac"><code>Cmd+F</code></td><td class="win"><code>Ctrl+F</code></td><td class="desc">Find in file</td></tr>
+          <tr><td class="mac"><code>Cmd+Option+F</code></td><td class="win"><code>Ctrl+H</code></td><td class="desc">Replace in file</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+F</code></td><td class="win"><code>Ctrl+Shift+F</code></td><td class="desc">Search across files</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+H</code></td><td class="win"><code>Ctrl+Shift+H</code></td><td class="desc">Replace across files</td></tr>
+          <tr><td class="mac"><code>Cmd+G</code></td><td class="win"><code>F3</code></td><td class="desc">Find next match</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+G</code></td><td class="win"><code>Shift+F3</code></td><td class="desc">Find previous match</td></tr>
+          <tr><td class="mac"><code>Option+Enter</code></td><td class="win"><code>Alt+Enter</code></td><td class="desc">Select all matches (in find)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Multi-Cursor -->
+    <section class="section" id="multi">
+      <h2>Multi-Cursor</h2>
+      <table class="cmd-table">
+        <thead><tr><th class="mac">Mac</th><th class="win">Windows / Linux</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="mac"><code>Option+Click</code></td><td class="win"><code>Alt+Click</code></td><td class="desc">Add cursor at click position</td></tr>
+          <tr><td class="mac"><code>Cmd+Option+Up/Down</code></td><td class="win"><code>Ctrl+Alt+Up/Down</code></td><td class="desc">Add cursor above/below</td></tr>
+          <tr><td class="mac"><code>Cmd+D</code></td><td class="win"><code>Ctrl+D</code></td><td class="desc">Select next occurrence of word</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+L</code></td><td class="win"><code>Ctrl+Shift+L</code></td><td class="desc">Select all occurrences of word</td></tr>
+          <tr><td class="mac"><code>Cmd+K Cmd+D</code></td><td class="win"><code>Ctrl+K Ctrl+D</code></td><td class="desc">Skip current and select next occurrence</td></tr>
+          <tr><td class="mac"><code>Esc</code></td><td class="win"><code>Esc</code></td><td class="desc">Cancel multi-cursor</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Terminal -->
+    <section class="section" id="terminal">
+      <h2>Terminal</h2>
+      <table class="cmd-table">
+        <thead><tr><th class="mac">Mac</th><th class="win">Windows / Linux</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="mac"><code>Ctrl+`</code></td><td class="win"><code>Ctrl+`</code></td><td class="desc">Toggle terminal panel</td></tr>
+          <tr><td class="mac"><code>Ctrl+Shift+`</code></td><td class="win"><code>Ctrl+Shift+`</code></td><td class="desc">Create new terminal</td></tr>
+          <tr><td class="mac"><code>Cmd+\</code></td><td class="win"><code>Ctrl+\</code></td><td class="desc">Split terminal</td></tr>
+          <tr><td class="mac"><code>Cmd+Up/Down</code></td><td class="win"><code>Ctrl+Up/Down</code></td><td class="desc">Scroll terminal</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Debugging -->
+    <section class="section" id="debug">
+      <h2>Debugging</h2>
+      <table class="cmd-table">
+        <thead><tr><th class="mac">Mac</th><th class="win">Windows / Linux</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="mac"><code>F5</code></td><td class="win"><code>F5</code></td><td class="desc">Start / continue debugging</td></tr>
+          <tr><td class="mac"><code>Shift+F5</code></td><td class="win"><code>Shift+F5</code></td><td class="desc">Stop debugging</td></tr>
+          <tr><td class="mac"><code>F9</code></td><td class="win"><code>F9</code></td><td class="desc">Toggle breakpoint</td></tr>
+          <tr><td class="mac"><code>F10</code></td><td class="win"><code>F10</code></td><td class="desc">Step over</td></tr>
+          <tr><td class="mac"><code>F11</code></td><td class="win"><code>F11</code></td><td class="desc">Step into</td></tr>
+          <tr><td class="mac"><code>Shift+F11</code></td><td class="win"><code>Shift+F11</code></td><td class="desc">Step out</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Sidebar & Panels -->
+    <section class="section" id="sidebar">
+      <h2>Sidebar &amp; Panels</h2>
+      <table class="cmd-table">
+        <thead><tr><th class="mac">Mac</th><th class="win">Windows / Linux</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="mac"><code>Cmd+B</code></td><td class="win"><code>Ctrl+B</code></td><td class="desc">Toggle sidebar</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+E</code></td><td class="win"><code>Ctrl+Shift+E</code></td><td class="desc">Explorer</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+F</code></td><td class="win"><code>Ctrl+Shift+F</code></td><td class="desc">Search</td></tr>
+          <tr><td class="mac"><code>Ctrl+Shift+G</code></td><td class="win"><code>Ctrl+Shift+G</code></td><td class="desc">Source Control (Git)</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+D</code></td><td class="win"><code>Ctrl+Shift+D</code></td><td class="desc">Debug</td></tr>
+          <tr><td class="mac"><code>Cmd+Shift+X</code></td><td class="win"><code>Ctrl+Shift+X</code></td><td class="desc">Extensions</td></tr>
+          <tr><td class="mac"><code>Cmd+J</code></td><td class="win"><code>Ctrl+J</code></td><td class="desc">Toggle bottom panel</td></tr>
+          <tr><td class="mac"><code>Cmd+K Z</code></td><td class="win"><code>Ctrl+K Z</code></td><td class="desc">Zen mode</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="vim.html">Vim</a></h3>
+          <p>Vim modes, navigation, editing, search, macros, and configuration.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="git.html">Git Commands</a></h3>
+          <p>Essential Git commands for setup, branching, merging, and more.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="javascript.html">JavaScript</a></h3>
+          <p>Modern JS syntax, arrays, objects, DOM, async/await, and modules.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    function setOS(os) {
+      document.body.classList.toggle('show-win', os === 'win');
+      document.getElementById('btn-mac').classList.toggle('active', os === 'mac');
+      document.getElementById('btn-win').classList.toggle('active', os === 'win');
+    }
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

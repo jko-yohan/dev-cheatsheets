@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>npm &amp; yarn Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="npm and yarn cheat sheet with commands for installing, updating, removing packages, scripts, versioning, publishing, and common workflows.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/npm.html">
+  <meta property="og:title" content="npm & yarn Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Complete npm and yarn command reference: install, update, remove, scripts, versioning, publishing, and workflows.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/npm.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "npm & yarn Cheat Sheet - Quick Reference",
+    "description": "Complete npm and yarn command reference for Node.js development",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/npm.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Filter commands..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / npm &amp; yarn Cheat Sheet</div>
+      <h1>npm &amp; yarn Cheat Sheet</h1>
+      <p class="description">Package management commands for Node.js. Installing, updating, removing packages, running scripts, versioning, and publishing.</p>
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#init">Project Init</a></li>
+        <li><a href="#install">Installing Packages</a></li>
+        <li><a href="#remove">Removing &amp; Updating</a></li>
+        <li><a href="#scripts">Scripts</a></li>
+        <li><a href="#info">Package Info</a></li>
+        <li><a href="#version">Versioning</a></li>
+        <li><a href="#publish">Publishing</a></li>
+        <li><a href="#config">Configuration</a></li>
+        <li><a href="#pnpm">pnpm</a></li>
+        <li><a href="#packagejson">package.json</a></li>
+      </ul>
+    </nav>
+
+    <!-- Project Init -->
+    <section class="section" id="init">
+      <h2>Project Init</h2>
+      <table class="cmd-table">
+        <thead><tr><th>npm</th><th>yarn</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>npm init</code></td><td><code>yarn init</code></td><td class="desc">Create package.json interactively</td></tr>
+          <tr><td><code>npm init -y</code></td><td><code>yarn init -y</code></td><td class="desc">Create with defaults (skip prompts)</td></tr>
+          <tr><td><code>npm create vite@latest</code></td><td><code>yarn create vite</code></td><td class="desc">Create project from initializer</td></tr>
+          <tr><td><code>npx create-react-app app</code></td><td><code>yarn dlx create-react-app app</code></td><td class="desc">Run package without installing</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Installing Packages -->
+    <section class="section" id="install">
+      <h2>Installing Packages</h2>
+      <table class="cmd-table">
+        <thead><tr><th>npm</th><th>yarn</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>npm install</code></td><td><code>yarn</code></td><td class="desc">Install all dependencies from package.json</td></tr>
+          <tr><td><code>npm install pkg</code></td><td><code>yarn add pkg</code></td><td class="desc">Add package as dependency</td></tr>
+          <tr><td><code>npm install pkg@2.0</code></td><td><code>yarn add pkg@2.0</code></td><td class="desc">Install specific version</td></tr>
+          <tr><td><code>npm install -D pkg</code></td><td><code>yarn add -D pkg</code></td><td class="desc">Add as dev dependency</td></tr>
+          <tr><td><code>npm install -g pkg</code></td><td><code>yarn global add pkg</code></td><td class="desc">Install globally</td></tr>
+          <tr><td><code>npm ci</code></td><td><code>yarn install --frozen-lockfile</code></td><td class="desc">Clean install (CI/CD, exact lockfile)</td></tr>
+          <tr><td><code>npm install --legacy-peer-deps</code></td><td>—</td><td class="desc">Ignore peer dependency conflicts</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box">
+        <strong>Tip:</strong> Use <code>npm ci</code> (or <code>yarn --frozen-lockfile</code>) in CI/CD pipelines. It's faster and ensures exact versions from the lock file are used.
+      </div>
+    </section>
+
+    <!-- Removing & Updating -->
+    <section class="section" id="remove">
+      <h2>Removing &amp; Updating</h2>
+      <table class="cmd-table">
+        <thead><tr><th>npm</th><th>yarn</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>npm uninstall pkg</code></td><td><code>yarn remove pkg</code></td><td class="desc">Remove package</td></tr>
+          <tr><td><code>npm uninstall -g pkg</code></td><td><code>yarn global remove pkg</code></td><td class="desc">Remove global package</td></tr>
+          <tr><td><code>npm update</code></td><td><code>yarn upgrade</code></td><td class="desc">Update all packages</td></tr>
+          <tr><td><code>npm update pkg</code></td><td><code>yarn upgrade pkg</code></td><td class="desc">Update specific package</td></tr>
+          <tr><td><code>npm outdated</code></td><td><code>yarn outdated</code></td><td class="desc">List outdated packages</td></tr>
+          <tr><td><code>npx npm-check-updates -u</code></td><td>—</td><td class="desc">Update all versions in package.json</td></tr>
+          <tr><td><code>npm audit</code></td><td><code>yarn audit</code></td><td class="desc">Check for vulnerabilities</td></tr>
+          <tr><td><code>npm audit fix</code></td><td>—</td><td class="desc">Auto-fix vulnerabilities</td></tr>
+          <tr><td><code>npm dedupe</code></td><td><code>yarn dedupe</code></td><td class="desc">Remove duplicate packages</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Scripts -->
+    <section class="section" id="scripts">
+      <h2>Scripts</h2>
+      <table class="cmd-table">
+        <thead><tr><th>npm</th><th>yarn</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>npm run dev</code></td><td><code>yarn dev</code></td><td class="desc">Run custom script</td></tr>
+          <tr><td><code>npm start</code></td><td><code>yarn start</code></td><td class="desc">Run "start" script</td></tr>
+          <tr><td><code>npm test</code></td><td><code>yarn test</code></td><td class="desc">Run "test" script</td></tr>
+          <tr><td><code>npm run build</code></td><td><code>yarn build</code></td><td class="desc">Run "build" script</td></tr>
+          <tr><td><code>npx pkg</code></td><td><code>yarn dlx pkg</code></td><td class="desc">Execute package binary</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment">// package.json scripts section</span>
+{
+  <span class="string">"scripts"</span>: {
+    <span class="string">"dev"</span>: <span class="string">"vite"</span>,
+    <span class="string">"build"</span>: <span class="string">"vite build"</span>,
+    <span class="string">"preview"</span>: <span class="string">"vite preview"</span>,
+    <span class="string">"lint"</span>: <span class="string">"eslint src/"</span>,
+    <span class="string">"test"</span>: <span class="string">"vitest"</span>,
+    <span class="string">"preinstall"</span>: <span class="string">"npx only-allow pnpm"</span>   <span class="comment">// lifecycle hook</span>
+  }
+}</code></pre>
+      <div class="tip-box">
+        <strong>Tip:</strong> <code>npm start</code>, <code>npm test</code>, and <code>npm stop</code> don't need the <code>run</code> keyword. All other scripts need <code>npm run &lt;script&gt;</code>.
+      </div>
+    </section>
+
+    <!-- Package Info -->
+    <section class="section" id="info">
+      <h2>Package Info</h2>
+      <table class="cmd-table">
+        <thead><tr><th>npm</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>npm list</code></td><td class="desc">List installed packages (tree)</td></tr>
+          <tr><td><code>npm list --depth=0</code></td><td class="desc">List top-level packages only</td></tr>
+          <tr><td><code>npm list -g --depth=0</code></td><td class="desc">List global packages</td></tr>
+          <tr><td><code>npm info pkg</code></td><td class="desc">Show package info from registry</td></tr>
+          <tr><td><code>npm info pkg versions</code></td><td class="desc">List all available versions</td></tr>
+          <tr><td><code>npm search keyword</code></td><td class="desc">Search npm registry</td></tr>
+          <tr><td><code>npm docs pkg</code></td><td class="desc">Open package documentation</td></tr>
+          <tr><td><code>npm repo pkg</code></td><td class="desc">Open package repository</td></tr>
+          <tr><td><code>npm explain pkg</code></td><td class="desc">Show why a package is installed</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Versioning -->
+    <section class="section" id="version">
+      <h2>Versioning</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Range</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>1.2.3</code></td><td class="desc">Exact version</td><td class="desc">Only 1.2.3</td></tr>
+          <tr><td><code>^1.2.3</code></td><td class="desc">Compatible (same major)</td><td class="desc">&gt;=1.2.3 &lt;2.0.0</td></tr>
+          <tr><td><code>~1.2.3</code></td><td class="desc">Approximately (same minor)</td><td class="desc">&gt;=1.2.3 &lt;1.3.0</td></tr>
+          <tr><td><code>&gt;=1.2.3</code></td><td class="desc">Greater than or equal</td><td class="desc">&gt;=1.2.3</td></tr>
+          <tr><td><code>1.x</code></td><td class="desc">Any minor/patch in major 1</td><td class="desc">&gt;=1.0.0 &lt;2.0.0</td></tr>
+          <tr><td><code>*</code></td><td class="desc">Any version</td><td class="desc">Latest</td></tr>
+          <tr><td><code>latest</code></td><td class="desc">Latest published version</td><td class="desc">Tag-based</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment"># Bump version</span>
+npm version patch   <span class="comment"># 1.0.0 → 1.0.1</span>
+npm version minor   <span class="comment"># 1.0.0 → 1.1.0</span>
+npm version major   <span class="comment"># 1.0.0 → 2.0.0</span></code></pre>
+      <div class="tip-box">
+        <strong>SemVer:</strong> <code>MAJOR.MINOR.PATCH</code> — Major = breaking changes, Minor = new features (backward compatible), Patch = bug fixes.
+      </div>
+    </section>
+
+    <!-- Publishing -->
+    <section class="section" id="publish">
+      <h2>Publishing</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>npm login</code></td><td class="desc">Log in to npm registry</td></tr>
+          <tr><td><code>npm whoami</code></td><td class="desc">Show current logged-in user</td></tr>
+          <tr><td><code>npm publish</code></td><td class="desc">Publish package to registry</td></tr>
+          <tr><td><code>npm publish --access public</code></td><td class="desc">Publish scoped package as public</td></tr>
+          <tr><td><code>npm unpublish pkg@1.0.0</code></td><td class="desc">Unpublish specific version</td></tr>
+          <tr><td><code>npm deprecate pkg "message"</code></td><td class="desc">Mark package as deprecated</td></tr>
+          <tr><td><code>npm pack</code></td><td class="desc">Create tarball without publishing</td></tr>
+          <tr><td><code>npm link</code></td><td class="desc">Symlink package for local development</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Configuration -->
+    <section class="section" id="config">
+      <h2>Configuration</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>npm config list</code></td><td class="desc">Show current config</td></tr>
+          <tr><td><code>npm config set key value</code></td><td class="desc">Set config value</td></tr>
+          <tr><td><code>npm config get registry</code></td><td class="desc">Get registry URL</td></tr>
+          <tr><td><code>npm cache clean --force</code></td><td class="desc">Clear npm cache</td></tr>
+          <tr><td><code>npm root -g</code></td><td class="desc">Show global packages directory</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment"># .npmrc (project or user config)</span>
+registry=https://registry.npmjs.org/
+save-exact=true
+engine-strict=true</code></pre>
+    </section>
+
+    <!-- pnpm -->
+    <section class="section" id="pnpm">
+      <h2>pnpm (Alternative)</h2>
+      <table class="cmd-table">
+        <thead><tr><th>pnpm</th><th>Equivalent</th></tr></thead>
+        <tbody>
+          <tr><td><code>pnpm install</code></td><td class="desc"><code>npm install</code> / <code>yarn</code></td></tr>
+          <tr><td><code>pnpm add pkg</code></td><td class="desc"><code>npm install pkg</code> / <code>yarn add pkg</code></td></tr>
+          <tr><td><code>pnpm add -D pkg</code></td><td class="desc"><code>npm install -D pkg</code></td></tr>
+          <tr><td><code>pnpm remove pkg</code></td><td class="desc"><code>npm uninstall pkg</code></td></tr>
+          <tr><td><code>pnpm run dev</code></td><td class="desc"><code>npm run dev</code></td></tr>
+          <tr><td><code>pnpm dlx pkg</code></td><td class="desc"><code>npx pkg</code></td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box">
+        <strong>Tip:</strong> pnpm uses a content-addressable store and hard links, making it faster and more disk-efficient than npm. It also enforces strict dependency isolation.
+      </div>
+    </section>
+
+    <!-- package.json -->
+    <section class="section" id="packagejson">
+      <h2>package.json Key Fields</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Field</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>name</code></td><td class="desc">Package name (lowercase, no spaces)</td></tr>
+          <tr><td><code>version</code></td><td class="desc">SemVer version string</td></tr>
+          <tr><td><code>description</code></td><td class="desc">Short description</td></tr>
+          <tr><td><code>main</code></td><td class="desc">Entry point for CommonJS</td></tr>
+          <tr><td><code>module</code></td><td class="desc">Entry point for ES modules</td></tr>
+          <tr><td><code>type</code></td><td class="desc"><code>"module"</code> for ESM, <code>"commonjs"</code> for CJS</td></tr>
+          <tr><td><code>scripts</code></td><td class="desc">Runnable commands</td></tr>
+          <tr><td><code>dependencies</code></td><td class="desc">Production dependencies</td></tr>
+          <tr><td><code>devDependencies</code></td><td class="desc">Development-only dependencies</td></tr>
+          <tr><td><code>peerDependencies</code></td><td class="desc">Required by host package</td></tr>
+          <tr><td><code>engines</code></td><td class="desc">Required Node.js / npm versions</td></tr>
+          <tr><td><code>files</code></td><td class="desc">Files to include when publishing</td></tr>
+          <tr><td><code>private</code></td><td class="desc"><code>true</code> prevents accidental publishing</td></tr>
+          <tr><td><code>license</code></td><td class="desc">SPDX license identifier</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="javascript.html">JavaScript</a></h3>
+          <p>Modern JS syntax, arrays, objects, DOM, async/await, and modules.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="docker.html">Docker</a></h3>
+          <p>Docker commands for images, containers, volumes, and Compose.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="git.html">Git Commands</a></h3>
+          <p>Essential Git commands for setup, branching, merging, and more.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
