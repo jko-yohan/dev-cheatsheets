@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="Markdown cheat sheet with syntax for headings, text formatting, links, images, lists, tables, code blocks, and GitHub-flavored Markdown.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/markdown.html">
+  <meta property="og:title" content="Markdown Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Complete Markdown syntax reference with examples. Headings, formatting, links, images, tables, code blocks, and GFM.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/markdown.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Markdown Cheat Sheet - Quick Reference",
+    "description": "Complete Markdown syntax reference with examples",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/markdown.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+  <style>
+    .render-example {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 16px;
+      margin-top: -1px;
+      font-size: 0.9rem;
+    }
+    .render-example h1, .render-example h2, .render-example h3 {
+      color: var(--text-primary);
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+    .render-example h1 { font-size: 1.5rem; }
+    .render-example h2 { font-size: 1.25rem; }
+    .render-example h3 { font-size: 1.1rem; }
+    .syntax-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Filter syntax..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / Markdown Cheat Sheet</div>
+      <h1>Markdown Cheat Sheet</h1>
+      <p class="description">Complete Markdown syntax reference. Headings, formatting, links, images, lists, tables, code blocks, and GitHub-flavored extensions.</p>
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#headings">Headings</a></li>
+        <li><a href="#text">Text Formatting</a></li>
+        <li><a href="#links">Links &amp; Images</a></li>
+        <li><a href="#lists">Lists</a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#tables">Tables</a></li>
+        <li><a href="#blockquotes">Blockquotes</a></li>
+        <li><a href="#hr">Horizontal Rules</a></li>
+        <li><a href="#gfm">GitHub-Flavored Markdown</a></li>
+        <li><a href="#escaping">Escaping Characters</a></li>
+      </ul>
+    </nav>
+
+    <!-- Headings -->
+    <section class="section" id="headings">
+      <h2>Headings</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Markdown</th><th>HTML Equivalent</th></tr></thead>
+        <tbody>
+          <tr><td><code># Heading 1</code></td><td class="desc"><code>&lt;h1&gt;</code> — Page title</td></tr>
+          <tr><td><code>## Heading 2</code></td><td class="desc"><code>&lt;h2&gt;</code> — Section</td></tr>
+          <tr><td><code>### Heading 3</code></td><td class="desc"><code>&lt;h3&gt;</code> — Subsection</td></tr>
+          <tr><td><code>#### Heading 4</code></td><td class="desc"><code>&lt;h4&gt;</code></td></tr>
+          <tr><td><code>##### Heading 5</code></td><td class="desc"><code>&lt;h5&gt;</code></td></tr>
+          <tr><td><code>###### Heading 6</code></td><td class="desc"><code>&lt;h6&gt;</code></td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment"># Alternative syntax (underline style)</span>
+Heading 1
+=========
+
+Heading 2
+---------</code></pre>
+    </section>
+
+    <!-- Text Formatting -->
+    <section class="section" id="text">
+      <h2>Text Formatting</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Markdown</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td><code>**bold**</code></td><td class="desc"><strong>bold</strong></td></tr>
+          <tr><td><code>__bold__</code></td><td class="desc"><strong>bold</strong></td></tr>
+          <tr><td><code>*italic*</code></td><td class="desc"><em>italic</em></td></tr>
+          <tr><td><code>_italic_</code></td><td class="desc"><em>italic</em></td></tr>
+          <tr><td><code>***bold italic***</code></td><td class="desc"><strong><em>bold italic</em></strong></td></tr>
+          <tr><td><code>~~strikethrough~~</code></td><td class="desc"><s>strikethrough</s></td></tr>
+          <tr><td><code>`inline code`</code></td><td class="desc"><code>inline code</code></td></tr>
+          <tr><td><code>==highlight==</code></td><td class="desc"><mark style="background:var(--yellow);color:#000;padding:0 2px;border-radius:2px">highlight</mark> (some parsers)</td></tr>
+          <tr><td><code>H~2~O</code></td><td class="desc">H<sub>2</sub>O (subscript, some parsers)</td></tr>
+          <tr><td><code>X^2^</code></td><td class="desc">X<sup>2</sup> (superscript, some parsers)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Links & Images -->
+    <section class="section" id="links">
+      <h2>Links &amp; Images</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Markdown</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>[text](url)</code></td><td class="desc">Inline link</td></tr>
+          <tr><td><code>[text](url "title")</code></td><td class="desc">Link with title (tooltip)</td></tr>
+          <tr><td><code>[text][ref]</code></td><td class="desc">Reference-style link</td></tr>
+          <tr><td><code>[ref]: url "title"</code></td><td class="desc">Reference definition (placed anywhere)</td></tr>
+          <tr><td><code>&lt;https://example.com&gt;</code></td><td class="desc">Auto-linked URL</td></tr>
+          <tr><td><code>&lt;email@example.com&gt;</code></td><td class="desc">Auto-linked email</td></tr>
+          <tr><td><code>![alt text](image.png)</code></td><td class="desc">Image</td></tr>
+          <tr><td><code>![alt](img.png "title")</code></td><td class="desc">Image with title</td></tr>
+          <tr><td><code>[![alt](img.png)](url)</code></td><td class="desc">Linked image (clickable)</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment"># Reference-style links (cleaner for long URLs)</span>
+Check out [Google][1] and [GitHub][gh].
+
+[1]: https://google.com "Google"
+[gh]: https://github.com "GitHub"</code></pre>
+    </section>
+
+    <!-- Lists -->
+    <section class="section" id="lists">
+      <h2>Lists</h2>
+      <pre class="code-block"><code><span class="comment"># Unordered list</span>
+- Item 1
+- Item 2
+  - Nested item
+  - Nested item
+- Item 3
+
+<span class="comment"># Ordered list</span>
+1. First
+2. Second
+3. Third
+
+<span class="comment"># Task list (GitHub)</span>
+- [x] Completed task
+- [ ] Incomplete task
+- [ ] Another task
+
+<span class="comment"># Definition list (some parsers)</span>
+Term
+: Definition</code></pre>
+      <div class="tip-box">
+        <strong>Tip:</strong> You can use <code>-</code>, <code>*</code>, or <code>+</code> for unordered lists. For ordered lists, the actual numbers don't matter — Markdown auto-numbers them.
+      </div>
+    </section>
+
+    <!-- Code -->
+    <section class="section" id="code">
+      <h2>Code</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Markdown</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>`code`</code></td><td class="desc">Inline code</td></tr>
+          <tr><td><code>``code with `backtick` ``</code></td><td class="desc">Inline code containing backticks</td></tr>
+          <tr><td><code>```language</code></td><td class="desc">Fenced code block with syntax highlighting</td></tr>
+          <tr><td>4 spaces / 1 tab indent</td><td class="desc">Indented code block</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment"># Fenced code block with language</span>
+```javascript
+function hello() {
+  console.log("Hello, world!");
+}
+```
+
+<span class="comment"># Fenced code block with diff highlighting</span>
+```diff
+- const old = "removed";
++ const new = "added";
+```</code></pre>
+    </section>
+
+    <!-- Tables -->
+    <section class="section" id="tables">
+      <h2>Tables</h2>
+      <pre class="code-block"><code>| Left   | Center  | Right  |
+|--------|:-------:|-------:|
+| Cell 1 | Cell 2  | Cell 3 |
+| Cell 4 | Cell 5  | Cell 6 |
+
+<span class="comment"># Alignment:</span>
+<span class="comment"># :--- left (default)</span>
+<span class="comment"># :---: center</span>
+<span class="comment"># ---: right</span></code></pre>
+      <div class="tip-box">
+        <strong>Tip:</strong> Columns don't need to align in the source. This also works:
+        <code>|Left|Center|Right|</code>
+      </div>
+    </section>
+
+    <!-- Blockquotes -->
+    <section class="section" id="blockquotes">
+      <h2>Blockquotes</h2>
+      <pre class="code-block"><code>&gt; This is a blockquote.
+&gt;
+&gt; It can span multiple lines.
+
+&gt; Nested blockquotes:
+&gt; &gt; Second level
+&gt; &gt; &gt; Third level
+
+<span class="comment"># GitHub-style alerts</span>
+&gt; [!NOTE]
+&gt; Useful information that users should know.
+
+&gt; [!TIP]
+&gt; Helpful advice for doing things better.
+
+&gt; [!WARNING]
+&gt; Urgent info that needs immediate attention.</code></pre>
+    </section>
+
+    <!-- Horizontal Rules -->
+    <section class="section" id="hr">
+      <h2>Horizontal Rules</h2>
+      <pre class="code-block"><code><span class="comment"># Any of these create a horizontal rule:</span>
+---
+***
+___</code></pre>
+    </section>
+
+    <!-- GitHub-Flavored Markdown -->
+    <section class="section" id="gfm">
+      <h2>GitHub-Flavored Markdown</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Feature</th><th>Syntax</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Task lists</td><td><code>- [x] Done</code></td><td class="desc">Checkbox lists in issues/PRs</td></tr>
+          <tr><td>Mentions</td><td><code>@username</code></td><td class="desc">Mention a GitHub user</td></tr>
+          <tr><td>Issue refs</td><td><code>#123</code></td><td class="desc">Link to issue/PR by number</td></tr>
+          <tr><td>Commit refs</td><td><code>abc1234</code></td><td class="desc">Link to a commit by SHA</td></tr>
+          <tr><td>Strikethrough</td><td><code>~~text~~</code></td><td class="desc">Strikethrough text</td></tr>
+          <tr><td>Tables</td><td><code>| a | b |</code></td><td class="desc">GitHub supports tables natively</td></tr>
+          <tr><td>Autolinks</td><td>Paste URL directly</td><td class="desc">URLs are auto-linked</td></tr>
+          <tr><td>Emoji</td><td><code>:emoji_name:</code></td><td class="desc">GitHub emoji shortcodes</td></tr>
+          <tr><td>Footnotes</td><td><code>[^1]</code></td><td class="desc">Add footnotes to text</td></tr>
+          <tr><td>Collapsed section</td><td><code>&lt;details&gt;</code></td><td class="desc">HTML collapsible section</td></tr>
+          <tr><td>Math (LaTeX)</td><td><code>$E = mc^2$</code></td><td class="desc">Inline math expressions</td></tr>
+          <tr><td>Math block</td><td><code>$$...$$</code></td><td class="desc">Block math expressions</td></tr>
+          <tr><td>Mermaid</td><td><code>```mermaid</code></td><td class="desc">Diagrams in code blocks</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment"># Collapsible section</span>
+&lt;details&gt;
+&lt;summary&gt;Click to expand&lt;/summary&gt;
+
+Hidden content goes here.
+
+&lt;/details&gt;
+
+<span class="comment"># Footnotes</span>
+Here is a sentence with a footnote.[^1]
+
+[^1]: This is the footnote content.</code></pre>
+    </section>
+
+    <!-- Escaping -->
+    <section class="section" id="escaping">
+      <h2>Escaping Characters</h2>
+      <p style="color:var(--text-secondary);margin-bottom:12px;">Use backslash <code style="background:var(--bg-code);padding:2px 6px;border-radius:4px;color:var(--green);">\</code> to escape Markdown formatting characters:</p>
+      <pre class="code-block"><code>\*not italic\*   → *not italic*
+\# not a heading  → # not a heading
+\[not a link\]   → [not a link]
+
+<span class="comment"># Characters that can be escaped:</span>
+<span class="comment"># \ ` * _ { } [ ] ( ) # + - . ! |</span></code></pre>
+    </section>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="git.html">Git Commands</a></h3>
+          <p>Essential Git commands for setup, branching, merging, stashing, and more.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="html-entities.html">HTML Entities</a></h3>
+          <p>Common HTML character entities and special symbols reference.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="regex.html">Regex</a></h3>
+          <p>Regular expression syntax, quantifiers, groups, and common patterns.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
