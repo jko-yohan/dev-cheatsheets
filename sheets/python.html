@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="Python cheat sheet with syntax for variables, strings, lists, dictionaries, functions, classes, file I/O, comprehensions, and common standard library modules.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/python.html">
+  <meta property="og:title" content="Python Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Complete Python reference: data types, strings, lists, dicts, functions, classes, file I/O, comprehensions, and standard library.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/python.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Python Cheat Sheet - Quick Reference",
+    "description": "Complete Python reference with syntax and examples",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/python.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Filter syntax..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / Python Cheat Sheet</div>
+      <h1>Python Cheat Sheet</h1>
+      <p class="description">Essential Python syntax and concepts. Variables, data types, strings, lists, dictionaries, functions, classes, file I/O, and standard library.</p>
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#basics">Basics &amp; Types</a></li>
+        <li><a href="#strings">Strings</a></li>
+        <li><a href="#lists">Lists</a></li>
+        <li><a href="#dicts">Dictionaries</a></li>
+        <li><a href="#sets">Sets &amp; Tuples</a></li>
+        <li><a href="#control">Control Flow</a></li>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#files">File I/O</a></li>
+        <li><a href="#comprehensions">Comprehensions</a></li>
+        <li><a href="#errors">Error Handling</a></li>
+        <li><a href="#stdlib">Standard Library</a></li>
+      </ul>
+    </nav>
+
+    <!-- Basics -->
+    <section class="section" id="basics">
+      <h2>Basics &amp; Types</h2>
+      <pre class="code-block"><code><span class="comment"># Variables (no declaration keyword needed)</span>
+name = <span class="string">"Alice"</span>
+age = <span class="string">30</span>
+pi = <span class="string">3.14</span>
+is_active = <span class="keyword">True</span>
+nothing = <span class="keyword">None</span></code></pre>
+
+      <table class="cmd-table">
+        <thead><tr><th>Type</th><th>Example</th><th>Check</th></tr></thead>
+        <tbody>
+          <tr><td><code>int</code></td><td><code>42</code></td><td class="desc"><code>isinstance(x, int)</code></td></tr>
+          <tr><td><code>float</code></td><td><code>3.14</code></td><td class="desc"><code>isinstance(x, float)</code></td></tr>
+          <tr><td><code>str</code></td><td><code>"hello"</code></td><td class="desc"><code>isinstance(x, str)</code></td></tr>
+          <tr><td><code>bool</code></td><td><code>True</code> / <code>False</code></td><td class="desc"><code>isinstance(x, bool)</code></td></tr>
+          <tr><td><code>list</code></td><td><code>[1, 2, 3]</code></td><td class="desc"><code>isinstance(x, list)</code></td></tr>
+          <tr><td><code>tuple</code></td><td><code>(1, 2, 3)</code></td><td class="desc"><code>isinstance(x, tuple)</code></td></tr>
+          <tr><td><code>dict</code></td><td><code>{"a": 1}</code></td><td class="desc"><code>isinstance(x, dict)</code></td></tr>
+          <tr><td><code>set</code></td><td><code>{1, 2, 3}</code></td><td class="desc"><code>isinstance(x, set)</code></td></tr>
+          <tr><td><code>NoneType</code></td><td><code>None</code></td><td class="desc"><code>x is None</code></td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Type Conversion</h3>
+      <pre class="code-block"><code>int(<span class="string">"42"</span>)      <span class="comment"># 42</span>
+float(<span class="string">"3.14"</span>)  <span class="comment"># 3.14</span>
+str(<span class="string">42</span>)        <span class="comment"># "42"</span>
+bool(<span class="string">0</span>)        <span class="comment"># False</span>
+bool(<span class="string">""</span>)       <span class="comment"># False</span>
+list(<span class="string">"abc"</span>)    <span class="comment"># ["a", "b", "c"]</span>
+tuple([<span class="string">1</span>,<span class="string">2</span>])   <span class="comment"># (1, 2)</span>
+set([<span class="string">1</span>,<span class="string">1</span>,<span class="string">2</span>])   <span class="comment"># {1, 2}</span></code></pre>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Operators</h3>
+      <table class="cmd-table">
+        <thead><tr><th>Operator</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>+  -  *  /</code></td><td class="desc">Arithmetic (/ always returns float)</td></tr>
+          <tr><td><code>//</code></td><td class="desc">Floor division (integer result)</td></tr>
+          <tr><td><code>%</code></td><td class="desc">Modulo (remainder)</td></tr>
+          <tr><td><code>**</code></td><td class="desc">Exponent (<code>2**3 = 8</code>)</td></tr>
+          <tr><td><code>==  !=</code></td><td class="desc">Equality / inequality (value)</td></tr>
+          <tr><td><code>is  is not</code></td><td class="desc">Identity (same object)</td></tr>
+          <tr><td><code>and  or  not</code></td><td class="desc">Logical operators</td></tr>
+          <tr><td><code>in  not in</code></td><td class="desc">Membership test</td></tr>
+          <tr><td><code>:=</code></td><td class="desc">Walrus operator (assign + return)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Strings -->
+    <section class="section" id="strings">
+      <h2>Strings</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Method / Syntax</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>f"Hello {name}"</code></td><td class="desc">f-string (formatted string literal)</td></tr>
+          <tr><td><code>f"{price:.2f}"</code></td><td class="desc">Format float to 2 decimal places</td></tr>
+          <tr><td><code>len(s)</code></td><td class="desc">String length</td></tr>
+          <tr><td><code>s.upper()</code></td><td class="desc">Uppercase</td></tr>
+          <tr><td><code>s.lower()</code></td><td class="desc">Lowercase</td></tr>
+          <tr><td><code>s.title()</code></td><td class="desc">Title Case</td></tr>
+          <tr><td><code>s.strip()</code></td><td class="desc">Remove whitespace from both ends</td></tr>
+          <tr><td><code>s.lstrip() / s.rstrip()</code></td><td class="desc">Remove whitespace from left/right</td></tr>
+          <tr><td><code>s.split(",")</code></td><td class="desc">Split into list</td></tr>
+          <tr><td><code>",".join(list)</code></td><td class="desc">Join list into string</td></tr>
+          <tr><td><code>s.replace("a", "b")</code></td><td class="desc">Replace all occurrences</td></tr>
+          <tr><td><code>s.find("sub")</code></td><td class="desc">Index of substring (-1 if not found)</td></tr>
+          <tr><td><code>s.count("a")</code></td><td class="desc">Count occurrences</td></tr>
+          <tr><td><code>s.startswith("He")</code></td><td class="desc">Check prefix</td></tr>
+          <tr><td><code>s.endswith(".py")</code></td><td class="desc">Check suffix</td></tr>
+          <tr><td><code>s.isdigit()</code></td><td class="desc">Check if all digits</td></tr>
+          <tr><td><code>s.isalpha()</code></td><td class="desc">Check if all alphabetic</td></tr>
+          <tr><td><code>s.zfill(5)</code></td><td class="desc">Pad with zeros: <code>"42" → "00042"</code></td></tr>
+          <tr><td><code>s[0:5]</code></td><td class="desc">Slice (start:end)</td></tr>
+          <tr><td><code>s[::-1]</code></td><td class="desc">Reverse string</td></tr>
+          <tr><td><code>"sub" in s</code></td><td class="desc">Check if substring exists</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment"># Multi-line strings</span>
+text = <span class="string">"""Line 1
+Line 2
+Line 3"""</span>
+
+<span class="comment"># Raw strings (no escape processing)</span>
+path = <span class="string">r"C:\Users\name\file"</span></code></pre>
+    </section>
+
+    <!-- Lists -->
+    <section class="section" id="lists">
+      <h2>Lists</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Method / Syntax</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>lst.append(x)</code></td><td class="desc">Add item to end</td></tr>
+          <tr><td><code>lst.insert(i, x)</code></td><td class="desc">Insert at index</td></tr>
+          <tr><td><code>lst.extend([4,5])</code></td><td class="desc">Add multiple items</td></tr>
+          <tr><td><code>lst.remove(x)</code></td><td class="desc">Remove first occurrence of x</td></tr>
+          <tr><td><code>lst.pop()</code></td><td class="desc">Remove and return last item</td></tr>
+          <tr><td><code>lst.pop(i)</code></td><td class="desc">Remove and return item at index</td></tr>
+          <tr><td><code>lst.clear()</code></td><td class="desc">Remove all items</td></tr>
+          <tr><td><code>lst.index(x)</code></td><td class="desc">Index of first occurrence</td></tr>
+          <tr><td><code>lst.count(x)</code></td><td class="desc">Count occurrences</td></tr>
+          <tr><td><code>lst.sort()</code></td><td class="desc">Sort in place</td></tr>
+          <tr><td><code>lst.sort(reverse=True)</code></td><td class="desc">Sort descending</td></tr>
+          <tr><td><code>lst.sort(key=len)</code></td><td class="desc">Sort by key function</td></tr>
+          <tr><td><code>sorted(lst)</code></td><td class="desc">Return new sorted list</td></tr>
+          <tr><td><code>lst.reverse()</code></td><td class="desc">Reverse in place</td></tr>
+          <tr><td><code>lst.copy()</code></td><td class="desc">Shallow copy</td></tr>
+          <tr><td><code>len(lst)</code></td><td class="desc">Length</td></tr>
+          <tr><td><code>min(lst) / max(lst)</code></td><td class="desc">Min / max value</td></tr>
+          <tr><td><code>sum(lst)</code></td><td class="desc">Sum of all elements</td></tr>
+          <tr><td><code>x in lst</code></td><td class="desc">Membership test</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Slicing</h3>
+      <pre class="code-block"><code>lst = [<span class="string">0</span>, <span class="string">1</span>, <span class="string">2</span>, <span class="string">3</span>, <span class="string">4</span>, <span class="string">5</span>]
+lst[<span class="string">1</span>:<span class="string">4</span>]     <span class="comment"># [1, 2, 3]       start:end</span>
+lst[:<span class="string">3</span>]      <span class="comment"># [0, 1, 2]       first 3</span>
+lst[<span class="string">3</span>:]      <span class="comment"># [3, 4, 5]       from index 3</span>
+lst[-<span class="string">2</span>:]     <span class="comment"># [4, 5]          last 2</span>
+lst[::-<span class="string">1</span>]    <span class="comment"># [5, 4, 3, 2, 1, 0]  reversed</span>
+lst[<span class="string">0</span>:<span class="string">5</span>:<span class="string">2</span>]   <span class="comment"># [0, 2, 4]       step=2</span>
+
+<span class="comment"># Unpacking</span>
+a, b, *rest = [<span class="string">1</span>, <span class="string">2</span>, <span class="string">3</span>, <span class="string">4</span>]  <span class="comment"># a=1, b=2, rest=[3,4]</span></code></pre>
+    </section>
+
+    <!-- Dictionaries -->
+    <section class="section" id="dicts">
+      <h2>Dictionaries</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Method / Syntax</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>d = {"a": 1, "b": 2}</code></td><td class="desc">Create dictionary</td></tr>
+          <tr><td><code>d["a"]</code></td><td class="desc">Access value (KeyError if missing)</td></tr>
+          <tr><td><code>d.get("a", default)</code></td><td class="desc">Access with default (no error)</td></tr>
+          <tr><td><code>d["c"] = 3</code></td><td class="desc">Add or update key</td></tr>
+          <tr><td><code>del d["a"]</code></td><td class="desc">Delete key</td></tr>
+          <tr><td><code>d.pop("a", default)</code></td><td class="desc">Remove key and return value</td></tr>
+          <tr><td><code>d.keys()</code></td><td class="desc">View of keys</td></tr>
+          <tr><td><code>d.values()</code></td><td class="desc">View of values</td></tr>
+          <tr><td><code>d.items()</code></td><td class="desc">View of (key, value) tuples</td></tr>
+          <tr><td><code>d.update(other)</code></td><td class="desc">Merge another dict</td></tr>
+          <tr><td><code>d | other</code></td><td class="desc">Merge dicts (Python 3.9+)</td></tr>
+          <tr><td><code>d |= other</code></td><td class="desc">Update in place (Python 3.9+)</td></tr>
+          <tr><td><code>"key" in d</code></td><td class="desc">Check if key exists</td></tr>
+          <tr><td><code>len(d)</code></td><td class="desc">Number of keys</td></tr>
+          <tr><td><code>d.setdefault("k", [])</code></td><td class="desc">Get or set default value</td></tr>
+          <tr><td><code>dict.fromkeys(keys, val)</code></td><td class="desc">Create dict with default value</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment"># Iterate</span>
+<span class="keyword">for</span> key, value <span class="keyword">in</span> d.items():
+    print(f<span class="string">"{key}: {value}"</span>)
+
+<span class="comment"># Dict comprehension</span>
+squares = {x: x**<span class="string">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="string">5</span>)}
+<span class="comment"># {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</span></code></pre>
+    </section>
+
+    <!-- Sets & Tuples -->
+    <section class="section" id="sets">
+      <h2>Sets &amp; Tuples</h2>
+      <pre class="code-block"><code><span class="comment"># Sets — unordered, unique values</span>
+s = {<span class="string">1</span>, <span class="string">2</span>, <span class="string">3</span>}
+s.add(<span class="string">4</span>)            <span class="comment"># add element</span>
+s.discard(<span class="string">2</span>)        <span class="comment"># remove (no error if missing)</span>
+s.remove(<span class="string">3</span>)         <span class="comment"># remove (KeyError if missing)</span>
+
+<span class="comment"># Set operations</span>
+a | b               <span class="comment"># union</span>
+a & b               <span class="comment"># intersection</span>
+a - b               <span class="comment"># difference</span>
+a ^ b               <span class="comment"># symmetric difference</span>
+a.issubset(b)       <span class="comment"># True if a ⊆ b</span>
+
+<span class="comment"># Tuples — immutable, ordered</span>
+t = (<span class="string">1</span>, <span class="string">2</span>, <span class="string">3</span>)
+t[<span class="string">0</span>]                <span class="comment"># 1</span>
+a, b, c = t         <span class="comment"># unpacking</span>
+single = (<span class="string">1</span>,)       <span class="comment"># single-element tuple (note comma)</span></code></pre>
+    </section>
+
+    <!-- Control Flow -->
+    <section class="section" id="control">
+      <h2>Control Flow</h2>
+      <pre class="code-block"><code><span class="comment"># If / elif / else</span>
+<span class="keyword">if</span> x > <span class="string">10</span>:
+    print(<span class="string">"big"</span>)
+<span class="keyword">elif</span> x > <span class="string">5</span>:
+    print(<span class="string">"medium"</span>)
+<span class="keyword">else</span>:
+    print(<span class="string">"small"</span>)
+
+<span class="comment"># Ternary</span>
+result = <span class="string">"yes"</span> <span class="keyword">if</span> condition <span class="keyword">else</span> <span class="string">"no"</span>
+
+<span class="comment"># For loop</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="string">5</span>):           <span class="comment"># 0, 1, 2, 3, 4</span>
+    print(i)
+
+<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="string">2</span>, <span class="string">10</span>, <span class="string">2</span>):   <span class="comment"># 2, 4, 6, 8</span>
+    print(i)
+
+<span class="keyword">for</span> i, val <span class="keyword">in</span> enumerate(lst):  <span class="comment"># index + value</span>
+    print(i, val)
+
+<span class="keyword">for</span> a, b <span class="keyword">in</span> zip(list1, list2):  <span class="comment"># parallel iteration</span>
+    print(a, b)
+
+<span class="comment"># While loop</span>
+<span class="keyword">while</span> count < <span class="string">10</span>:
+    count += <span class="string">1</span>
+
+<span class="comment"># break, continue, else</span>
+<span class="keyword">for</span> x <span class="keyword">in</span> lst:
+    <span class="keyword">if</span> x == target:
+        <span class="keyword">break</span>
+<span class="keyword">else</span>:
+    print(<span class="string">"not found"</span>)  <span class="comment"># runs if no break</span>
+
+<span class="comment"># Match (Python 3.10+)</span>
+<span class="keyword">match</span> command:
+    <span class="keyword">case</span> <span class="string">"start"</span>:
+        start()
+    <span class="keyword">case</span> <span class="string">"stop"</span>:
+        stop()
+    <span class="keyword">case</span> _:
+        print(<span class="string">"unknown"</span>)</code></pre>
+    </section>
+
+    <!-- Functions -->
+    <section class="section" id="functions">
+      <h2>Functions</h2>
+      <pre class="code-block"><code><span class="comment"># Basic function</span>
+<span class="keyword">def</span> greet(name):
+    <span class="keyword">return</span> f<span class="string">"Hello, {name}!"</span>
+
+<span class="comment"># Default parameters</span>
+<span class="keyword">def</span> greet(name=<span class="string">"World"</span>):
+    <span class="keyword">return</span> f<span class="string">"Hello, {name}!"</span>
+
+<span class="comment"># *args and **kwargs</span>
+<span class="keyword">def</span> func(*args, **kwargs):
+    print(args)     <span class="comment"># tuple of positional args</span>
+    print(kwargs)   <span class="comment"># dict of keyword args</span>
+
+<span class="comment"># Lambda (anonymous function)</span>
+square = <span class="keyword">lambda</span> x: x ** <span class="string">2</span>
+sorted(lst, key=<span class="keyword">lambda</span> x: x[<span class="string">1</span>])
+
+<span class="comment"># Type hints</span>
+<span class="keyword">def</span> add(a: int, b: int) -> int:
+    <span class="keyword">return</span> a + b
+
+<span class="comment"># Decorators</span>
+<span class="keyword">def</span> timer(func):
+    <span class="keyword">def</span> wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        print(f<span class="string">"Took {time.time() - start:.2f}s"</span>)
+        <span class="keyword">return</span> result
+    <span class="keyword">return</span> wrapper
+
+@timer
+<span class="keyword">def</span> slow_fn():
+    time.sleep(<span class="string">1</span>)
+
+<span class="comment"># Generator</span>
+<span class="keyword">def</span> count_up(n):
+    i = <span class="string">0</span>
+    <span class="keyword">while</span> i < n:
+        <span class="keyword">yield</span> i
+        i += <span class="string">1</span></code></pre>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Built-in Functions</h3>
+      <table class="cmd-table">
+        <thead><tr><th>Function</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>print()</code></td><td class="desc">Print to stdout</td></tr>
+          <tr><td><code>len()</code></td><td class="desc">Length of object</td></tr>
+          <tr><td><code>range(start, stop, step)</code></td><td class="desc">Sequence of numbers</td></tr>
+          <tr><td><code>enumerate(iterable)</code></td><td class="desc">Index + value pairs</td></tr>
+          <tr><td><code>zip(a, b)</code></td><td class="desc">Pair elements from iterables</td></tr>
+          <tr><td><code>map(fn, iterable)</code></td><td class="desc">Apply function to each element</td></tr>
+          <tr><td><code>filter(fn, iterable)</code></td><td class="desc">Keep elements where fn is truthy</td></tr>
+          <tr><td><code>sorted(iterable, key=)</code></td><td class="desc">Return new sorted list</td></tr>
+          <tr><td><code>reversed(iterable)</code></td><td class="desc">Reverse iterator</td></tr>
+          <tr><td><code>any(iterable)</code></td><td class="desc">True if any element is truthy</td></tr>
+          <tr><td><code>all(iterable)</code></td><td class="desc">True if all elements are truthy</td></tr>
+          <tr><td><code>abs(x)</code></td><td class="desc">Absolute value</td></tr>
+          <tr><td><code>round(x, n)</code></td><td class="desc">Round to n decimal places</td></tr>
+          <tr><td><code>input("prompt")</code></td><td class="desc">Read user input (string)</td></tr>
+          <tr><td><code>type(x)</code></td><td class="desc">Type of object</td></tr>
+          <tr><td><code>dir(obj)</code></td><td class="desc">List attributes/methods</td></tr>
+          <tr><td><code>help(obj)</code></td><td class="desc">Built-in documentation</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Classes -->
+    <section class="section" id="classes">
+      <h2>Classes</h2>
+      <pre class="code-block"><code><span class="keyword">class</span> Animal:
+    <span class="comment"># Class variable</span>
+    species = <span class="string">"Unknown"</span>
+
+    <span class="keyword">def</span> __init__(self, name, sound):
+        <span class="comment"># Instance variables</span>
+        self.name = name
+        self._sound = sound  <span class="comment"># convention: "private"</span>
+
+    <span class="keyword">def</span> speak(self):
+        <span class="keyword">return</span> f<span class="string">"{self.name} says {self._sound}"</span>
+
+    <span class="keyword">def</span> __str__(self):
+        <span class="keyword">return</span> f<span class="string">"Animal({self.name})"</span>
+
+    <span class="keyword">def</span> __repr__(self):
+        <span class="keyword">return</span> f<span class="string">"Animal('{self.name}', '{self._sound}')"</span>
+
+    @property
+    <span class="keyword">def</span> sound(self):
+        <span class="keyword">return</span> self._sound
+
+    @staticmethod
+    <span class="keyword">def</span> is_animal(obj):
+        <span class="keyword">return</span> isinstance(obj, Animal)
+
+    @classmethod
+    <span class="keyword">def</span> create_dog(cls, name):
+        <span class="keyword">return</span> cls(name, <span class="string">"Woof"</span>)
+
+<span class="comment"># Inheritance</span>
+<span class="keyword">class</span> Dog(Animal):
+    species = <span class="string">"Canine"</span>
+
+    <span class="keyword">def</span> __init__(self, name):
+        super().__init__(name, <span class="string">"Woof"</span>)
+
+    <span class="keyword">def</span> fetch(self, item):
+        <span class="keyword">return</span> f<span class="string">"{self.name} fetches {item}"</span>
+
+<span class="comment"># Dataclass (Python 3.7+)</span>
+<span class="keyword">from</span> dataclasses <span class="keyword">import</span> dataclass
+
+@dataclass
+<span class="keyword">class</span> Point:
+    x: float
+    y: float
+    z: float = <span class="string">0.0</span></code></pre>
+    </section>
+
+    <!-- File I/O -->
+    <section class="section" id="files">
+      <h2>File I/O</h2>
+      <pre class="code-block"><code><span class="comment"># Read file</span>
+<span class="keyword">with</span> open(<span class="string">"file.txt"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> f:
+    content = f.read()        <span class="comment"># entire file as string</span>
+    lines = f.readlines()     <span class="comment"># list of lines</span>
+
+<span class="comment"># Read line by line (memory efficient)</span>
+<span class="keyword">with</span> open(<span class="string">"file.txt"</span>) <span class="keyword">as</span> f:
+    <span class="keyword">for</span> line <span class="keyword">in</span> f:
+        print(line.strip())
+
+<span class="comment"># Write file</span>
+<span class="keyword">with</span> open(<span class="string">"file.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:
+    f.write(<span class="string">"Hello\n"</span>)
+
+<span class="comment"># Append to file</span>
+<span class="keyword">with</span> open(<span class="string">"file.txt"</span>, <span class="string">"a"</span>) <span class="keyword">as</span> f:
+    f.write(<span class="string">"More text\n"</span>)
+
+<span class="comment"># JSON</span>
+<span class="keyword">import</span> json
+data = json.loads(json_string)    <span class="comment"># parse JSON string</span>
+json_str = json.dumps(data, indent=<span class="string">2</span>)  <span class="comment"># to JSON string</span>
+
+<span class="keyword">with</span> open(<span class="string">"data.json"</span>) <span class="keyword">as</span> f:
+    data = json.load(f)           <span class="comment"># read JSON file</span>
+
+<span class="keyword">with</span> open(<span class="string">"data.json"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:
+    json.dump(data, f, indent=<span class="string">2</span>)   <span class="comment"># write JSON file</span>
+
+<span class="comment"># CSV</span>
+<span class="keyword">import</span> csv
+<span class="keyword">with</span> open(<span class="string">"data.csv"</span>) <span class="keyword">as</span> f:
+    reader = csv.DictReader(f)
+    <span class="keyword">for</span> row <span class="keyword">in</span> reader:
+        print(row[<span class="string">"name"</span>])</code></pre>
+
+      <table class="cmd-table">
+        <thead><tr><th>Mode</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>"r"</code></td><td class="desc">Read (default)</td></tr>
+          <tr><td><code>"w"</code></td><td class="desc">Write (overwrites)</td></tr>
+          <tr><td><code>"a"</code></td><td class="desc">Append</td></tr>
+          <tr><td><code>"x"</code></td><td class="desc">Create (error if exists)</td></tr>
+          <tr><td><code>"rb" / "wb"</code></td><td class="desc">Binary read/write</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Comprehensions -->
+    <section class="section" id="comprehensions">
+      <h2>Comprehensions</h2>
+      <pre class="code-block"><code><span class="comment"># List comprehension</span>
+squares = [x**<span class="string">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="string">10</span>)]
+evens = [x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="string">20</span>) <span class="keyword">if</span> x % <span class="string">2</span> == <span class="string">0</span>]
+
+<span class="comment"># Dict comprehension</span>
+d = {k: v <span class="keyword">for</span> k, v <span class="keyword">in</span> zip(keys, values)}
+
+<span class="comment"># Set comprehension</span>
+unique = {x.lower() <span class="keyword">for</span> x <span class="keyword">in</span> words}
+
+<span class="comment"># Generator expression (lazy, memory efficient)</span>
+total = sum(x**<span class="string">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="string">1000000</span>))
+
+<span class="comment"># Nested comprehension</span>
+flat = [x <span class="keyword">for</span> row <span class="keyword">in</span> matrix <span class="keyword">for</span> x <span class="keyword">in</span> row]
+
+<span class="comment"># Conditional expression</span>
+labels = [<span class="string">"even"</span> <span class="keyword">if</span> x%<span class="string">2</span>==<span class="string">0</span> <span class="keyword">else</span> <span class="string">"odd"</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="string">5</span>)]</code></pre>
+    </section>
+
+    <!-- Error Handling -->
+    <section class="section" id="errors">
+      <h2>Error Handling</h2>
+      <pre class="code-block"><code><span class="keyword">try</span>:
+    result = <span class="string">10</span> / <span class="string">0</span>
+<span class="keyword">except</span> ZeroDivisionError:
+    print(<span class="string">"Cannot divide by zero"</span>)
+<span class="keyword">except</span> (TypeError, ValueError) <span class="keyword">as</span> e:
+    print(f<span class="string">"Error: {e}"</span>)
+<span class="keyword">except</span> Exception <span class="keyword">as</span> e:
+    print(f<span class="string">"Unexpected: {e}"</span>)
+<span class="keyword">else</span>:
+    print(<span class="string">"Success"</span>)      <span class="comment"># runs if no exception</span>
+<span class="keyword">finally</span>:
+    print(<span class="string">"Cleanup"</span>)      <span class="comment"># always runs</span>
+
+<span class="comment"># Raise exception</span>
+<span class="keyword">raise</span> ValueError(<span class="string">"Invalid input"</span>)
+
+<span class="comment"># Custom exception</span>
+<span class="keyword">class</span> AppError(Exception):
+    <span class="keyword">pass</span></code></pre>
+
+      <table class="cmd-table">
+        <thead><tr><th>Exception</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><td><code>ValueError</code></td><td class="desc">Wrong value (e.g., <code>int("abc")</code>)</td></tr>
+          <tr><td><code>TypeError</code></td><td class="desc">Wrong type (e.g., <code>"a" + 1</code>)</td></tr>
+          <tr><td><code>KeyError</code></td><td class="desc">Missing dict key</td></tr>
+          <tr><td><code>IndexError</code></td><td class="desc">Index out of range</td></tr>
+          <tr><td><code>FileNotFoundError</code></td><td class="desc">File doesn't exist</td></tr>
+          <tr><td><code>AttributeError</code></td><td class="desc">Missing attribute/method</td></tr>
+          <tr><td><code>ImportError</code></td><td class="desc">Module not found</td></tr>
+          <tr><td><code>ZeroDivisionError</code></td><td class="desc">Division by zero</td></tr>
+          <tr><td><code>StopIteration</code></td><td class="desc">Iterator exhausted</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Standard Library -->
+    <section class="section" id="stdlib">
+      <h2>Standard Library Highlights</h2>
+      <pre class="code-block"><code><span class="comment"># os / pathlib — file system</span>
+<span class="keyword">from</span> pathlib <span class="keyword">import</span> Path
+p = Path(<span class="string">"dir/file.txt"</span>)
+p.exists()  p.is_file()  p.is_dir()
+p.read_text()  p.write_text(<span class="string">"data"</span>)
+p.parent  p.stem  p.suffix  p.name
+list(Path(<span class="string">"."</span>).glob(<span class="string">"*.py"</span>))
+
+<span class="comment"># datetime</span>
+<span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, timedelta
+now = datetime.now()
+formatted = now.strftime(<span class="string">"%Y-%m-%d %H:%M"</span>)
+parsed = datetime.strptime(<span class="string">"2026-05-08"</span>, <span class="string">"%Y-%m-%d"</span>)
+tomorrow = now + timedelta(days=<span class="string">1</span>)
+
+<span class="comment"># collections</span>
+<span class="keyword">from</span> collections <span class="keyword">import</span> Counter, defaultdict, deque
+Counter([<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"a"</span>])  <span class="comment"># Counter({'a': 2, 'b': 1})</span>
+dd = defaultdict(list)
+dd[<span class="string">"key"</span>].append(<span class="string">1</span>)     <span class="comment"># auto-creates list</span>
+
+<span class="comment"># itertools</span>
+<span class="keyword">from</span> itertools <span class="keyword">import</span> chain, product, combinations
+list(chain([<span class="string">1</span>,<span class="string">2</span>], [<span class="string">3</span>,<span class="string">4</span>]))     <span class="comment"># [1, 2, 3, 4]</span>
+list(combinations(<span class="string">"abc"</span>, <span class="string">2</span>))  <span class="comment"># [('a','b'), ('a','c'), ('b','c')]</span>
+
+<span class="comment"># re — regex</span>
+<span class="keyword">import</span> re
+re.findall(<span class="string">r'\d+'</span>, <span class="string">"abc 123"</span>)   <span class="comment"># ['123']</span>
+re.sub(<span class="string">r'\s+'</span>, <span class="string">' '</span>, text)         <span class="comment"># collapse whitespace</span>
+
+<span class="comment"># random</span>
+<span class="keyword">import</span> random
+random.randint(<span class="string">1</span>, <span class="string">10</span>)      <span class="comment"># random int 1-10</span>
+random.choice(lst)          <span class="comment"># random element</span>
+random.shuffle(lst)         <span class="comment"># shuffle in place</span>
+random.sample(lst, <span class="string">3</span>)       <span class="comment"># 3 random elements</span></code></pre>
+    </section>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="javascript.html">JavaScript</a></h3>
+          <p>Modern JS syntax, arrays, objects, DOM, async/await, and modules.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="regex.html">Regex</a></h3>
+          <p>Regular expression syntax, quantifiers, groups, and common patterns.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="bash.html">Bash / Shell</a></h3>
+          <p>Terminal commands, scripting, permissions, and keyboard shortcuts.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
