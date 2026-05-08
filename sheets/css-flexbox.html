@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Flexbox Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="CSS Flexbox cheat sheet with all properties for flex containers and items. Visual examples, alignment, wrapping, ordering, and common layout patterns.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/css-flexbox.html">
+  <meta property="og:title" content="CSS Flexbox Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Complete CSS Flexbox reference with visual examples. Container and item properties, alignment, wrapping, and layout patterns.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/css-flexbox.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "CSS Flexbox Cheat Sheet - Quick Reference",
+    "description": "Complete CSS Flexbox reference with all container and item properties",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/css-flexbox.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+  <style>
+    .flex-demo {
+      display: flex;
+      background: var(--bg-code);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px;
+      gap: 8px;
+      min-height: 80px;
+      margin: 12px 0;
+    }
+    .flex-demo .box {
+      background: var(--accent);
+      color: var(--bg-primary);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 8px 16px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+    }
+    .flex-demo .box:nth-child(2) { background: var(--green); }
+    .flex-demo .box:nth-child(3) { background: var(--purple); }
+    .flex-demo .box:nth-child(4) { background: var(--orange); }
+    .flex-demo .box:nth-child(5) { background: var(--yellow); }
+    .prop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .prop-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .prop-card h3 {
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 4px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .prop-card .values {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .prop-card .values code {
+      background: var(--bg-code);
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: var(--green);
+      font-size: 0.8rem;
+    }
+    .prop-card p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Filter properties..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / CSS Flexbox Cheat Sheet</div>
+      <h1>CSS Flexbox Cheat Sheet</h1>
+      <p class="description">Complete guide to CSS Flexible Box Layout. All container and item properties with visual examples.</p>
+    </div>
+
+    <!-- Ad Banner Top -->
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#basics">Flexbox Basics</a></li>
+        <li><a href="#container">Container Properties</a></li>
+        <li><a href="#item">Item Properties</a></li>
+        <li><a href="#alignment">Alignment Deep Dive</a></li>
+        <li><a href="#patterns">Common Patterns</a></li>
+      </ul>
+    </nav>
+
+    <!-- Basics -->
+    <section class="section" id="basics">
+      <h2>Flexbox Basics</h2>
+      <p style="color:var(--text-secondary);margin-bottom:16px;">Flexbox is a one-dimensional layout method for arranging items in rows or columns. Set <code style="background:var(--bg-code);padding:2px 6px;border-radius:4px;color:var(--green);">display: flex</code> on a container to enable it.</p>
+
+      <pre class="code-block"><code><span class="keyword">.container</span> {
+  <span class="keyword">display</span>: <span class="string">flex</span>;           <span class="comment">/* enables flex context */</span>
+  <span class="keyword">flex-direction</span>: <span class="string">row</span>;     <span class="comment">/* main axis direction */</span>
+  <span class="keyword">justify-content</span>: <span class="string">center</span>; <span class="comment">/* align on main axis */</span>
+  <span class="keyword">align-items</span>: <span class="string">center</span>;     <span class="comment">/* align on cross axis */</span>
+  <span class="keyword">gap</span>: <span class="string">16px</span>;               <span class="comment">/* space between items */</span>
+}</code></pre>
+
+      <div class="tip-box">
+        <strong>Tip:</strong> The <strong>main axis</strong> follows <code>flex-direction</code> (default: horizontal). The <strong>cross axis</strong> runs perpendicular to it.
+      </div>
+    </section>
+
+    <!-- Container Properties -->
+    <section class="section" id="container">
+      <h2>Container Properties</h2>
+
+      <div class="prop-grid">
+        <div class="prop-card">
+          <h3>display</h3>
+          <div class="values"><code>flex</code> <code>inline-flex</code></div>
+          <p>Defines a flex container. <code>inline-flex</code> makes the container inline-level.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>flex-direction</h3>
+          <div class="values"><code>row</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code></div>
+          <p>Sets the direction of the main axis. <code>row</code> is left-to-right, <code>column</code> is top-to-bottom.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>flex-wrap</h3>
+          <div class="values"><code>nowrap</code> <code>wrap</code> <code>wrap-reverse</code></div>
+          <p>Controls whether items wrap to new lines. Default is <code>nowrap</code> (single line).</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>flex-flow</h3>
+          <div class="values">Shorthand: <code>flex-direction</code> + <code>flex-wrap</code></div>
+          <p>Example: <code>flex-flow: row wrap</code> sets direction to row and enables wrapping.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>justify-content</h3>
+          <div class="values"><code>flex-start</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code></div>
+          <p>Aligns items along the <strong>main axis</strong>.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>align-items</h3>
+          <div class="values"><code>stretch</code> <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code></div>
+          <p>Aligns items along the <strong>cross axis</strong> (single line).</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>align-content</h3>
+          <div class="values"><code>stretch</code> <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code></div>
+          <p>Aligns <strong>multiple lines</strong> on the cross axis. Only works with <code>flex-wrap: wrap</code>.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>gap / row-gap / column-gap</h3>
+          <div class="values"><code>&lt;length&gt;</code></div>
+          <p>Sets spacing between flex items without affecting outer edges. Example: <code>gap: 16px</code>.</p>
+        </div>
+      </div>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">justify-content Visual</h3>
+      <table class="cmd-table">
+        <thead><tr><th>Value</th><th>Behavior</th></tr></thead>
+        <tbody>
+          <tr><td><code>flex-start</code></td><td class="desc">Items packed to the start</td></tr>
+          <tr><td><code>flex-end</code></td><td class="desc">Items packed to the end</td></tr>
+          <tr><td><code>center</code></td><td class="desc">Items centered along main axis</td></tr>
+          <tr><td><code>space-between</code></td><td class="desc">Equal space between items, no space at edges</td></tr>
+          <tr><td><code>space-around</code></td><td class="desc">Equal space around each item (half-size at edges)</td></tr>
+          <tr><td><code>space-evenly</code></td><td class="desc">Equal space between all items and edges</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Item Properties -->
+    <section class="section" id="item">
+      <h2>Item Properties</h2>
+
+      <div class="prop-grid">
+        <div class="prop-card">
+          <h3>order</h3>
+          <div class="values"><code>&lt;integer&gt;</code> (default: <code>0</code>)</div>
+          <p>Controls the order of items. Lower values appear first. Items with the same order follow source order.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>flex-grow</h3>
+          <div class="values"><code>&lt;number&gt;</code> (default: <code>0</code>)</div>
+          <p>How much an item should grow relative to siblings. <code>1</code> means it takes available space.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>flex-shrink</h3>
+          <div class="values"><code>&lt;number&gt;</code> (default: <code>1</code>)</div>
+          <p>How much an item should shrink when space is limited. <code>0</code> prevents shrinking.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>flex-basis</h3>
+          <div class="values"><code>auto</code> <code>&lt;length&gt;</code> <code>&lt;percentage&gt;</code> <code>content</code></div>
+          <p>Initial size before growing/shrinking. <code>auto</code> uses the item's width/height.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>flex</h3>
+          <div class="values">Shorthand: <code>flex-grow</code> <code>flex-shrink</code> <code>flex-basis</code></div>
+          <p><code>flex: 1</code> = <code>flex: 1 1 0%</code>. <code>flex: auto</code> = <code>flex: 1 1 auto</code>. <code>flex: none</code> = <code>flex: 0 0 auto</code>.</p>
+        </div>
+
+        <div class="prop-card">
+          <h3>align-self</h3>
+          <div class="values"><code>auto</code> <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch</code></div>
+          <p>Overrides <code>align-items</code> for a single item on the cross axis.</p>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <strong>Tip:</strong> Always use the <code>flex</code> shorthand instead of setting <code>flex-grow</code>, <code>flex-shrink</code>, and <code>flex-basis</code> individually. It sets smart defaults.
+      </div>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Common flex Shorthand Values</h3>
+      <table class="cmd-table">
+        <thead><tr><th>Shorthand</th><th>Equivalent</th><th>Use Case</th></tr></thead>
+        <tbody>
+          <tr><td><code>flex: 1</code></td><td><code>flex: 1 1 0%</code></td><td class="desc">Item grows and shrinks equally, ignoring content size</td></tr>
+          <tr><td><code>flex: auto</code></td><td><code>flex: 1 1 auto</code></td><td class="desc">Item grows/shrinks based on its content size</td></tr>
+          <tr><td><code>flex: none</code></td><td><code>flex: 0 0 auto</code></td><td class="desc">Item is fully inflexible (fixed size)</td></tr>
+          <tr><td><code>flex: 0 1 auto</code></td><td>(initial value)</td><td class="desc">Item can shrink but won't grow</td></tr>
+          <tr><td><code>flex: 2</code></td><td><code>flex: 2 1 0%</code></td><td class="desc">Takes twice the space of <code>flex: 1</code> siblings</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Alignment Deep Dive -->
+    <section class="section" id="alignment">
+      <h2>Alignment Deep Dive</h2>
+
+      <table class="cmd-table">
+        <thead><tr><th>Property</th><th>Axis</th><th>Applies To</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>justify-content</code></td><td>Main</td><td>Container</td><td class="desc">Distribute items along main axis</td></tr>
+          <tr><td><code>align-items</code></td><td>Cross</td><td>Container</td><td class="desc">Align items on cross axis (single line)</td></tr>
+          <tr><td><code>align-content</code></td><td>Cross</td><td>Container</td><td class="desc">Distribute lines on cross axis (multi-line)</td></tr>
+          <tr><td><code>align-self</code></td><td>Cross</td><td>Item</td><td class="desc">Override <code>align-items</code> for one item</td></tr>
+          <tr><td><code>gap</code></td><td>Both</td><td>Container</td><td class="desc">Space between items (not at edges)</td></tr>
+          <tr><td><code>margin: auto</code></td><td>Both</td><td>Item</td><td class="desc">Push item away from neighbors / absorb extra space</td></tr>
+        </tbody>
+      </table>
+
+      <div class="tip-box">
+        <strong>Tip:</strong> <code>margin-left: auto</code> on a flex item pushes it (and everything after) to the right — great for navigation layouts with a logo on the left and links on the right.
+      </div>
+    </section>
+
+    <!-- Common Patterns -->
+    <section class="section" id="patterns">
+      <h2>Common Patterns</h2>
+
+      <h3 style="margin-bottom:8px;color:var(--text-secondary);">Center an element (horizontal + vertical)</h3>
+      <pre class="code-block"><code><span class="keyword">.parent</span> {
+  <span class="keyword">display</span>: <span class="string">flex</span>;
+  <span class="keyword">justify-content</span>: <span class="string">center</span>;
+  <span class="keyword">align-items</span>: <span class="string">center</span>;
+  <span class="keyword">min-height</span>: <span class="string">100vh</span>;
+}</code></pre>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Sticky footer</h3>
+      <pre class="code-block"><code><span class="keyword">body</span> {
+  <span class="keyword">display</span>: <span class="string">flex</span>;
+  <span class="keyword">flex-direction</span>: <span class="string">column</span>;
+  <span class="keyword">min-height</span>: <span class="string">100vh</span>;
+}
+<span class="keyword">main</span> {
+  <span class="keyword">flex</span>: <span class="string">1</span>;  <span class="comment">/* main takes all available space */</span>
+}</code></pre>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Navigation bar</h3>
+      <pre class="code-block"><code><span class="keyword">.navbar</span> {
+  <span class="keyword">display</span>: <span class="string">flex</span>;
+  <span class="keyword">align-items</span>: <span class="string">center</span>;
+  <span class="keyword">gap</span>: <span class="string">16px</span>;
+}
+<span class="keyword">.nav-links</span> {
+  <span class="keyword">margin-left</span>: <span class="string">auto</span>;  <span class="comment">/* push links to right */</span>
+  <span class="keyword">display</span>: <span class="string">flex</span>;
+  <span class="keyword">gap</span>: <span class="string">12px</span>;
+}</code></pre>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Equal-width columns</h3>
+      <pre class="code-block"><code><span class="keyword">.row</span> {
+  <span class="keyword">display</span>: <span class="string">flex</span>;
+  <span class="keyword">gap</span>: <span class="string">16px</span>;
+}
+<span class="keyword">.col</span> {
+  <span class="keyword">flex</span>: <span class="string">1</span>;  <span class="comment">/* all columns share space equally */</span>
+}</code></pre>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Sidebar layout (fixed + fluid)</h3>
+      <pre class="code-block"><code><span class="keyword">.layout</span> {
+  <span class="keyword">display</span>: <span class="string">flex</span>;
+}
+<span class="keyword">.sidebar</span> {
+  <span class="keyword">flex</span>: <span class="string">0 0 250px</span>;  <span class="comment">/* fixed 250px, no grow/shrink */</span>
+}
+<span class="keyword">.content</span> {
+  <span class="keyword">flex</span>: <span class="string">1</span>;           <span class="comment">/* fluid, takes remaining space */</span>
+}</code></pre>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Card grid with wrapping</h3>
+      <pre class="code-block"><code><span class="keyword">.cards</span> {
+  <span class="keyword">display</span>: <span class="string">flex</span>;
+  <span class="keyword">flex-wrap</span>: <span class="string">wrap</span>;
+  <span class="keyword">gap</span>: <span class="string">16px</span>;
+}
+<span class="keyword">.card</span> {
+  <span class="keyword">flex</span>: <span class="string">1 1 300px</span>;  <span class="comment">/* min 300px, grow to fill */</span>
+}</code></pre>
+    </section>
+
+    <!-- Ad Banner Bottom -->
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="css-grid.html">CSS Grid</a></h3>
+          <p>Two-dimensional grid layout with rows, columns, areas, and responsive patterns.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="git.html">Git Commands</a></h3>
+          <p>Essential Git commands for setup, branching, merging, stashing, and more.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="javascript.html">JavaScript</a></h3>
+          <p>Core JS syntax, DOM manipulation, array methods, async/await, and ES6+ features.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr, .prop-card').forEach(el => {
+        const text = el.textContent.toLowerCase();
+        el.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
