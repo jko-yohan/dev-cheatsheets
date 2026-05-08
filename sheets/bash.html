@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bash Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="Bash cheat sheet with essential shell commands, file operations, text processing, variables, scripting, permissions, networking, and keyboard shortcuts.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/bash.html">
+  <meta property="og:title" content="Bash Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Essential Bash and shell commands. File operations, text processing, variables, scripting, permissions, and more.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/bash.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Bash Cheat Sheet - Quick Reference",
+    "description": "Essential Bash and shell commands with examples",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/bash.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Filter commands..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / Bash Cheat Sheet</div>
+      <h1>Bash / Shell Cheat Sheet</h1>
+      <p class="description">Essential terminal commands, file operations, text processing, scripting, and keyboard shortcuts for everyday development.</p>
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#navigation">Navigation</a></li>
+        <li><a href="#files">File Operations</a></li>
+        <li><a href="#text">Text Processing</a></li>
+        <li><a href="#search">Search &amp; Find</a></li>
+        <li><a href="#permissions">Permissions</a></li>
+        <li><a href="#process">Process Management</a></li>
+        <li><a href="#network">Networking</a></li>
+        <li><a href="#variables">Variables &amp; Environment</a></li>
+        <li><a href="#scripting">Scripting Basics</a></li>
+        <li><a href="#redirect">Redirection &amp; Pipes</a></li>
+        <li><a href="#shortcuts">Keyboard Shortcuts</a></li>
+      </ul>
+    </nav>
+
+    <!-- Navigation -->
+    <section class="section" id="navigation">
+      <h2>Navigation</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>pwd</code></td><td class="desc">Print current working directory</td></tr>
+          <tr><td><code>cd dir</code></td><td class="desc">Change to directory</td></tr>
+          <tr><td><code>cd ~</code></td><td class="desc">Go to home directory</td></tr>
+          <tr><td><code>cd -</code></td><td class="desc">Go to previous directory</td></tr>
+          <tr><td><code>cd ..</code></td><td class="desc">Go up one directory</td></tr>
+          <tr><td><code>ls</code></td><td class="desc">List files</td></tr>
+          <tr><td><code>ls -la</code></td><td class="desc">List all files (including hidden) with details</td></tr>
+          <tr><td><code>ls -lh</code></td><td class="desc">List with human-readable file sizes</td></tr>
+          <tr><td><code>ls -R</code></td><td class="desc">List recursively</td></tr>
+          <tr><td><code>tree</code></td><td class="desc">Display directory tree structure</td></tr>
+          <tr><td><code>tree -L 2</code></td><td class="desc">Tree with depth limit of 2</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- File Operations -->
+    <section class="section" id="files">
+      <h2>File Operations</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>touch file</code></td><td class="desc">Create empty file or update timestamp</td></tr>
+          <tr><td><code>mkdir dir</code></td><td class="desc">Create a directory</td></tr>
+          <tr><td><code>mkdir -p a/b/c</code></td><td class="desc">Create nested directories</td></tr>
+          <tr><td><code>cp src dest</code></td><td class="desc">Copy file</td></tr>
+          <tr><td><code>cp -r src/ dest/</code></td><td class="desc">Copy directory recursively</td></tr>
+          <tr><td><code>mv src dest</code></td><td class="desc">Move or rename file/directory</td></tr>
+          <tr><td><code>rm file</code></td><td class="desc">Remove file</td></tr>
+          <tr><td><code>rm -rf dir</code></td><td class="desc">Remove directory and contents (force)</td></tr>
+          <tr><td><code>ln -s target link</code></td><td class="desc">Create symbolic link</td></tr>
+          <tr><td><code>cat file</code></td><td class="desc">Display file contents</td></tr>
+          <tr><td><code>less file</code></td><td class="desc">View file with scrolling</td></tr>
+          <tr><td><code>head -n 20 file</code></td><td class="desc">Show first 20 lines</td></tr>
+          <tr><td><code>tail -n 20 file</code></td><td class="desc">Show last 20 lines</td></tr>
+          <tr><td><code>tail -f file</code></td><td class="desc">Follow file in real-time (logs)</td></tr>
+          <tr><td><code>wc -l file</code></td><td class="desc">Count lines in file</td></tr>
+          <tr><td><code>du -sh dir</code></td><td class="desc">Show directory size (human-readable)</td></tr>
+          <tr><td><code>df -h</code></td><td class="desc">Show disk usage (human-readable)</td></tr>
+          <tr><td><code>file filename</code></td><td class="desc">Detect file type</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Text Processing -->
+    <section class="section" id="text">
+      <h2>Text Processing</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>grep "pattern" file</code></td><td class="desc">Search for pattern in file</td></tr>
+          <tr><td><code>grep -r "pattern" dir</code></td><td class="desc">Recursive search in directory</td></tr>
+          <tr><td><code>grep -i "pattern" file</code></td><td class="desc">Case-insensitive search</td></tr>
+          <tr><td><code>grep -n "pattern" file</code></td><td class="desc">Show line numbers</td></tr>
+          <tr><td><code>grep -c "pattern" file</code></td><td class="desc">Count matching lines</td></tr>
+          <tr><td><code>grep -v "pattern" file</code></td><td class="desc">Invert match (exclude pattern)</td></tr>
+          <tr><td><code>sed 's/old/new/g' file</code></td><td class="desc">Replace text (all occurrences)</td></tr>
+          <tr><td><code>sed -i 's/old/new/g' file</code></td><td class="desc">Replace in-place</td></tr>
+          <tr><td><code>awk '{print $1}' file</code></td><td class="desc">Print first column</td></tr>
+          <tr><td><code>awk -F, '{print $2}' file</code></td><td class="desc">Print 2nd column (comma delimiter)</td></tr>
+          <tr><td><code>sort file</code></td><td class="desc">Sort lines alphabetically</td></tr>
+          <tr><td><code>sort -n file</code></td><td class="desc">Sort numerically</td></tr>
+          <tr><td><code>sort -r file</code></td><td class="desc">Sort in reverse</td></tr>
+          <tr><td><code>uniq</code></td><td class="desc">Remove adjacent duplicate lines</td></tr>
+          <tr><td><code>sort | uniq -c</code></td><td class="desc">Count occurrences of each line</td></tr>
+          <tr><td><code>cut -d',' -f1,3 file</code></td><td class="desc">Extract fields 1 and 3 (comma-separated)</td></tr>
+          <tr><td><code>tr 'a-z' 'A-Z'</code></td><td class="desc">Translate lowercase to uppercase</td></tr>
+          <tr><td><code>diff file1 file2</code></td><td class="desc">Compare two files</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Search & Find -->
+    <section class="section" id="search">
+      <h2>Search &amp; Find</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>find . -name "*.js"</code></td><td class="desc">Find files by name pattern</td></tr>
+          <tr><td><code>find . -type d -name "src"</code></td><td class="desc">Find directories by name</td></tr>
+          <tr><td><code>find . -type f -mtime -7</code></td><td class="desc">Files modified in last 7 days</td></tr>
+          <tr><td><code>find . -size +100M</code></td><td class="desc">Files larger than 100MB</td></tr>
+          <tr><td><code>find . -name "*.log" -delete</code></td><td class="desc">Find and delete files</td></tr>
+          <tr><td><code>find . -exec cmd {} \;</code></td><td class="desc">Execute command on each result</td></tr>
+          <tr><td><code>which command</code></td><td class="desc">Show full path of a command</td></tr>
+          <tr><td><code>whereis command</code></td><td class="desc">Locate binary, source, and man page</td></tr>
+          <tr><td><code>locate filename</code></td><td class="desc">Fast file search (uses database)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Permissions -->
+    <section class="section" id="permissions">
+      <h2>Permissions</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>chmod 755 file</code></td><td class="desc">Set permissions (rwxr-xr-x)</td></tr>
+          <tr><td><code>chmod +x file</code></td><td class="desc">Add execute permission</td></tr>
+          <tr><td><code>chmod -R 644 dir</code></td><td class="desc">Set permissions recursively</td></tr>
+          <tr><td><code>chown user:group file</code></td><td class="desc">Change file owner and group</td></tr>
+          <tr><td><code>chown -R user dir</code></td><td class="desc">Change owner recursively</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment"># Permission numbers</span>
+<span class="comment"># 4 = read (r)    2 = write (w)    1 = execute (x)</span>
+<span class="comment"># 7 = rwx   6 = rw-   5 = r-x   4 = r--   0 = ---</span>
+
+<span class="comment"># Common patterns:</span>
+<span class="string">755</span>  <span class="comment"># owner: rwx, group: r-x, others: r-x (directories, scripts)</span>
+<span class="string">644</span>  <span class="comment"># owner: rw-, group: r--, others: r-- (files)</span>
+<span class="string">700</span>  <span class="comment"># owner: rwx, group: ---, others: --- (private)</span>
+<span class="string">600</span>  <span class="comment"># owner: rw-, group: ---, others: --- (SSH keys)</span></code></pre>
+    </section>
+
+    <!-- Process Management -->
+    <section class="section" id="process">
+      <h2>Process Management</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>ps aux</code></td><td class="desc">List all running processes</td></tr>
+          <tr><td><code>ps aux | grep name</code></td><td class="desc">Find a process by name</td></tr>
+          <tr><td><code>top</code></td><td class="desc">Interactive process viewer</td></tr>
+          <tr><td><code>htop</code></td><td class="desc">Enhanced interactive process viewer</td></tr>
+          <tr><td><code>kill PID</code></td><td class="desc">Terminate a process by PID</td></tr>
+          <tr><td><code>kill -9 PID</code></td><td class="desc">Force kill a process</td></tr>
+          <tr><td><code>killall name</code></td><td class="desc">Kill all processes by name</td></tr>
+          <tr><td><code>command &amp;</code></td><td class="desc">Run command in background</td></tr>
+          <tr><td><code>jobs</code></td><td class="desc">List background jobs</td></tr>
+          <tr><td><code>fg %1</code></td><td class="desc">Bring job 1 to foreground</td></tr>
+          <tr><td><code>bg %1</code></td><td class="desc">Resume job 1 in background</td></tr>
+          <tr><td><code>nohup cmd &amp;</code></td><td class="desc">Run command that survives terminal close</td></tr>
+          <tr><td><code>lsof -i :8080</code></td><td class="desc">Find process using port 8080</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Networking -->
+    <section class="section" id="network">
+      <h2>Networking</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>curl url</code></td><td class="desc">Fetch URL content</td></tr>
+          <tr><td><code>curl -o file url</code></td><td class="desc">Download file</td></tr>
+          <tr><td><code>curl -X POST -d 'data' url</code></td><td class="desc">Send POST request with data</td></tr>
+          <tr><td><code>curl -H "Key: Value" url</code></td><td class="desc">Send request with custom header</td></tr>
+          <tr><td><code>wget url</code></td><td class="desc">Download file</td></tr>
+          <tr><td><code>wget -r url</code></td><td class="desc">Download recursively</td></tr>
+          <tr><td><code>ping host</code></td><td class="desc">Test network connectivity</td></tr>
+          <tr><td><code>ssh user@host</code></td><td class="desc">Connect to remote host</td></tr>
+          <tr><td><code>scp file user@host:path</code></td><td class="desc">Copy file to remote host</td></tr>
+          <tr><td><code>scp user@host:file .</code></td><td class="desc">Copy file from remote host</td></tr>
+          <tr><td><code>rsync -avz src/ dest/</code></td><td class="desc">Sync files (efficient, incremental)</td></tr>
+          <tr><td><code>netstat -tulnp</code></td><td class="desc">Show listening ports</td></tr>
+          <tr><td><code>ss -tulnp</code></td><td class="desc">Show listening ports (modern)</td></tr>
+          <tr><td><code>ifconfig</code> / <code>ip addr</code></td><td class="desc">Show network interfaces</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Variables & Environment -->
+    <section class="section" id="variables">
+      <h2>Variables &amp; Environment</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Syntax</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>NAME="value"</code></td><td class="desc">Set a variable (no spaces around =)</td></tr>
+          <tr><td><code>echo $NAME</code></td><td class="desc">Use a variable</td></tr>
+          <tr><td><code>echo "${NAME}_suffix"</code></td><td class="desc">Variable with surrounding text</td></tr>
+          <tr><td><code>export NAME="value"</code></td><td class="desc">Set environment variable (available to child processes)</td></tr>
+          <tr><td><code>unset NAME</code></td><td class="desc">Remove a variable</td></tr>
+          <tr><td><code>env</code></td><td class="desc">List all environment variables</td></tr>
+          <tr><td><code>$HOME</code></td><td class="desc">Home directory path</td></tr>
+          <tr><td><code>$PATH</code></td><td class="desc">Command search paths</td></tr>
+          <tr><td><code>$USER</code></td><td class="desc">Current username</td></tr>
+          <tr><td><code>$PWD</code></td><td class="desc">Current directory</td></tr>
+          <tr><td><code>$?</code></td><td class="desc">Exit code of last command (0 = success)</td></tr>
+          <tr><td><code>$$</code></td><td class="desc">Current process ID</td></tr>
+          <tr><td><code>$!</code></td><td class="desc">PID of last background process</td></tr>
+          <tr><td><code>$#</code></td><td class="desc">Number of arguments</td></tr>
+          <tr><td><code>$@</code></td><td class="desc">All arguments (as separate words)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Scripting Basics -->
+    <section class="section" id="scripting">
+      <h2>Scripting Basics</h2>
+      <pre class="code-block"><code><span class="comment">#!/bin/bash</span>
+
+<span class="comment"># Variables</span>
+<span class="keyword">NAME</span>=<span class="string">"World"</span>
+echo <span class="string">"Hello, $NAME!"</span>
+
+<span class="comment"># If/else</span>
+<span class="keyword">if</span> [ <span class="string">"$1"</span> = <span class="string">"hello"</span> ]; <span class="keyword">then</span>
+  echo <span class="string">"Hi there!"</span>
+<span class="keyword">elif</span> [ -z <span class="string">"$1"</span> ]; <span class="keyword">then</span>
+  echo <span class="string">"No argument"</span>
+<span class="keyword">else</span>
+  echo <span class="string">"Unknown: $1"</span>
+<span class="keyword">fi</span>
+
+<span class="comment"># For loop</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> 1 2 3 4 5; <span class="keyword">do</span>
+  echo <span class="string">"Number: $i"</span>
+<span class="keyword">done</span>
+
+<span class="comment"># For loop (C-style)</span>
+<span class="keyword">for</span> ((i=0; i&lt;10; i++)); <span class="keyword">do</span>
+  echo <span class="string">"$i"</span>
+<span class="keyword">done</span>
+
+<span class="comment"># While loop</span>
+<span class="keyword">while</span> [ $count -lt 5 ]; <span class="keyword">do</span>
+  echo <span class="string">"$count"</span>
+  ((count++))
+<span class="keyword">done</span>
+
+<span class="comment"># Functions</span>
+<span class="keyword">greet</span>() {
+  echo <span class="string">"Hello, $1!"</span>
+}
+greet <span class="string">"Alice"</span></code></pre>
+
+      <h3 style="margin:24px 0 8px;color:var(--text-secondary);">Test Conditions</h3>
+      <table class="cmd-table">
+        <thead><tr><th>Test</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>-f file</code></td><td class="desc">File exists and is a regular file</td></tr>
+          <tr><td><code>-d dir</code></td><td class="desc">Directory exists</td></tr>
+          <tr><td><code>-e path</code></td><td class="desc">Path exists (file or directory)</td></tr>
+          <tr><td><code>-r file</code></td><td class="desc">File is readable</td></tr>
+          <tr><td><code>-w file</code></td><td class="desc">File is writable</td></tr>
+          <tr><td><code>-x file</code></td><td class="desc">File is executable</td></tr>
+          <tr><td><code>-z "$var"</code></td><td class="desc">Variable is empty</td></tr>
+          <tr><td><code>-n "$var"</code></td><td class="desc">Variable is not empty</td></tr>
+          <tr><td><code>"$a" = "$b"</code></td><td class="desc">Strings are equal</td></tr>
+          <tr><td><code>"$a" != "$b"</code></td><td class="desc">Strings are not equal</td></tr>
+          <tr><td><code>$a -eq $b</code></td><td class="desc">Numbers are equal</td></tr>
+          <tr><td><code>$a -lt $b</code></td><td class="desc">a less than b</td></tr>
+          <tr><td><code>$a -gt $b</code></td><td class="desc">a greater than b</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Redirection & Pipes -->
+    <section class="section" id="redirect">
+      <h2>Redirection &amp; Pipes</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Syntax</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>cmd > file</code></td><td class="desc">Redirect stdout to file (overwrite)</td></tr>
+          <tr><td><code>cmd >> file</code></td><td class="desc">Append stdout to file</td></tr>
+          <tr><td><code>cmd 2> file</code></td><td class="desc">Redirect stderr to file</td></tr>
+          <tr><td><code>cmd &> file</code></td><td class="desc">Redirect both stdout and stderr</td></tr>
+          <tr><td><code>cmd 2>&1</code></td><td class="desc">Redirect stderr to stdout</td></tr>
+          <tr><td><code>cmd < file</code></td><td class="desc">Use file as stdin</td></tr>
+          <tr><td><code>cmd1 | cmd2</code></td><td class="desc">Pipe stdout of cmd1 to stdin of cmd2</td></tr>
+          <tr><td><code>cmd1 | tee file | cmd2</code></td><td class="desc">Pipe and save output to file simultaneously</td></tr>
+          <tr><td><code>cmd1 && cmd2</code></td><td class="desc">Run cmd2 only if cmd1 succeeds</td></tr>
+          <tr><td><code>cmd1 || cmd2</code></td><td class="desc">Run cmd2 only if cmd1 fails</td></tr>
+          <tr><td><code>cmd1 ; cmd2</code></td><td class="desc">Run both commands sequentially</td></tr>
+          <tr><td><code>$(command)</code></td><td class="desc">Command substitution (use output as value)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Keyboard Shortcuts -->
+    <section class="section" id="shortcuts">
+      <h2>Keyboard Shortcuts</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Shortcut</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>Ctrl + C</code></td><td class="desc">Kill current process</td></tr>
+          <tr><td><code>Ctrl + Z</code></td><td class="desc">Suspend current process (resume with <code>fg</code>)</td></tr>
+          <tr><td><code>Ctrl + D</code></td><td class="desc">Exit shell / send EOF</td></tr>
+          <tr><td><code>Ctrl + L</code></td><td class="desc">Clear screen</td></tr>
+          <tr><td><code>Ctrl + R</code></td><td class="desc">Reverse search command history</td></tr>
+          <tr><td><code>Ctrl + A</code></td><td class="desc">Move cursor to beginning of line</td></tr>
+          <tr><td><code>Ctrl + E</code></td><td class="desc">Move cursor to end of line</td></tr>
+          <tr><td><code>Ctrl + W</code></td><td class="desc">Delete word before cursor</td></tr>
+          <tr><td><code>Ctrl + U</code></td><td class="desc">Delete from cursor to beginning of line</td></tr>
+          <tr><td><code>Ctrl + K</code></td><td class="desc">Delete from cursor to end of line</td></tr>
+          <tr><td><code>Tab</code></td><td class="desc">Auto-complete command or filename</td></tr>
+          <tr><td><code>!!</code></td><td class="desc">Repeat last command</td></tr>
+          <tr><td><code>!$</code></td><td class="desc">Last argument of previous command</td></tr>
+          <tr><td><code>history</code></td><td class="desc">Show command history</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="git.html">Git Commands</a></h3>
+          <p>Essential Git commands for setup, branching, merging, stashing, and more.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="regex.html">Regex</a></h3>
+          <p>Regular expression syntax, quantifiers, groups, and common patterns.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="python.html">Python</a></h3>
+          <p>Python syntax, data types, functions, classes, and standard library essentials.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
