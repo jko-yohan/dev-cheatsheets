@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Entities Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="HTML entities cheat sheet. Complete list of special characters, symbols, arrows, math operators, currency signs, and Unicode entities with codes.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/html-entities.html">
+  <meta property="og:title" content="HTML Entities Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Complete HTML entities list: special characters, symbols, arrows, math, currency, and more with named and numeric codes.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/html-entities.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "HTML Entities Cheat Sheet - Quick Reference",
+    "description": "Complete HTML character entities reference with named and numeric codes",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/html-entities.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+  <style>
+    .entity-char {
+      font-size: 1.5rem;
+      text-align: center;
+      min-width: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Search entities..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / HTML Entities</div>
+      <h1>HTML Entities Cheat Sheet</h1>
+      <p class="description">Complete reference of HTML character entities. Special characters, symbols, arrows, math operators, currency signs, and more.</p>
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#essential">Essential Characters</a></li>
+        <li><a href="#punctuation">Punctuation &amp; Quotes</a></li>
+        <li><a href="#math">Math &amp; Logic</a></li>
+        <li><a href="#arrows">Arrows</a></li>
+        <li><a href="#currency">Currency</a></li>
+        <li><a href="#symbols">Symbols &amp; Misc</a></li>
+        <li><a href="#greek">Greek Letters</a></li>
+        <li><a href="#spaces">Spaces &amp; Formatting</a></li>
+      </ul>
+    </nav>
+
+    <!-- Essential Characters -->
+    <section class="section" id="essential">
+      <h2>Essential Characters</h2>
+      <p style="color:var(--text-secondary);margin-bottom:16px;">Characters that must be escaped in HTML to avoid parsing issues.</p>
+      <table class="cmd-table">
+        <thead><tr><th>Char</th><th>Named</th><th>Numeric</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="entity-char">&amp;</td><td><code>&amp;amp;</code></td><td><code>&amp;#38;</code></td><td class="desc">Ampersand</td></tr>
+          <tr><td class="entity-char">&lt;</td><td><code>&amp;lt;</code></td><td><code>&amp;#60;</code></td><td class="desc">Less than</td></tr>
+          <tr><td class="entity-char">&gt;</td><td><code>&amp;gt;</code></td><td><code>&amp;#62;</code></td><td class="desc">Greater than</td></tr>
+          <tr><td class="entity-char">&quot;</td><td><code>&amp;quot;</code></td><td><code>&amp;#34;</code></td><td class="desc">Double quote</td></tr>
+          <tr><td class="entity-char">&#39;</td><td><code>&amp;apos;</code></td><td><code>&amp;#39;</code></td><td class="desc">Single quote / apostrophe</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box warning">
+        <strong>Important:</strong> Always escape <code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code> in HTML content, and <code>&quot;</code> inside attribute values. Failing to do so can cause rendering issues or XSS vulnerabilities.
+      </div>
+    </section>
+
+    <!-- Punctuation & Quotes -->
+    <section class="section" id="punctuation">
+      <h2>Punctuation &amp; Quotes</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Char</th><th>Named</th><th>Numeric</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="entity-char">&nbsp;</td><td><code>&amp;nbsp;</code></td><td><code>&amp;#160;</code></td><td class="desc">Non-breaking space</td></tr>
+          <tr><td class="entity-char">&ndash;</td><td><code>&amp;ndash;</code></td><td><code>&amp;#8211;</code></td><td class="desc">En dash</td></tr>
+          <tr><td class="entity-char">&mdash;</td><td><code>&amp;mdash;</code></td><td><code>&amp;#8212;</code></td><td class="desc">Em dash</td></tr>
+          <tr><td class="entity-char">&lsquo;</td><td><code>&amp;lsquo;</code></td><td><code>&amp;#8216;</code></td><td class="desc">Left single quote</td></tr>
+          <tr><td class="entity-char">&rsquo;</td><td><code>&amp;rsquo;</code></td><td><code>&amp;#8217;</code></td><td class="desc">Right single quote / apostrophe</td></tr>
+          <tr><td class="entity-char">&ldquo;</td><td><code>&amp;ldquo;</code></td><td><code>&amp;#8220;</code></td><td class="desc">Left double quote</td></tr>
+          <tr><td class="entity-char">&rdquo;</td><td><code>&amp;rdquo;</code></td><td><code>&amp;#8221;</code></td><td class="desc">Right double quote</td></tr>
+          <tr><td class="entity-char">&laquo;</td><td><code>&amp;laquo;</code></td><td><code>&amp;#171;</code></td><td class="desc">Left guillemet</td></tr>
+          <tr><td class="entity-char">&raquo;</td><td><code>&amp;raquo;</code></td><td><code>&amp;#187;</code></td><td class="desc">Right guillemet</td></tr>
+          <tr><td class="entity-char">&hellip;</td><td><code>&amp;hellip;</code></td><td><code>&amp;#8230;</code></td><td class="desc">Ellipsis</td></tr>
+          <tr><td class="entity-char">&middot;</td><td><code>&amp;middot;</code></td><td><code>&amp;#183;</code></td><td class="desc">Middle dot</td></tr>
+          <tr><td class="entity-char">&bull;</td><td><code>&amp;bull;</code></td><td><code>&amp;#8226;</code></td><td class="desc">Bullet</td></tr>
+          <tr><td class="entity-char">&iexcl;</td><td><code>&amp;iexcl;</code></td><td><code>&amp;#161;</code></td><td class="desc">Inverted exclamation</td></tr>
+          <tr><td class="entity-char">&iquest;</td><td><code>&amp;iquest;</code></td><td><code>&amp;#191;</code></td><td class="desc">Inverted question</td></tr>
+          <tr><td class="entity-char">&dagger;</td><td><code>&amp;dagger;</code></td><td><code>&amp;#8224;</code></td><td class="desc">Dagger</td></tr>
+          <tr><td class="entity-char">&Dagger;</td><td><code>&amp;Dagger;</code></td><td><code>&amp;#8225;</code></td><td class="desc">Double dagger</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Math & Logic -->
+    <section class="section" id="math">
+      <h2>Math &amp; Logic</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Char</th><th>Named</th><th>Numeric</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="entity-char">&plus;</td><td><code>&amp;plus;</code></td><td><code>&amp;#43;</code></td><td class="desc">Plus sign</td></tr>
+          <tr><td class="entity-char">&minus;</td><td><code>&amp;minus;</code></td><td><code>&amp;#8722;</code></td><td class="desc">Minus sign</td></tr>
+          <tr><td class="entity-char">&times;</td><td><code>&amp;times;</code></td><td><code>&amp;#215;</code></td><td class="desc">Multiplication</td></tr>
+          <tr><td class="entity-char">&divide;</td><td><code>&amp;divide;</code></td><td><code>&amp;#247;</code></td><td class="desc">Division</td></tr>
+          <tr><td class="entity-char">&plusmn;</td><td><code>&amp;plusmn;</code></td><td><code>&amp;#177;</code></td><td class="desc">Plus-minus</td></tr>
+          <tr><td class="entity-char">&ne;</td><td><code>&amp;ne;</code></td><td><code>&amp;#8800;</code></td><td class="desc">Not equal</td></tr>
+          <tr><td class="entity-char">&le;</td><td><code>&amp;le;</code></td><td><code>&amp;#8804;</code></td><td class="desc">Less than or equal</td></tr>
+          <tr><td class="entity-char">&ge;</td><td><code>&amp;ge;</code></td><td><code>&amp;#8805;</code></td><td class="desc">Greater than or equal</td></tr>
+          <tr><td class="entity-char">&asymp;</td><td><code>&amp;asymp;</code></td><td><code>&amp;#8776;</code></td><td class="desc">Approximately equal</td></tr>
+          <tr><td class="entity-char">&equiv;</td><td><code>&amp;equiv;</code></td><td><code>&amp;#8801;</code></td><td class="desc">Identical / equivalent</td></tr>
+          <tr><td class="entity-char">&sum;</td><td><code>&amp;sum;</code></td><td><code>&amp;#8721;</code></td><td class="desc">Summation</td></tr>
+          <tr><td class="entity-char">&prod;</td><td><code>&amp;prod;</code></td><td><code>&amp;#8719;</code></td><td class="desc">Product</td></tr>
+          <tr><td class="entity-char">&radic;</td><td><code>&amp;radic;</code></td><td><code>&amp;#8730;</code></td><td class="desc">Square root</td></tr>
+          <tr><td class="entity-char">&infin;</td><td><code>&amp;infin;</code></td><td><code>&amp;#8734;</code></td><td class="desc">Infinity</td></tr>
+          <tr><td class="entity-char">&int;</td><td><code>&amp;int;</code></td><td><code>&amp;#8747;</code></td><td class="desc">Integral</td></tr>
+          <tr><td class="entity-char">&part;</td><td><code>&amp;part;</code></td><td><code>&amp;#8706;</code></td><td class="desc">Partial differential</td></tr>
+          <tr><td class="entity-char">&nabla;</td><td><code>&amp;nabla;</code></td><td><code>&amp;#8711;</code></td><td class="desc">Nabla / del</td></tr>
+          <tr><td class="entity-char">&isin;</td><td><code>&amp;isin;</code></td><td><code>&amp;#8712;</code></td><td class="desc">Element of</td></tr>
+          <tr><td class="entity-char">&notin;</td><td><code>&amp;notin;</code></td><td><code>&amp;#8713;</code></td><td class="desc">Not element of</td></tr>
+          <tr><td class="entity-char">&sub;</td><td><code>&amp;sub;</code></td><td><code>&amp;#8834;</code></td><td class="desc">Subset of</td></tr>
+          <tr><td class="entity-char">&sup;</td><td><code>&amp;sup;</code></td><td><code>&amp;#8835;</code></td><td class="desc">Superset of</td></tr>
+          <tr><td class="entity-char">&cup;</td><td><code>&amp;cup;</code></td><td><code>&amp;#8746;</code></td><td class="desc">Union</td></tr>
+          <tr><td class="entity-char">&cap;</td><td><code>&amp;cap;</code></td><td><code>&amp;#8745;</code></td><td class="desc">Intersection</td></tr>
+          <tr><td class="entity-char">&and;</td><td><code>&amp;and;</code></td><td><code>&amp;#8743;</code></td><td class="desc">Logical AND</td></tr>
+          <tr><td class="entity-char">&or;</td><td><code>&amp;or;</code></td><td><code>&amp;#8744;</code></td><td class="desc">Logical OR</td></tr>
+          <tr><td class="entity-char">&not;</td><td><code>&amp;not;</code></td><td><code>&amp;#172;</code></td><td class="desc">Not sign</td></tr>
+          <tr><td class="entity-char">&there4;</td><td><code>&amp;there4;</code></td><td><code>&amp;#8756;</code></td><td class="desc">Therefore</td></tr>
+          <tr><td class="entity-char">&permil;</td><td><code>&amp;permil;</code></td><td><code>&amp;#8240;</code></td><td class="desc">Per mille (per thousand)</td></tr>
+          <tr><td class="entity-char">&deg;</td><td><code>&amp;deg;</code></td><td><code>&amp;#176;</code></td><td class="desc">Degree</td></tr>
+          <tr><td class="entity-char">&frac14;</td><td><code>&amp;frac14;</code></td><td><code>&amp;#188;</code></td><td class="desc">One quarter</td></tr>
+          <tr><td class="entity-char">&frac12;</td><td><code>&amp;frac12;</code></td><td><code>&amp;#189;</code></td><td class="desc">One half</td></tr>
+          <tr><td class="entity-char">&frac34;</td><td><code>&amp;frac34;</code></td><td><code>&amp;#190;</code></td><td class="desc">Three quarters</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Arrows -->
+    <section class="section" id="arrows">
+      <h2>Arrows</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Char</th><th>Named</th><th>Numeric</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="entity-char">&larr;</td><td><code>&amp;larr;</code></td><td><code>&amp;#8592;</code></td><td class="desc">Left arrow</td></tr>
+          <tr><td class="entity-char">&uarr;</td><td><code>&amp;uarr;</code></td><td><code>&amp;#8593;</code></td><td class="desc">Up arrow</td></tr>
+          <tr><td class="entity-char">&rarr;</td><td><code>&amp;rarr;</code></td><td><code>&amp;#8594;</code></td><td class="desc">Right arrow</td></tr>
+          <tr><td class="entity-char">&darr;</td><td><code>&amp;darr;</code></td><td><code>&amp;#8595;</code></td><td class="desc">Down arrow</td></tr>
+          <tr><td class="entity-char">&harr;</td><td><code>&amp;harr;</code></td><td><code>&amp;#8596;</code></td><td class="desc">Left-right arrow</td></tr>
+          <tr><td class="entity-char">&lArr;</td><td><code>&amp;lArr;</code></td><td><code>&amp;#8656;</code></td><td class="desc">Left double arrow</td></tr>
+          <tr><td class="entity-char">&rArr;</td><td><code>&amp;rArr;</code></td><td><code>&amp;#8658;</code></td><td class="desc">Right double arrow (implies)</td></tr>
+          <tr><td class="entity-char">&hArr;</td><td><code>&amp;hArr;</code></td><td><code>&amp;#8660;</code></td><td class="desc">Left-right double arrow (iff)</td></tr>
+          <tr><td class="entity-char">&crarr;</td><td><code>&amp;crarr;</code></td><td><code>&amp;#8629;</code></td><td class="desc">Carriage return arrow</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Currency -->
+    <section class="section" id="currency">
+      <h2>Currency</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Char</th><th>Named</th><th>Numeric</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="entity-char">&dollar;</td><td><code>&amp;dollar;</code></td><td><code>&amp;#36;</code></td><td class="desc">Dollar</td></tr>
+          <tr><td class="entity-char">&euro;</td><td><code>&amp;euro;</code></td><td><code>&amp;#8364;</code></td><td class="desc">Euro</td></tr>
+          <tr><td class="entity-char">&pound;</td><td><code>&amp;pound;</code></td><td><code>&amp;#163;</code></td><td class="desc">British pound</td></tr>
+          <tr><td class="entity-char">&yen;</td><td><code>&amp;yen;</code></td><td><code>&amp;#165;</code></td><td class="desc">Yen / Yuan</td></tr>
+          <tr><td class="entity-char">&cent;</td><td><code>&amp;cent;</code></td><td><code>&amp;#162;</code></td><td class="desc">Cent</td></tr>
+          <tr><td class="entity-char">&#8377;</td><td><code>&amp;#8377;</code></td><td><code>&amp;#8377;</code></td><td class="desc">Indian Rupee</td></tr>
+          <tr><td class="entity-char">&#8361;</td><td><code>&amp;#8361;</code></td><td><code>&amp;#8361;</code></td><td class="desc">Korean Won</td></tr>
+          <tr><td class="entity-char">&#8369;</td><td><code>&amp;#8369;</code></td><td><code>&amp;#8369;</code></td><td class="desc">Philippine Peso</td></tr>
+          <tr><td class="entity-char">&#3647;</td><td><code>&amp;#3647;</code></td><td><code>&amp;#3647;</code></td><td class="desc">Thai Baht</td></tr>
+          <tr><td class="entity-char">&#8382;</td><td><code>&amp;#8382;</code></td><td><code>&amp;#8382;</code></td><td class="desc">Lari (Georgian)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Symbols & Misc -->
+    <section class="section" id="symbols">
+      <h2>Symbols &amp; Misc</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Char</th><th>Named</th><th>Numeric</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="entity-char">&copy;</td><td><code>&amp;copy;</code></td><td><code>&amp;#169;</code></td><td class="desc">Copyright</td></tr>
+          <tr><td class="entity-char">&reg;</td><td><code>&amp;reg;</code></td><td><code>&amp;#174;</code></td><td class="desc">Registered</td></tr>
+          <tr><td class="entity-char">&trade;</td><td><code>&amp;trade;</code></td><td><code>&amp;#8482;</code></td><td class="desc">Trademark</td></tr>
+          <tr><td class="entity-char">&sect;</td><td><code>&amp;sect;</code></td><td><code>&amp;#167;</code></td><td class="desc">Section</td></tr>
+          <tr><td class="entity-char">&para;</td><td><code>&amp;para;</code></td><td><code>&amp;#182;</code></td><td class="desc">Paragraph / pilcrow</td></tr>
+          <tr><td class="entity-char">&micro;</td><td><code>&amp;micro;</code></td><td><code>&amp;#181;</code></td><td class="desc">Micro</td></tr>
+          <tr><td class="entity-char">&macr;</td><td><code>&amp;macr;</code></td><td><code>&amp;#175;</code></td><td class="desc">Macron / overline</td></tr>
+          <tr><td class="entity-char">&loz;</td><td><code>&amp;loz;</code></td><td><code>&amp;#9674;</code></td><td class="desc">Lozenge / diamond</td></tr>
+          <tr><td class="entity-char">&spades;</td><td><code>&amp;spades;</code></td><td><code>&amp;#9824;</code></td><td class="desc">Spade suit</td></tr>
+          <tr><td class="entity-char">&clubs;</td><td><code>&amp;clubs;</code></td><td><code>&amp;#9827;</code></td><td class="desc">Club suit</td></tr>
+          <tr><td class="entity-char">&hearts;</td><td><code>&amp;hearts;</code></td><td><code>&amp;#9829;</code></td><td class="desc">Heart suit</td></tr>
+          <tr><td class="entity-char">&diams;</td><td><code>&amp;diams;</code></td><td><code>&amp;#9830;</code></td><td class="desc">Diamond suit</td></tr>
+          <tr><td class="entity-char">&#10003;</td><td>—</td><td><code>&amp;#10003;</code></td><td class="desc">Check mark</td></tr>
+          <tr><td class="entity-char">&#10007;</td><td>—</td><td><code>&amp;#10007;</code></td><td class="desc">Ballot X / cross mark</td></tr>
+          <tr><td class="entity-char">&#9733;</td><td>—</td><td><code>&amp;#9733;</code></td><td class="desc">Black star</td></tr>
+          <tr><td class="entity-char">&#9734;</td><td>—</td><td><code>&amp;#9734;</code></td><td class="desc">White star</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Greek Letters -->
+    <section class="section" id="greek">
+      <h2>Greek Letters</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Char</th><th>Named</th><th>Char</th><th>Named</th></tr></thead>
+        <tbody>
+          <tr><td class="entity-char">&Alpha;</td><td><code>&amp;Alpha;</code> / <code>&amp;alpha;</code></td><td class="entity-char">&alpha;</td><td><code>&amp;alpha;</code></td></tr>
+          <tr><td class="entity-char">&Beta;</td><td><code>&amp;Beta;</code></td><td class="entity-char">&beta;</td><td><code>&amp;beta;</code></td></tr>
+          <tr><td class="entity-char">&Gamma;</td><td><code>&amp;Gamma;</code></td><td class="entity-char">&gamma;</td><td><code>&amp;gamma;</code></td></tr>
+          <tr><td class="entity-char">&Delta;</td><td><code>&amp;Delta;</code></td><td class="entity-char">&delta;</td><td><code>&amp;delta;</code></td></tr>
+          <tr><td class="entity-char">&Epsilon;</td><td><code>&amp;Epsilon;</code></td><td class="entity-char">&epsilon;</td><td><code>&amp;epsilon;</code></td></tr>
+          <tr><td class="entity-char">&Theta;</td><td><code>&amp;Theta;</code></td><td class="entity-char">&theta;</td><td><code>&amp;theta;</code></td></tr>
+          <tr><td class="entity-char">&Lambda;</td><td><code>&amp;Lambda;</code></td><td class="entity-char">&lambda;</td><td><code>&amp;lambda;</code></td></tr>
+          <tr><td class="entity-char">&Pi;</td><td><code>&amp;Pi;</code></td><td class="entity-char">&pi;</td><td><code>&amp;pi;</code></td></tr>
+          <tr><td class="entity-char">&Sigma;</td><td><code>&amp;Sigma;</code></td><td class="entity-char">&sigma;</td><td><code>&amp;sigma;</code></td></tr>
+          <tr><td class="entity-char">&Phi;</td><td><code>&amp;Phi;</code></td><td class="entity-char">&phi;</td><td><code>&amp;phi;</code></td></tr>
+          <tr><td class="entity-char">&Omega;</td><td><code>&amp;Omega;</code></td><td class="entity-char">&omega;</td><td><code>&amp;omega;</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Spaces & Formatting -->
+    <section class="section" id="spaces">
+      <h2>Spaces &amp; Formatting</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Entity</th><th>Width</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>&amp;nbsp;</code></td><td>Normal space</td><td class="desc">Non-breaking space (prevents line break)</td></tr>
+          <tr><td><code>&amp;ensp;</code></td><td>En space</td><td class="desc">Half an em (width of 'n')</td></tr>
+          <tr><td><code>&amp;emsp;</code></td><td>Em space</td><td class="desc">Full em (width of 'm')</td></tr>
+          <tr><td><code>&amp;thinsp;</code></td><td>Thin space</td><td class="desc">1/5 or 1/6 of an em</td></tr>
+          <tr><td><code>&amp;#8203;</code></td><td>Zero width</td><td class="desc">Zero-width space (allows line break)</td></tr>
+          <tr><td><code>&amp;#8204;</code></td><td>Zero width</td><td class="desc">Zero-width non-joiner</td></tr>
+          <tr><td><code>&amp;shy;</code></td><td>Zero width</td><td class="desc">Soft hyphen (break point for long words)</td></tr>
+          <tr><td><code>&amp;#10;</code></td><td>—</td><td class="desc">Line feed (in attributes)</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box">
+        <strong>Tip:</strong> Use <code>&amp;nbsp;</code> to prevent two words from being split across lines. Use <code>&amp;shy;</code> inside long words to hint where they can be hyphenated if needed.
+      </div>
+    </section>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="markdown.html">Markdown</a></h3>
+          <p>Markdown syntax for headings, links, images, tables, and code blocks.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="css-flexbox.html">CSS Flexbox</a></h3>
+          <p>Complete Flexbox guide with container/item properties and layout patterns.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="css-grid.html">CSS Grid</a></h3>
+          <p>Two-dimensional grid layout with templates, areas, and responsive patterns.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
