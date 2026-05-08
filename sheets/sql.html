@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="SQL cheat sheet with essential queries: SELECT, INSERT, UPDATE, DELETE, JOINs, subqueries, aggregation, indexes, and common patterns with examples.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/sql.html">
+  <meta property="og:title" content="SQL Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Complete SQL reference: queries, JOINs, aggregation, subqueries, indexes, constraints, and common patterns.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/sql.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "SQL Cheat Sheet - Quick Reference",
+    "description": "Complete SQL reference with queries, JOINs, and examples",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/sql.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Filter queries..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / SQL Cheat Sheet</div>
+      <h1>SQL Cheat Sheet</h1>
+      <p class="description">Essential SQL queries and syntax. SELECT, INSERT, UPDATE, DELETE, JOINs, aggregation, subqueries, and database management.</p>
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#select">SELECT Queries</a></li>
+        <li><a href="#filtering">Filtering &amp; Sorting</a></li>
+        <li><a href="#joins">JOINs</a></li>
+        <li><a href="#aggregate">Aggregation</a></li>
+        <li><a href="#subqueries">Subqueries &amp; CTEs</a></li>
+        <li><a href="#modify">INSERT / UPDATE / DELETE</a></li>
+        <li><a href="#tables">Table Management</a></li>
+        <li><a href="#constraints">Constraints &amp; Indexes</a></li>
+        <li><a href="#functions">Common Functions</a></li>
+        <li><a href="#patterns">Useful Patterns</a></li>
+      </ul>
+    </nav>
+
+    <!-- SELECT -->
+    <section class="section" id="select">
+      <h2>SELECT Queries</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Query</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>SELECT * FROM users</code></td><td class="desc">Select all columns</td></tr>
+          <tr><td><code>SELECT name, email FROM users</code></td><td class="desc">Select specific columns</td></tr>
+          <tr><td><code>SELECT DISTINCT city FROM users</code></td><td class="desc">Select unique values only</td></tr>
+          <tr><td><code>SELECT name AS full_name FROM users</code></td><td class="desc">Column alias</td></tr>
+          <tr><td><code>SELECT *, price * qty AS total FROM orders</code></td><td class="desc">Computed column</td></tr>
+          <tr><td><code>SELECT COUNT(*) FROM users</code></td><td class="desc">Count all rows</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment">-- Query execution order</span>
+<span class="keyword">FROM</span>      <span class="comment">-- 1. Source tables</span>
+<span class="keyword">JOIN</span>      <span class="comment">-- 2. Join tables</span>
+<span class="keyword">WHERE</span>     <span class="comment">-- 3. Filter rows</span>
+<span class="keyword">GROUP BY</span>  <span class="comment">-- 4. Group rows</span>
+<span class="keyword">HAVING</span>    <span class="comment">-- 5. Filter groups</span>
+<span class="keyword">SELECT</span>    <span class="comment">-- 6. Select columns</span>
+<span class="keyword">DISTINCT</span>  <span class="comment">-- 7. Remove duplicates</span>
+<span class="keyword">ORDER BY</span>  <span class="comment">-- 8. Sort results</span>
+<span class="keyword">LIMIT</span>     <span class="comment">-- 9. Limit rows</span></code></pre>
+    </section>
+
+    <!-- Filtering & Sorting -->
+    <section class="section" id="filtering">
+      <h2>Filtering &amp; Sorting</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Clause</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>WHERE age > 18</code></td><td class="desc">Filter rows by condition</td></tr>
+          <tr><td><code>WHERE name = 'Alice'</code></td><td class="desc">Exact match (strings use single quotes)</td></tr>
+          <tr><td><code>WHERE age BETWEEN 18 AND 30</code></td><td class="desc">Range (inclusive)</td></tr>
+          <tr><td><code>WHERE city IN ('NYC', 'LA', 'SF')</code></td><td class="desc">Match any value in list</td></tr>
+          <tr><td><code>WHERE city NOT IN ('NYC')</code></td><td class="desc">Exclude values in list</td></tr>
+          <tr><td><code>WHERE name LIKE 'A%'</code></td><td class="desc">Pattern match (% = any chars)</td></tr>
+          <tr><td><code>WHERE name LIKE '_ob'</code></td><td class="desc">Pattern match (_ = single char)</td></tr>
+          <tr><td><code>WHERE name ILIKE '%alice%'</code></td><td class="desc">Case-insensitive LIKE (PostgreSQL)</td></tr>
+          <tr><td><code>WHERE email IS NULL</code></td><td class="desc">Check for NULL</td></tr>
+          <tr><td><code>WHERE email IS NOT NULL</code></td><td class="desc">Check for non-NULL</td></tr>
+          <tr><td><code>WHERE age > 18 AND city = 'NYC'</code></td><td class="desc">Multiple conditions (AND)</td></tr>
+          <tr><td><code>WHERE age > 65 OR age < 18</code></td><td class="desc">Either condition (OR)</td></tr>
+          <tr><td><code>WHERE NOT active</code></td><td class="desc">Negate condition</td></tr>
+          <tr><td><code>ORDER BY name ASC</code></td><td class="desc">Sort ascending (default)</td></tr>
+          <tr><td><code>ORDER BY age DESC</code></td><td class="desc">Sort descending</td></tr>
+          <tr><td><code>ORDER BY city, name</code></td><td class="desc">Sort by multiple columns</td></tr>
+          <tr><td><code>LIMIT 10</code></td><td class="desc">Return first 10 rows</td></tr>
+          <tr><td><code>LIMIT 10 OFFSET 20</code></td><td class="desc">Skip 20, return next 10 (pagination)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- JOINs -->
+    <section class="section" id="joins">
+      <h2>JOINs</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Type</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>INNER JOIN</code></td><td class="desc">Only matching rows from both tables</td></tr>
+          <tr><td><code>LEFT JOIN</code></td><td class="desc">All rows from left + matching from right (NULL if no match)</td></tr>
+          <tr><td><code>RIGHT JOIN</code></td><td class="desc">All rows from right + matching from left</td></tr>
+          <tr><td><code>FULL OUTER JOIN</code></td><td class="desc">All rows from both tables (NULL where no match)</td></tr>
+          <tr><td><code>CROSS JOIN</code></td><td class="desc">Cartesian product (every combination)</td></tr>
+          <tr><td><code>SELF JOIN</code></td><td class="desc">Table joined with itself</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment">-- INNER JOIN</span>
+<span class="keyword">SELECT</span> u.name, o.total
+<span class="keyword">FROM</span> users u
+<span class="keyword">INNER JOIN</span> orders o <span class="keyword">ON</span> u.id = o.user_id;
+
+<span class="comment">-- LEFT JOIN (keep all users, even without orders)</span>
+<span class="keyword">SELECT</span> u.name, o.total
+<span class="keyword">FROM</span> users u
+<span class="keyword">LEFT JOIN</span> orders o <span class="keyword">ON</span> u.id = o.user_id;
+
+<span class="comment">-- Multiple JOINs</span>
+<span class="keyword">SELECT</span> u.name, o.id, p.name <span class="keyword">AS</span> product
+<span class="keyword">FROM</span> users u
+<span class="keyword">JOIN</span> orders o <span class="keyword">ON</span> u.id = o.user_id
+<span class="keyword">JOIN</span> products p <span class="keyword">ON</span> o.product_id = p.id;
+
+<span class="comment">-- Self JOIN (find employees and their managers)</span>
+<span class="keyword">SELECT</span> e.name, m.name <span class="keyword">AS</span> manager
+<span class="keyword">FROM</span> employees e
+<span class="keyword">LEFT JOIN</span> employees m <span class="keyword">ON</span> e.manager_id = m.id;</code></pre>
+    </section>
+
+    <!-- Aggregation -->
+    <section class="section" id="aggregate">
+      <h2>Aggregation</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Function</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>COUNT(*)</code></td><td class="desc">Count all rows</td></tr>
+          <tr><td><code>COUNT(column)</code></td><td class="desc">Count non-NULL values</td></tr>
+          <tr><td><code>COUNT(DISTINCT column)</code></td><td class="desc">Count unique non-NULL values</td></tr>
+          <tr><td><code>SUM(column)</code></td><td class="desc">Sum of values</td></tr>
+          <tr><td><code>AVG(column)</code></td><td class="desc">Average value</td></tr>
+          <tr><td><code>MIN(column)</code></td><td class="desc">Minimum value</td></tr>
+          <tr><td><code>MAX(column)</code></td><td class="desc">Maximum value</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment">-- GROUP BY with aggregate</span>
+<span class="keyword">SELECT</span> city, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> user_count
+<span class="keyword">FROM</span> users
+<span class="keyword">GROUP BY</span> city;
+
+<span class="comment">-- HAVING (filter groups, not rows)</span>
+<span class="keyword">SELECT</span> city, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> cnt
+<span class="keyword">FROM</span> users
+<span class="keyword">GROUP BY</span> city
+<span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) > <span class="string">10</span>;
+
+<span class="comment">-- GROUP BY with multiple aggregates</span>
+<span class="keyword">SELECT</span> department,
+  <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> employees,
+  <span class="keyword">AVG</span>(salary) <span class="keyword">AS</span> avg_salary,
+  <span class="keyword">MAX</span>(salary) <span class="keyword">AS</span> max_salary
+<span class="keyword">FROM</span> employees
+<span class="keyword">GROUP BY</span> department
+<span class="keyword">ORDER BY</span> avg_salary <span class="keyword">DESC</span>;</code></pre>
+      <div class="tip-box">
+        <strong>Tip:</strong> <code>WHERE</code> filters individual rows <em>before</em> grouping. <code>HAVING</code> filters groups <em>after</em> aggregation. You can't use aggregate functions in <code>WHERE</code>.
+      </div>
+    </section>
+
+    <!-- Subqueries & CTEs -->
+    <section class="section" id="subqueries">
+      <h2>Subqueries &amp; CTEs</h2>
+      <pre class="code-block"><code><span class="comment">-- Subquery in WHERE</span>
+<span class="keyword">SELECT</span> name <span class="keyword">FROM</span> users
+<span class="keyword">WHERE</span> id <span class="keyword">IN</span> (
+  <span class="keyword">SELECT</span> user_id <span class="keyword">FROM</span> orders <span class="keyword">WHERE</span> total > <span class="string">100</span>
+);
+
+<span class="comment">-- Subquery in FROM (derived table)</span>
+<span class="keyword">SELECT</span> avg_total
+<span class="keyword">FROM</span> (
+  <span class="keyword">SELECT</span> user_id, <span class="keyword">AVG</span>(total) <span class="keyword">AS</span> avg_total
+  <span class="keyword">FROM</span> orders
+  <span class="keyword">GROUP BY</span> user_id
+) <span class="keyword">AS</span> user_avgs
+<span class="keyword">WHERE</span> avg_total > <span class="string">50</span>;
+
+<span class="comment">-- EXISTS</span>
+<span class="keyword">SELECT</span> name <span class="keyword">FROM</span> users u
+<span class="keyword">WHERE EXISTS</span> (
+  <span class="keyword">SELECT</span> <span class="string">1</span> <span class="keyword">FROM</span> orders o <span class="keyword">WHERE</span> o.user_id = u.id
+);
+
+<span class="comment">-- CTE (Common Table Expression)</span>
+<span class="keyword">WITH</span> top_customers <span class="keyword">AS</span> (
+  <span class="keyword">SELECT</span> user_id, <span class="keyword">SUM</span>(total) <span class="keyword">AS</span> lifetime
+  <span class="keyword">FROM</span> orders
+  <span class="keyword">GROUP BY</span> user_id
+  <span class="keyword">HAVING</span> <span class="keyword">SUM</span>(total) > <span class="string">1000</span>
+)
+<span class="keyword">SELECT</span> u.name, tc.lifetime
+<span class="keyword">FROM</span> users u
+<span class="keyword">JOIN</span> top_customers tc <span class="keyword">ON</span> u.id = tc.user_id;
+
+<span class="comment">-- Window functions</span>
+<span class="keyword">SELECT</span> name, department, salary,
+  <span class="keyword">RANK</span>() <span class="keyword">OVER</span> (<span class="keyword">PARTITION BY</span> department <span class="keyword">ORDER BY</span> salary <span class="keyword">DESC</span>) <span class="keyword">AS</span> rank,
+  <span class="keyword">SUM</span>(salary) <span class="keyword">OVER</span> (<span class="keyword">PARTITION BY</span> department) <span class="keyword">AS</span> dept_total
+<span class="keyword">FROM</span> employees;</code></pre>
+    </section>
+
+    <!-- INSERT / UPDATE / DELETE -->
+    <section class="section" id="modify">
+      <h2>INSERT / UPDATE / DELETE</h2>
+      <pre class="code-block"><code><span class="comment">-- INSERT single row</span>
+<span class="keyword">INSERT INTO</span> users (name, email, age)
+<span class="keyword">VALUES</span> (<span class="string">'Alice'</span>, <span class="string">'alice@example.com'</span>, <span class="string">30</span>);
+
+<span class="comment">-- INSERT multiple rows</span>
+<span class="keyword">INSERT INTO</span> users (name, email) <span class="keyword">VALUES</span>
+  (<span class="string">'Bob'</span>, <span class="string">'bob@example.com'</span>),
+  (<span class="string">'Carol'</span>, <span class="string">'carol@example.com'</span>);
+
+<span class="comment">-- INSERT from SELECT</span>
+<span class="keyword">INSERT INTO</span> archive (name, email)
+<span class="keyword">SELECT</span> name, email <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> active = <span class="keyword">false</span>;
+
+<span class="comment">-- UPDATE</span>
+<span class="keyword">UPDATE</span> users
+<span class="keyword">SET</span> email = <span class="string">'new@example.com'</span>, updated_at = <span class="keyword">NOW</span>()
+<span class="keyword">WHERE</span> id = <span class="string">1</span>;
+
+<span class="comment">-- UPDATE with JOIN (PostgreSQL)</span>
+<span class="keyword">UPDATE</span> orders o
+<span class="keyword">SET</span> status = <span class="string">'vip'</span>
+<span class="keyword">FROM</span> users u
+<span class="keyword">WHERE</span> o.user_id = u.id <span class="keyword">AND</span> u.tier = <span class="string">'gold'</span>;
+
+<span class="comment">-- DELETE</span>
+<span class="keyword">DELETE FROM</span> users <span class="keyword">WHERE</span> id = <span class="string">1</span>;
+
+<span class="comment">-- DELETE all rows (keep table structure)</span>
+<span class="keyword">DELETE FROM</span> logs;
+<span class="keyword">TRUNCATE TABLE</span> logs;  <span class="comment">-- faster, resets auto-increment</span>
+
+<span class="comment">-- UPSERT (INSERT or UPDATE on conflict)</span>
+<span class="comment">-- PostgreSQL:</span>
+<span class="keyword">INSERT INTO</span> users (email, name) <span class="keyword">VALUES</span> (<span class="string">'a@b.com'</span>, <span class="string">'Alice'</span>)
+<span class="keyword">ON CONFLICT</span> (email) <span class="keyword">DO UPDATE SET</span> name = <span class="keyword">EXCLUDED</span>.name;
+
+<span class="comment">-- MySQL:</span>
+<span class="keyword">INSERT INTO</span> users (email, name) <span class="keyword">VALUES</span> (<span class="string">'a@b.com'</span>, <span class="string">'Alice'</span>)
+<span class="keyword">ON DUPLICATE KEY UPDATE</span> name = <span class="keyword">VALUES</span>(name);</code></pre>
+      <div class="tip-box warning">
+        <strong>Warning:</strong> Always use <code>WHERE</code> with <code>UPDATE</code> and <code>DELETE</code>. Without it, you'll modify or delete <strong>every row</strong> in the table.
+      </div>
+    </section>
+
+    <!-- Table Management -->
+    <section class="section" id="tables">
+      <h2>Table Management</h2>
+      <pre class="code-block"><code><span class="comment">-- CREATE TABLE</span>
+<span class="keyword">CREATE TABLE</span> users (
+  id        <span class="string">SERIAL PRIMARY KEY</span>,
+  name      <span class="string">VARCHAR(100) NOT NULL</span>,
+  email     <span class="string">VARCHAR(255) UNIQUE NOT NULL</span>,
+  age       <span class="string">INTEGER</span>,
+  active    <span class="string">BOOLEAN DEFAULT true</span>,
+  created_at <span class="string">TIMESTAMP DEFAULT NOW()</span>
+);
+
+<span class="comment">-- ALTER TABLE</span>
+<span class="keyword">ALTER TABLE</span> users <span class="keyword">ADD COLUMN</span> phone <span class="string">VARCHAR(20)</span>;
+<span class="keyword">ALTER TABLE</span> users <span class="keyword">DROP COLUMN</span> phone;
+<span class="keyword">ALTER TABLE</span> users <span class="keyword">RENAME COLUMN</span> name <span class="keyword">TO</span> full_name;
+<span class="keyword">ALTER TABLE</span> users <span class="keyword">ALTER COLUMN</span> age <span class="keyword">SET NOT NULL</span>;
+<span class="keyword">ALTER TABLE</span> old_name <span class="keyword">RENAME TO</span> new_name;
+
+<span class="comment">-- DROP TABLE</span>
+<span class="keyword">DROP TABLE</span> users;
+<span class="keyword">DROP TABLE IF EXISTS</span> users;</code></pre>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Common Data Types</h3>
+      <table class="cmd-table">
+        <thead><tr><th>Type</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>INTEGER / INT</code></td><td class="desc">Whole numbers</td></tr>
+          <tr><td><code>BIGINT</code></td><td class="desc">Large whole numbers</td></tr>
+          <tr><td><code>SERIAL</code></td><td class="desc">Auto-incrementing integer (PostgreSQL)</td></tr>
+          <tr><td><code>DECIMAL(p,s)</code></td><td class="desc">Exact decimal (precision, scale)</td></tr>
+          <tr><td><code>FLOAT / REAL</code></td><td class="desc">Floating point number</td></tr>
+          <tr><td><code>VARCHAR(n)</code></td><td class="desc">Variable-length string (max n chars)</td></tr>
+          <tr><td><code>TEXT</code></td><td class="desc">Unlimited-length string</td></tr>
+          <tr><td><code>BOOLEAN</code></td><td class="desc">True / false</td></tr>
+          <tr><td><code>DATE</code></td><td class="desc">Date only (YYYY-MM-DD)</td></tr>
+          <tr><td><code>TIMESTAMP</code></td><td class="desc">Date and time</td></tr>
+          <tr><td><code>JSON / JSONB</code></td><td class="desc">JSON data (JSONB is binary, faster)</td></tr>
+          <tr><td><code>UUID</code></td><td class="desc">Universally unique identifier</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Constraints & Indexes -->
+    <section class="section" id="constraints">
+      <h2>Constraints &amp; Indexes</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Constraint</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>PRIMARY KEY</code></td><td class="desc">Unique identifier for each row</td></tr>
+          <tr><td><code>FOREIGN KEY</code></td><td class="desc">References a primary key in another table</td></tr>
+          <tr><td><code>UNIQUE</code></td><td class="desc">All values must be different</td></tr>
+          <tr><td><code>NOT NULL</code></td><td class="desc">Column cannot contain NULL</td></tr>
+          <tr><td><code>DEFAULT value</code></td><td class="desc">Default value if none provided</td></tr>
+          <tr><td><code>CHECK (condition)</code></td><td class="desc">Values must satisfy condition</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment">-- Foreign key</span>
+<span class="keyword">CREATE TABLE</span> orders (
+  id       <span class="string">SERIAL PRIMARY KEY</span>,
+  user_id  <span class="string">INTEGER NOT NULL REFERENCES users(id)</span>,
+  total    <span class="string">DECIMAL(10,2)</span>
+);
+
+<span class="comment">-- Create index</span>
+<span class="keyword">CREATE INDEX</span> idx_users_email <span class="keyword">ON</span> users(email);
+<span class="keyword">CREATE UNIQUE INDEX</span> idx_users_email <span class="keyword">ON</span> users(email);
+
+<span class="comment">-- Composite index</span>
+<span class="keyword">CREATE INDEX</span> idx_orders_user_date <span class="keyword">ON</span> orders(user_id, created_at);
+
+<span class="comment">-- Drop index</span>
+<span class="keyword">DROP INDEX</span> idx_users_email;</code></pre>
+    </section>
+
+    <!-- Common Functions -->
+    <section class="section" id="functions">
+      <h2>Common Functions</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Function</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>COALESCE(a, b, c)</code></td><td class="desc">First non-NULL value</td></tr>
+          <tr><td><code>NULLIF(a, b)</code></td><td class="desc">NULL if a = b, otherwise a</td></tr>
+          <tr><td><code>CASE WHEN ... THEN ... ELSE ... END</code></td><td class="desc">Conditional expression</td></tr>
+          <tr><td><code>CAST(x AS type)</code></td><td class="desc">Convert data type</td></tr>
+          <tr><td><code>UPPER(str) / LOWER(str)</code></td><td class="desc">Change case</td></tr>
+          <tr><td><code>TRIM(str)</code></td><td class="desc">Remove whitespace</td></tr>
+          <tr><td><code>LENGTH(str)</code></td><td class="desc">String length</td></tr>
+          <tr><td><code>SUBSTRING(str, pos, len)</code></td><td class="desc">Extract substring</td></tr>
+          <tr><td><code>CONCAT(a, b)</code></td><td class="desc">Concatenate strings</td></tr>
+          <tr><td><code>REPLACE(str, old, new)</code></td><td class="desc">Replace in string</td></tr>
+          <tr><td><code>NOW()</code></td><td class="desc">Current date and time</td></tr>
+          <tr><td><code>CURRENT_DATE</code></td><td class="desc">Current date</td></tr>
+          <tr><td><code>EXTRACT(YEAR FROM date)</code></td><td class="desc">Extract part of date</td></tr>
+          <tr><td><code>DATE_TRUNC('month', date)</code></td><td class="desc">Truncate to month (PostgreSQL)</td></tr>
+          <tr><td><code>ABS(x)</code></td><td class="desc">Absolute value</td></tr>
+          <tr><td><code>ROUND(x, n)</code></td><td class="desc">Round to n decimals</td></tr>
+          <tr><td><code>CEIL(x) / FLOOR(x)</code></td><td class="desc">Round up / down</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment">-- CASE expression</span>
+<span class="keyword">SELECT</span> name,
+  <span class="keyword">CASE</span>
+    <span class="keyword">WHEN</span> age < <span class="string">18</span> <span class="keyword">THEN</span> <span class="string">'minor'</span>
+    <span class="keyword">WHEN</span> age < <span class="string">65</span> <span class="keyword">THEN</span> <span class="string">'adult'</span>
+    <span class="keyword">ELSE</span> <span class="string">'senior'</span>
+  <span class="keyword">END AS</span> category
+<span class="keyword">FROM</span> users;</code></pre>
+    </section>
+
+    <!-- Useful Patterns -->
+    <section class="section" id="patterns">
+      <h2>Useful Patterns</h2>
+      <pre class="code-block"><code><span class="comment">-- Pagination</span>
+<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> products
+<span class="keyword">ORDER BY</span> id
+<span class="keyword">LIMIT</span> <span class="string">20</span> <span class="keyword">OFFSET</span> <span class="string">40</span>;  <span class="comment">-- page 3 (20 per page)</span>
+
+<span class="comment">-- Find duplicates</span>
+<span class="keyword">SELECT</span> email, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> cnt
+<span class="keyword">FROM</span> users
+<span class="keyword">GROUP BY</span> email
+<span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) > <span class="string">1</span>;
+
+<span class="comment">-- Top N per group (window function)</span>
+<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> (
+  <span class="keyword">SELECT</span> *, <span class="keyword">ROW_NUMBER</span>() <span class="keyword">OVER</span> (
+    <span class="keyword">PARTITION BY</span> department <span class="keyword">ORDER BY</span> salary <span class="keyword">DESC</span>
+  ) <span class="keyword">AS</span> rn
+  <span class="keyword">FROM</span> employees
+) t <span class="keyword">WHERE</span> rn <= <span class="string">3</span>;
+
+<span class="comment">-- UNION (combine results, remove duplicates)</span>
+<span class="keyword">SELECT</span> name <span class="keyword">FROM</span> customers
+<span class="keyword">UNION</span>
+<span class="keyword">SELECT</span> name <span class="keyword">FROM</span> suppliers;
+
+<span class="comment">-- UNION ALL (keep duplicates, faster)</span>
+<span class="keyword">SELECT</span> name <span class="keyword">FROM</span> customers
+<span class="keyword">UNION ALL</span>
+<span class="keyword">SELECT</span> name <span class="keyword">FROM</span> suppliers;</code></pre>
+    </section>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="python.html">Python</a></h3>
+          <p>Python syntax, data types, functions, classes, and standard library.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="docker.html">Docker</a></h3>
+          <p>Docker commands for images, containers, volumes, networks, and Compose.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="bash.html">Bash / Shell</a></h3>
+          <p>Terminal commands, scripting, permissions, and keyboard shortcuts.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
