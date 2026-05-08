@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="Git cheat sheet with essential commands for setup, branching, merging, stashing, remote, and more. Quick reference with examples.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/git.html">
+  <meta property="og:title" content="Git Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Essential Git commands organized by category with examples. Setup, branching, merging, stashing, remote, undo, and more.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/git.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Git Cheat Sheet - Quick Reference",
+    "description": "Essential Git commands organized by category with examples",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/git.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Filter commands..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / Git Cheat Sheet</div>
+      <h1>Git Cheat Sheet</h1>
+      <p class="description">Essential Git commands for everyday development. From setup to advanced workflows — everything you need in one page.</p>
+    </div>
+
+    <!-- Ad Banner Top -->
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#setup">Setup &amp; Config</a></li>
+        <li><a href="#create">Create &amp; Clone</a></li>
+        <li><a href="#stage">Stage &amp; Snapshot</a></li>
+        <li><a href="#branch">Branch &amp; Merge</a></li>
+        <li><a href="#remote">Remote &amp; Sync</a></li>
+        <li><a href="#stash">Stash</a></li>
+        <li><a href="#inspect">Inspect &amp; Compare</a></li>
+        <li><a href="#undo">Undo &amp; Rewrite</a></li>
+        <li><a href="#tags">Tags</a></li>
+        <li><a href="#advanced">Advanced</a></li>
+      </ul>
+    </nav>
+
+    <!-- Setup & Config -->
+    <section class="section" id="setup">
+      <h2>Setup &amp; Config</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>git config --global user.name "Name"</code></td><td class="desc">Set your global username</td></tr>
+          <tr><td><code>git config --global user.email "email"</code></td><td class="desc">Set your global email</td></tr>
+          <tr><td><code>git config --global core.editor "vim"</code></td><td class="desc">Set default editor</td></tr>
+          <tr><td><code>git config --global init.defaultBranch main</code></td><td class="desc">Set default branch name to <code>main</code></td></tr>
+          <tr><td><code>git config --list</code></td><td class="desc">List all configuration settings</td></tr>
+          <tr><td><code>git config --global alias.co checkout</code></td><td class="desc">Create a shortcut alias</td></tr>
+          <tr><td><code>git config --global credential.helper cache</code></td><td class="desc">Cache credentials in memory</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Create & Clone -->
+    <section class="section" id="create">
+      <h2>Create &amp; Clone</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>git init</code></td><td class="desc">Initialize a new Git repository</td></tr>
+          <tr><td><code>git init &lt;directory&gt;</code></td><td class="desc">Create a new repo in a specific directory</td></tr>
+          <tr><td><code>git clone &lt;url&gt;</code></td><td class="desc">Clone a remote repository</td></tr>
+          <tr><td><code>git clone &lt;url&gt; &lt;dir&gt;</code></td><td class="desc">Clone into a specific directory</td></tr>
+          <tr><td><code>git clone --depth 1 &lt;url&gt;</code></td><td class="desc">Shallow clone (latest commit only)</td></tr>
+          <tr><td><code>git clone --branch &lt;branch&gt; &lt;url&gt;</code></td><td class="desc">Clone a specific branch</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Stage & Snapshot -->
+    <section class="section" id="stage">
+      <h2>Stage &amp; Snapshot</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>git status</code></td><td class="desc">Show working tree status</td></tr>
+          <tr><td><code>git status -s</code></td><td class="desc">Short-format status</td></tr>
+          <tr><td><code>git add &lt;file&gt;</code></td><td class="desc">Stage a specific file</td></tr>
+          <tr><td><code>git add .</code></td><td class="desc">Stage all changes in current directory</td></tr>
+          <tr><td><code>git add -p</code></td><td class="desc">Stage changes interactively (by hunk)</td></tr>
+          <tr><td><code>git reset &lt;file&gt;</code></td><td class="desc">Unstage a file (keep changes)</td></tr>
+          <tr><td><code>git commit -m "message"</code></td><td class="desc">Commit staged changes with a message</td></tr>
+          <tr><td><code>git commit -am "message"</code></td><td class="desc">Stage all tracked files and commit</td></tr>
+          <tr><td><code>git commit --amend</code></td><td class="desc">Modify the last commit</td></tr>
+          <tr><td><code>git commit --amend --no-edit</code></td><td class="desc">Amend last commit without changing message</td></tr>
+          <tr><td><code>git rm &lt;file&gt;</code></td><td class="desc">Remove file from repo and working tree</td></tr>
+          <tr><td><code>git rm --cached &lt;file&gt;</code></td><td class="desc">Remove file from repo but keep locally</td></tr>
+          <tr><td><code>git mv &lt;old&gt; &lt;new&gt;</code></td><td class="desc">Rename/move a file</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box">
+        <strong>Tip:</strong> Use <code>git add -p</code> to review each change before staging. This helps create clean, focused commits.
+      </div>
+    </section>
+
+    <!-- Branch & Merge -->
+    <section class="section" id="branch">
+      <h2>Branch &amp; Merge</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>git branch</code></td><td class="desc">List local branches</td></tr>
+          <tr><td><code>git branch -a</code></td><td class="desc">List all branches (local + remote)</td></tr>
+          <tr><td><code>git branch &lt;name&gt;</code></td><td class="desc">Create a new branch</td></tr>
+          <tr><td><code>git branch -d &lt;name&gt;</code></td><td class="desc">Delete a merged branch</td></tr>
+          <tr><td><code>git branch -D &lt;name&gt;</code></td><td class="desc">Force delete an unmerged branch</td></tr>
+          <tr><td><code>git branch -m &lt;new-name&gt;</code></td><td class="desc">Rename current branch</td></tr>
+          <tr><td><code>git checkout &lt;branch&gt;</code></td><td class="desc">Switch to a branch</td></tr>
+          <tr><td><code>git checkout -b &lt;branch&gt;</code></td><td class="desc">Create and switch to a new branch</td></tr>
+          <tr><td><code>git switch &lt;branch&gt;</code></td><td class="desc">Switch branches (modern syntax)</td></tr>
+          <tr><td><code>git switch -c &lt;branch&gt;</code></td><td class="desc">Create and switch (modern syntax)</td></tr>
+          <tr><td><code>git merge &lt;branch&gt;</code></td><td class="desc">Merge a branch into current branch</td></tr>
+          <tr><td><code>git merge --no-ff &lt;branch&gt;</code></td><td class="desc">Merge with a merge commit (no fast-forward)</td></tr>
+          <tr><td><code>git merge --abort</code></td><td class="desc">Abort a merge in progress</td></tr>
+          <tr><td><code>git rebase &lt;branch&gt;</code></td><td class="desc">Rebase current branch onto another</td></tr>
+          <tr><td><code>git rebase --abort</code></td><td class="desc">Abort an in-progress rebase</td></tr>
+          <tr><td><code>git cherry-pick &lt;commit&gt;</code></td><td class="desc">Apply a specific commit to current branch</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box warning">
+        <strong>Warning:</strong> Avoid rebasing commits that have been pushed to a shared branch. Rebase rewrites history and can cause issues for collaborators.
+      </div>
+    </section>
+
+    <!-- Remote & Sync -->
+    <section class="section" id="remote">
+      <h2>Remote &amp; Sync</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>git remote -v</code></td><td class="desc">List remote repositories</td></tr>
+          <tr><td><code>git remote add &lt;name&gt; &lt;url&gt;</code></td><td class="desc">Add a new remote</td></tr>
+          <tr><td><code>git remote remove &lt;name&gt;</code></td><td class="desc">Remove a remote</td></tr>
+          <tr><td><code>git remote rename &lt;old&gt; &lt;new&gt;</code></td><td class="desc">Rename a remote</td></tr>
+          <tr><td><code>git fetch</code></td><td class="desc">Download objects and refs from remote</td></tr>
+          <tr><td><code>git fetch --all</code></td><td class="desc">Fetch from all remotes</td></tr>
+          <tr><td><code>git fetch --prune</code></td><td class="desc">Fetch and remove stale remote-tracking refs</td></tr>
+          <tr><td><code>git pull</code></td><td class="desc">Fetch and merge remote changes</td></tr>
+          <tr><td><code>git pull --rebase</code></td><td class="desc">Fetch and rebase instead of merge</td></tr>
+          <tr><td><code>git push</code></td><td class="desc">Push commits to remote</td></tr>
+          <tr><td><code>git push -u origin &lt;branch&gt;</code></td><td class="desc">Push and set upstream tracking</td></tr>
+          <tr><td><code>git push origin --delete &lt;branch&gt;</code></td><td class="desc">Delete a remote branch</td></tr>
+          <tr><td><code>git push --tags</code></td><td class="desc">Push all tags to remote</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Stash -->
+    <section class="section" id="stash">
+      <h2>Stash</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>git stash</code></td><td class="desc">Stash current changes</td></tr>
+          <tr><td><code>git stash push -m "message"</code></td><td class="desc">Stash with a description</td></tr>
+          <tr><td><code>git stash -u</code></td><td class="desc">Stash including untracked files</td></tr>
+          <tr><td><code>git stash list</code></td><td class="desc">List all stashes</td></tr>
+          <tr><td><code>git stash pop</code></td><td class="desc">Apply latest stash and remove it</td></tr>
+          <tr><td><code>git stash apply</code></td><td class="desc">Apply latest stash (keep in stash list)</td></tr>
+          <tr><td><code>git stash apply stash@{n}</code></td><td class="desc">Apply a specific stash</td></tr>
+          <tr><td><code>git stash drop stash@{n}</code></td><td class="desc">Delete a specific stash</td></tr>
+          <tr><td><code>git stash clear</code></td><td class="desc">Remove all stashes</td></tr>
+          <tr><td><code>git stash show -p</code></td><td class="desc">Show stash diff</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Inspect & Compare -->
+    <section class="section" id="inspect">
+      <h2>Inspect &amp; Compare</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>git log</code></td><td class="desc">Show commit history</td></tr>
+          <tr><td><code>git log --oneline</code></td><td class="desc">Compact log (one line per commit)</td></tr>
+          <tr><td><code>git log --graph --oneline</code></td><td class="desc">Visual branch graph</td></tr>
+          <tr><td><code>git log --author="name"</code></td><td class="desc">Filter by author</td></tr>
+          <tr><td><code>git log --since="2 weeks ago"</code></td><td class="desc">Filter by date</td></tr>
+          <tr><td><code>git log -p &lt;file&gt;</code></td><td class="desc">Show changes to a specific file over time</td></tr>
+          <tr><td><code>git log --stat</code></td><td class="desc">Show file change statistics per commit</td></tr>
+          <tr><td><code>git diff</code></td><td class="desc">Show unstaged changes</td></tr>
+          <tr><td><code>git diff --staged</code></td><td class="desc">Show staged changes (ready to commit)</td></tr>
+          <tr><td><code>git diff &lt;branch1&gt; &lt;branch2&gt;</code></td><td class="desc">Compare two branches</td></tr>
+          <tr><td><code>git diff &lt;commit1&gt; &lt;commit2&gt;</code></td><td class="desc">Compare two commits</td></tr>
+          <tr><td><code>git show &lt;commit&gt;</code></td><td class="desc">Show details of a specific commit</td></tr>
+          <tr><td><code>git blame &lt;file&gt;</code></td><td class="desc">Show who changed each line</td></tr>
+          <tr><td><code>git shortlog -sn</code></td><td class="desc">Summary of commits by author</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Undo & Rewrite -->
+    <section class="section" id="undo">
+      <h2>Undo &amp; Rewrite</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>git checkout -- &lt;file&gt;</code></td><td class="desc">Discard changes in a file</td></tr>
+          <tr><td><code>git restore &lt;file&gt;</code></td><td class="desc">Discard changes (modern syntax)</td></tr>
+          <tr><td><code>git restore --staged &lt;file&gt;</code></td><td class="desc">Unstage a file (modern syntax)</td></tr>
+          <tr><td><code>git reset HEAD~1</code></td><td class="desc">Undo last commit (keep changes staged)</td></tr>
+          <tr><td><code>git reset --soft HEAD~1</code></td><td class="desc">Undo last commit (keep changes staged)</td></tr>
+          <tr><td><code>git reset --mixed HEAD~1</code></td><td class="desc">Undo last commit (keep changes unstaged)</td></tr>
+          <tr><td><code>git reset --hard HEAD~1</code></td><td class="desc">Undo last commit and discard all changes</td></tr>
+          <tr><td><code>git revert &lt;commit&gt;</code></td><td class="desc">Create a new commit that undoes a specific commit</td></tr>
+          <tr><td><code>git clean -fd</code></td><td class="desc">Remove untracked files and directories</td></tr>
+          <tr><td><code>git clean -n</code></td><td class="desc">Dry run — show what would be removed</td></tr>
+          <tr><td><code>git reflog</code></td><td class="desc">Show reference log (recover lost commits)</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box warning">
+        <strong>Warning:</strong> <code>git reset --hard</code> permanently discards changes. Use <code>git reflog</code> if you need to recover lost commits.
+      </div>
+    </section>
+
+    <!-- Tags -->
+    <section class="section" id="tags">
+      <h2>Tags</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>git tag</code></td><td class="desc">List all tags</td></tr>
+          <tr><td><code>git tag &lt;name&gt;</code></td><td class="desc">Create a lightweight tag</td></tr>
+          <tr><td><code>git tag -a &lt;name&gt; -m "msg"</code></td><td class="desc">Create an annotated tag</td></tr>
+          <tr><td><code>git tag -a &lt;name&gt; &lt;commit&gt;</code></td><td class="desc">Tag a specific commit</td></tr>
+          <tr><td><code>git tag -d &lt;name&gt;</code></td><td class="desc">Delete a local tag</td></tr>
+          <tr><td><code>git push origin &lt;tag&gt;</code></td><td class="desc">Push a tag to remote</td></tr>
+          <tr><td><code>git push origin --delete &lt;tag&gt;</code></td><td class="desc">Delete a remote tag</td></tr>
+          <tr><td><code>git checkout &lt;tag&gt;</code></td><td class="desc">Checkout a tag (detached HEAD)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Advanced -->
+    <section class="section" id="advanced">
+      <h2>Advanced</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>git bisect start</code></td><td class="desc">Start binary search for a bug</td></tr>
+          <tr><td><code>git bisect bad</code></td><td class="desc">Mark current commit as bad</td></tr>
+          <tr><td><code>git bisect good &lt;commit&gt;</code></td><td class="desc">Mark a known good commit</td></tr>
+          <tr><td><code>git bisect reset</code></td><td class="desc">End bisect session</td></tr>
+          <tr><td><code>git submodule add &lt;url&gt;</code></td><td class="desc">Add a submodule</td></tr>
+          <tr><td><code>git submodule update --init</code></td><td class="desc">Initialize and update submodules</td></tr>
+          <tr><td><code>git worktree add &lt;path&gt; &lt;branch&gt;</code></td><td class="desc">Create a linked working tree</td></tr>
+          <tr><td><code>git archive --format=zip HEAD -o file.zip</code></td><td class="desc">Create a zip archive of the repo</td></tr>
+          <tr><td><code>git grep "pattern"</code></td><td class="desc">Search for a pattern in tracked files</td></tr>
+          <tr><td><code>git log -S "string"</code></td><td class="desc">Find commits that added/removed a string</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- .gitignore -->
+    <section class="section" id="gitignore">
+      <h2>Common .gitignore Patterns</h2>
+      <pre class="code-block"><code><span class="comment"># Dependencies</span>
+node_modules/
+vendor/
+__pycache__/
+
+<span class="comment"># Build output</span>
+dist/
+build/
+*.min.js
+*.min.css
+
+<span class="comment"># IDE / Editor</span>
+.vscode/
+.idea/
+*.swp
+*.swo
+
+<span class="comment"># OS files</span>
+.DS_Store
+Thumbs.db
+
+<span class="comment"># Environment</span>
+.env
+.env.local
+*.log</code></pre>
+    </section>
+
+    <!-- Ad Banner Bottom -->
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="bash.html">Bash / Shell</a></h3>
+          <p>Essential terminal commands, scripting basics, and shell shortcuts.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="markdown.html">Markdown</a></h3>
+          <p>Syntax for headings, links, images, tables, code blocks, and more.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="regex.html">Regex</a></h3>
+          <p>Regular expression patterns, quantifiers, groups, and common examples.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
