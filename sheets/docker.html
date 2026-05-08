@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docker Cheat Sheet - Quick Reference for Developers</title>
+  <meta name="description" content="Docker cheat sheet with commands for images, containers, volumes, networks, Docker Compose, Dockerfile instructions, and common workflows.">
+  <link rel="canonical" href="https://jko-yohan.github.io/dev-cheatsheets/sheets/docker.html">
+  <meta property="og:title" content="Docker Cheat Sheet - Quick Reference for Developers">
+  <meta property="og:description" content="Essential Docker commands: images, containers, volumes, networks, Compose, Dockerfile, and common workflows.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jko-yohan.github.io/dev-cheatsheets/sheets/docker.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754582635962628" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Docker Cheat Sheet - Quick Reference",
+    "description": "Essential Docker commands and workflows",
+    "url": "https://jko-yohan.github.io/dev-cheatsheets/sheets/docker.html",
+    "author": { "@type": "Organization", "name": "DevCheatsheets" },
+    "datePublished": "2026-05-08",
+    "dateModified": "2026-05-08"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../" class="site-logo">&lt;Dev<span>Cheatsheets</span>/&gt;</a>
+      <div class="search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/></svg>
+        <input type="text" id="search" placeholder="Filter commands..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="sheet-header">
+      <div class="breadcrumb"><a href="../">Home</a> / Docker Cheat Sheet</div>
+      <h1>Docker Cheat Sheet</h1>
+      <p class="description">Essential Docker commands for images, containers, volumes, networks, Docker Compose, and Dockerfile instructions.</p>
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#images">Images</a></li>
+        <li><a href="#containers">Containers</a></li>
+        <li><a href="#run">Run Options</a></li>
+        <li><a href="#volumes">Volumes</a></li>
+        <li><a href="#networks">Networks</a></li>
+        <li><a href="#dockerfile">Dockerfile</a></li>
+        <li><a href="#compose">Docker Compose</a></li>
+        <li><a href="#cleanup">Cleanup</a></li>
+        <li><a href="#inspect">Inspect &amp; Debug</a></li>
+      </ul>
+    </nav>
+
+    <!-- Images -->
+    <section class="section" id="images">
+      <h2>Images</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>docker images</code></td><td class="desc">List local images</td></tr>
+          <tr><td><code>docker pull image:tag</code></td><td class="desc">Download image from registry</td></tr>
+          <tr><td><code>docker build -t name:tag .</code></td><td class="desc">Build image from Dockerfile in current dir</td></tr>
+          <tr><td><code>docker build -f path/Dockerfile .</code></td><td class="desc">Build from specific Dockerfile</td></tr>
+          <tr><td><code>docker build --no-cache -t name .</code></td><td class="desc">Build without cache</td></tr>
+          <tr><td><code>docker tag img:tag newname:tag</code></td><td class="desc">Tag an image</td></tr>
+          <tr><td><code>docker push image:tag</code></td><td class="desc">Push image to registry</td></tr>
+          <tr><td><code>docker rmi image</code></td><td class="desc">Remove an image</td></tr>
+          <tr><td><code>docker rmi $(docker images -q)</code></td><td class="desc">Remove all images</td></tr>
+          <tr><td><code>docker save -o file.tar image</code></td><td class="desc">Save image to tar file</td></tr>
+          <tr><td><code>docker load -i file.tar</code></td><td class="desc">Load image from tar file</td></tr>
+          <tr><td><code>docker history image</code></td><td class="desc">Show image layer history</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Containers -->
+    <section class="section" id="containers">
+      <h2>Containers</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>docker ps</code></td><td class="desc">List running containers</td></tr>
+          <tr><td><code>docker ps -a</code></td><td class="desc">List all containers (including stopped)</td></tr>
+          <tr><td><code>docker run image</code></td><td class="desc">Create and start container</td></tr>
+          <tr><td><code>docker start container</code></td><td class="desc">Start a stopped container</td></tr>
+          <tr><td><code>docker stop container</code></td><td class="desc">Gracefully stop container</td></tr>
+          <tr><td><code>docker restart container</code></td><td class="desc">Restart container</td></tr>
+          <tr><td><code>docker kill container</code></td><td class="desc">Force stop container</td></tr>
+          <tr><td><code>docker rm container</code></td><td class="desc">Remove stopped container</td></tr>
+          <tr><td><code>docker rm -f container</code></td><td class="desc">Force remove (even if running)</td></tr>
+          <tr><td><code>docker rename old new</code></td><td class="desc">Rename a container</td></tr>
+          <tr><td><code>docker exec -it container bash</code></td><td class="desc">Open interactive shell in running container</td></tr>
+          <tr><td><code>docker exec container cmd</code></td><td class="desc">Run command in container</td></tr>
+          <tr><td><code>docker logs container</code></td><td class="desc">View container logs</td></tr>
+          <tr><td><code>docker logs -f container</code></td><td class="desc">Follow logs in real-time</td></tr>
+          <tr><td><code>docker logs --tail 100 container</code></td><td class="desc">Last 100 log lines</td></tr>
+          <tr><td><code>docker cp container:/path ./local</code></td><td class="desc">Copy files from container</td></tr>
+          <tr><td><code>docker cp ./local container:/path</code></td><td class="desc">Copy files to container</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Run Options -->
+    <section class="section" id="run">
+      <h2>Run Options</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Flag</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>-d</code></td><td class="desc">Run in detached mode (background)</td></tr>
+          <tr><td><code>-it</code></td><td class="desc">Interactive + TTY (for shell access)</td></tr>
+          <tr><td><code>--name myapp</code></td><td class="desc">Assign a name to the container</td></tr>
+          <tr><td><code>-p 8080:80</code></td><td class="desc">Map host port 8080 to container port 80</td></tr>
+          <tr><td><code>-P</code></td><td class="desc">Map all exposed ports to random host ports</td></tr>
+          <tr><td><code>-v /host:/container</code></td><td class="desc">Bind mount a volume</td></tr>
+          <tr><td><code>-v mydata:/data</code></td><td class="desc">Use a named volume</td></tr>
+          <tr><td><code>-e KEY=VALUE</code></td><td class="desc">Set environment variable</td></tr>
+          <tr><td><code>--env-file .env</code></td><td class="desc">Load env vars from file</td></tr>
+          <tr><td><code>--rm</code></td><td class="desc">Auto-remove container when it stops</td></tr>
+          <tr><td><code>--restart always</code></td><td class="desc">Always restart (unless manually stopped)</td></tr>
+          <tr><td><code>--restart unless-stopped</code></td><td class="desc">Restart unless explicitly stopped</td></tr>
+          <tr><td><code>--network mynet</code></td><td class="desc">Connect to a specific network</td></tr>
+          <tr><td><code>-w /app</code></td><td class="desc">Set working directory</td></tr>
+          <tr><td><code>--memory 512m</code></td><td class="desc">Limit memory to 512MB</td></tr>
+          <tr><td><code>--cpus 2</code></td><td class="desc">Limit to 2 CPUs</td></tr>
+        </tbody>
+      </table>
+      <pre class="code-block"><code><span class="comment"># Common run examples</span>
+docker run <span class="flag">-d</span> <span class="flag">--name</span> web <span class="flag">-p</span> 8080:80 nginx
+docker run <span class="flag">-it</span> <span class="flag">--rm</span> node:20 bash
+docker run <span class="flag">-d</span> <span class="flag">--name</span> db <span class="flag">-e</span> POSTGRES_PASSWORD=secret <span class="flag">-v</span> pgdata:/var/lib/postgresql/data postgres:16</code></pre>
+    </section>
+
+    <!-- Volumes -->
+    <section class="section" id="volumes">
+      <h2>Volumes</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>docker volume ls</code></td><td class="desc">List volumes</td></tr>
+          <tr><td><code>docker volume create mydata</code></td><td class="desc">Create a named volume</td></tr>
+          <tr><td><code>docker volume inspect mydata</code></td><td class="desc">Show volume details</td></tr>
+          <tr><td><code>docker volume rm mydata</code></td><td class="desc">Remove a volume</td></tr>
+          <tr><td><code>docker volume prune</code></td><td class="desc">Remove all unused volumes</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box">
+        <strong>Tip:</strong> Named volumes (<code>-v mydata:/data</code>) persist across container restarts. Bind mounts (<code>-v /host/path:/data</code>) map to host filesystem and are great for development.
+      </div>
+    </section>
+
+    <!-- Networks -->
+    <section class="section" id="networks">
+      <h2>Networks</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>docker network ls</code></td><td class="desc">List networks</td></tr>
+          <tr><td><code>docker network create mynet</code></td><td class="desc">Create a bridge network</td></tr>
+          <tr><td><code>docker network inspect mynet</code></td><td class="desc">Show network details</td></tr>
+          <tr><td><code>docker network connect mynet container</code></td><td class="desc">Connect container to network</td></tr>
+          <tr><td><code>docker network disconnect mynet container</code></td><td class="desc">Disconnect from network</td></tr>
+          <tr><td><code>docker network rm mynet</code></td><td class="desc">Remove a network</td></tr>
+          <tr><td><code>docker network prune</code></td><td class="desc">Remove unused networks</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Dockerfile -->
+    <section class="section" id="dockerfile">
+      <h2>Dockerfile</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Instruction</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>FROM image:tag</code></td><td class="desc">Base image</td></tr>
+          <tr><td><code>WORKDIR /app</code></td><td class="desc">Set working directory</td></tr>
+          <tr><td><code>COPY src dest</code></td><td class="desc">Copy files from host to image</td></tr>
+          <tr><td><code>ADD src dest</code></td><td class="desc">Copy + auto-extract archives + URL support</td></tr>
+          <tr><td><code>RUN command</code></td><td class="desc">Execute command during build</td></tr>
+          <tr><td><code>CMD ["cmd", "arg"]</code></td><td class="desc">Default command when container starts</td></tr>
+          <tr><td><code>ENTRYPOINT ["cmd"]</code></td><td class="desc">Command that always runs (CMD becomes args)</td></tr>
+          <tr><td><code>ENV KEY=VALUE</code></td><td class="desc">Set environment variable</td></tr>
+          <tr><td><code>ARG NAME=default</code></td><td class="desc">Build-time variable</td></tr>
+          <tr><td><code>EXPOSE 8080</code></td><td class="desc">Document which port the container listens on</td></tr>
+          <tr><td><code>VOLUME /data</code></td><td class="desc">Create a mount point</td></tr>
+          <tr><td><code>USER username</code></td><td class="desc">Set user for subsequent instructions</td></tr>
+          <tr><td><code>LABEL key="value"</code></td><td class="desc">Add metadata</td></tr>
+          <tr><td><code>HEALTHCHECK CMD curl -f http://localhost/</code></td><td class="desc">Container health check</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Example: Node.js App</h3>
+      <pre class="code-block"><code><span class="keyword">FROM</span> node:20-alpine
+<span class="keyword">WORKDIR</span> /app
+<span class="keyword">COPY</span> package*.json ./
+<span class="keyword">RUN</span> npm ci --only=production
+<span class="keyword">COPY</span> . .
+<span class="keyword">EXPOSE</span> 3000
+<span class="keyword">CMD</span> [<span class="string">"node"</span>, <span class="string">"server.js"</span>]</code></pre>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Example: Python App</h3>
+      <pre class="code-block"><code><span class="keyword">FROM</span> python:3.12-slim
+<span class="keyword">WORKDIR</span> /app
+<span class="keyword">COPY</span> requirements.txt .
+<span class="keyword">RUN</span> pip install --no-cache-dir -r requirements.txt
+<span class="keyword">COPY</span> . .
+<span class="keyword">EXPOSE</span> 8000
+<span class="keyword">CMD</span> [<span class="string">"gunicorn"</span>, <span class="string">"app:app"</span>, <span class="string">"--bind"</span>, <span class="string">"0.0.0.0:8000"</span>]</code></pre>
+
+      <div class="tip-box">
+        <strong>Tip:</strong> Copy dependency files first, then <code>RUN install</code>, then copy source code. This maximizes Docker layer caching — dependencies only reinstall when the lock file changes.
+      </div>
+    </section>
+
+    <!-- Docker Compose -->
+    <section class="section" id="compose">
+      <h2>Docker Compose</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>docker compose up</code></td><td class="desc">Start all services</td></tr>
+          <tr><td><code>docker compose up -d</code></td><td class="desc">Start in detached mode</td></tr>
+          <tr><td><code>docker compose up --build</code></td><td class="desc">Build images before starting</td></tr>
+          <tr><td><code>docker compose down</code></td><td class="desc">Stop and remove containers</td></tr>
+          <tr><td><code>docker compose down -v</code></td><td class="desc">Stop and remove containers + volumes</td></tr>
+          <tr><td><code>docker compose ps</code></td><td class="desc">List running services</td></tr>
+          <tr><td><code>docker compose logs -f</code></td><td class="desc">Follow logs for all services</td></tr>
+          <tr><td><code>docker compose logs service</code></td><td class="desc">Logs for specific service</td></tr>
+          <tr><td><code>docker compose exec service bash</code></td><td class="desc">Shell into running service</td></tr>
+          <tr><td><code>docker compose restart service</code></td><td class="desc">Restart a specific service</td></tr>
+          <tr><td><code>docker compose pull</code></td><td class="desc">Pull latest images</td></tr>
+          <tr><td><code>docker compose config</code></td><td class="desc">Validate and view merged config</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:16px 0 8px;color:var(--text-secondary);">Example: compose.yaml</h3>
+      <pre class="code-block"><code><span class="keyword">services</span>:
+  <span class="keyword">web</span>:
+    <span class="keyword">build</span>: .
+    <span class="keyword">ports</span>:
+      - <span class="string">"3000:3000"</span>
+    <span class="keyword">environment</span>:
+      - <span class="string">DATABASE_URL=postgres://user:pass@db:5432/mydb</span>
+    <span class="keyword">depends_on</span>:
+      - db
+    <span class="keyword">volumes</span>:
+      - <span class="string">./src:/app/src</span>
+
+  <span class="keyword">db</span>:
+    <span class="keyword">image</span>: postgres:16
+    <span class="keyword">environment</span>:
+      <span class="keyword">POSTGRES_PASSWORD</span>: <span class="string">secret</span>
+      <span class="keyword">POSTGRES_DB</span>: <span class="string">mydb</span>
+    <span class="keyword">volumes</span>:
+      - <span class="string">pgdata:/var/lib/postgresql/data</span>
+    <span class="keyword">ports</span>:
+      - <span class="string">"5432:5432"</span>
+
+<span class="keyword">volumes</span>:
+  <span class="keyword">pgdata</span>:</code></pre>
+    </section>
+
+    <!-- Cleanup -->
+    <section class="section" id="cleanup">
+      <h2>Cleanup</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>docker system prune</code></td><td class="desc">Remove stopped containers, unused networks, dangling images</td></tr>
+          <tr><td><code>docker system prune -a</code></td><td class="desc">Also remove all unused images</td></tr>
+          <tr><td><code>docker system prune -a --volumes</code></td><td class="desc">Remove everything unused (including volumes)</td></tr>
+          <tr><td><code>docker system df</code></td><td class="desc">Show Docker disk usage</td></tr>
+          <tr><td><code>docker container prune</code></td><td class="desc">Remove stopped containers</td></tr>
+          <tr><td><code>docker image prune</code></td><td class="desc">Remove dangling images</td></tr>
+          <tr><td><code>docker volume prune</code></td><td class="desc">Remove unused volumes</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Inspect & Debug -->
+    <section class="section" id="inspect">
+      <h2>Inspect &amp; Debug</h2>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>docker inspect container</code></td><td class="desc">Detailed container info (JSON)</td></tr>
+          <tr><td><code>docker stats</code></td><td class="desc">Live resource usage (CPU, memory, I/O)</td></tr>
+          <tr><td><code>docker top container</code></td><td class="desc">Running processes in container</td></tr>
+          <tr><td><code>docker port container</code></td><td class="desc">Show port mappings</td></tr>
+          <tr><td><code>docker diff container</code></td><td class="desc">Show filesystem changes</td></tr>
+          <tr><td><code>docker events</code></td><td class="desc">Real-time Docker events</td></tr>
+          <tr><td><code>docker version</code></td><td class="desc">Docker version info</td></tr>
+          <tr><td><code>docker info</code></td><td class="desc">System-wide Docker info</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4754582635962628" data-ad-slot="" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="related-sheets">
+      <h2>More Cheat Sheets</h2>
+      <div class="sheets-grid">
+        <div class="sheet-card">
+          <h3><a href="bash.html">Bash / Shell</a></h3>
+          <p>Terminal commands, scripting, permissions, and keyboard shortcuts.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="git.html">Git Commands</a></h3>
+          <p>Essential Git commands for setup, branching, merging, and more.</p>
+        </div>
+        <div class="sheet-card">
+          <h3><a href="npm.html">npm / yarn</a></h3>
+          <p>Package management commands for Node.js projects.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 DevCheatsheets. Built for developers, by developers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
